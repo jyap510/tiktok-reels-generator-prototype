@@ -1,0 +1,14 @@
+{
+  "run_id": "24241940",
+  "started_at": "2026-04-05T15:39:52.097311+00:00",
+  "input_file": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/data/B0BTZB7F88.json",
+  "output_dir": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/results/24241940",
+  "step1_ingest": {
+    "status": "success",
+    "duration_s": 0.0,
+    "asin": "B0BTZB7F88"
+  },
+  "status": "error",
+  "error": "'content'",
+  "finished_at": "2026-04-05T15:40:41.580401+00:00"
+}

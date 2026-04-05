@@ -124,7 +124,7 @@ def step_generate_videos(prompts: dict, frame_kie_urls: list, out_dir: Path, log
         task_id = kie_client.create_task("kling-2.6/image-to-video", {
             "prompt": prompts["video_prompts"][i],
             "image_urls": [frame_kie_urls[i]],
-            "sound": False,
+            "sound": True,
             "duration": "5",
             "aspect_ratio": "9:16",
         })
@@ -160,7 +160,7 @@ def step_tiktok_upload(product: dict, final_path: str, out_dir: Path, log: dict)
     section("STEP 7 — TikTok: mock upload")
     t = time.time()
     result = tiktok_mock.mock_upload(product, final_path, str(out_dir))
-    log_step(log, "step7_tiktok", "success", t, **result)
+    log_step(log, "step7_tiktok", "success", t, **{k: v for k, v in result.items() if k != "status"})
 
 
 # ── main ──────────────────────────────────────────────────────────────────────

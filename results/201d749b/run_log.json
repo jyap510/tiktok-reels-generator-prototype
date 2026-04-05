@@ -1,0 +1,18 @@
+{
+  "run_id": "201d749b",
+  "started_at": "2026-04-05T15:46:31.455768+00:00",
+  "input_file": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/data/B0F11KQQF4.json",
+  "output_dir": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/results/201d749b",
+  "step1_ingest": {
+    "status": "success",
+    "duration_s": 0.0,
+    "asin": "B0F11KQQF4"
+  },
+  "step2_prompts": {
+    "status": "success",
+    "duration_s": 34.2
+  },
+  "status": "error",
+  "error": "Cannot find URL in resultJson: {'resultUrls': ['https://tempfile.aiquickdraw.com/images/1775404052816-rvcabsovicg.png']}",
+  "finished_at": "2026-04-05T15:47:36.874218+00:00"
+}

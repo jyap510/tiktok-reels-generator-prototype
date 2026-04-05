@@ -77,15 +77,22 @@ def extract_result_url(task_data: dict) -> str:
     parsed = json.loads(raw) if isinstance(raw, str) else raw
     for key in ("url", "videoUrl", "imageUrl", "output", "video_url", "image_url"):
         if key in parsed:
-            return parsed[key]
+            val = parsed[key]
+            return val[0] if isinstance(val, list) else val
+    # resultUrls is a list of URLs (nano-banana-pro, kling)
+    if "resultUrls" in parsed:
+        urls = parsed["resultUrls"]
+        if urls:
+            return urls[0]
     # Sometimes result is a list
     if isinstance(parsed, list) and parsed:
         first = parsed[0]
         if isinstance(first, str):
             return first
-        for key in ("url", "videoUrl", "imageUrl"):
+        for key in ("url", "videoUrl", "imageUrl", "resultUrls"):
             if key in first:
-                return first[key]
+                val = first[key]
+                return val[0] if isinstance(val, list) else val
     raise RuntimeError(f"Cannot find URL in resultJson: {parsed}")
 
 

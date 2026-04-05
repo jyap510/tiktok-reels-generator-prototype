@@ -1,0 +1,57 @@
+{
+  "run_id": "1de2749a",
+  "started_at": "2026-04-05T15:49:50.378278+00:00",
+  "input_file": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/data/B0869BPD69.json",
+  "output_dir": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/results/1de2749a",
+  "step1_ingest": {
+    "status": "success",
+    "duration_s": 0.0,
+    "asin": "B0869BPD69"
+  },
+  "step2_prompts": {
+    "status": "success",
+    "duration_s": 27.3
+  },
+  "step3_avatar": {
+    "status": "success",
+    "duration_s": 32.8,
+    "task_id": "47038aa22a408334de52f74d1a12cdb6",
+    "kie_url": "https://tempfile.aiquickdraw.com/images/1775404246629-15lvikld40q.png"
+  },
+  "step4_frames": {
+    "status": "success",
+    "duration_s": 249.5,
+    "task_ids": [
+      "b221814e9551ec4b10c945ce9b43a153",
+      "db2009abef454420a0fc74080d08646f",
+      "b78e3fb59a2558cca08110071ccefbd4"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/images/1775404297331-0zype31vw23.png",
+      "https://tempfile.aiquickdraw.com/images/1775404405298-dnkekh18tn9.png",
+      "https://tempfile.aiquickdraw.com/images/1775404484572-6nwoeogb3ob.png"
+    ]
+  },
+  "step5_videos": {
+    "status": "success",
+    "duration_s": 160.1,
+    "task_ids": [
+      "63830500eec4711e6355a3ee1d7dc904",
+      "f08b3737e3191f94c457c6b51ec9f5f6",
+      "c5193cbbb0a15241a79122d5dd14e6ca"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/r/63830500eec4711e6355a3ee1d7dc904_1775404633_1kxebebr.mp4",
+      "https://tempfile.aiquickdraw.com/r/f08b3737e3191f94c457c6b51ec9f5f6_1775404629_fcdmmt0i.mp4",
+      "https://tempfile.aiquickdraw.com/r/c5193cbbb0a15241a79122d5dd14e6ca_1775404635_lupidrl3.mp4"
+    ]
+  },
+  "step6_merge": {
+    "status": "success",
+    "duration_s": 0.4,
+    "output": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/results/1de2749a/final.mp4"
+  },
+  "status": "error",
+  "error": "log_step() got multiple values for argument 'status'",
+  "finished_at": "2026-04-05T15:57:40.603265+00:00"
+}
