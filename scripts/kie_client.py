@@ -111,14 +111,17 @@ def get_download_url(kie_url: str) -> str:
     return data["data"]
 
 
-def download_file(kie_url: str, dest_path: str) -> None:
+def download_file(kie_url: str, dest_path: str, total_timeout: int = 120) -> None:
     """Download a KIE-hosted file to local dest_path via the download-url proxy."""
     direct_url = get_download_url(kie_url)
     print(f"  [kie] downloading → {dest_path}")
-    r = requests.get(direct_url, timeout=120, stream=True)
+    r = requests.get(direct_url, timeout=(10, 30), stream=True)
     r.raise_for_status()
     Path(dest_path).parent.mkdir(parents=True, exist_ok=True)
+    deadline = time.time() + total_timeout
     with open(dest_path, "wb") as f:
         for chunk in r.iter_content(chunk_size=8192):
+            if time.time() > deadline:
+                raise TimeoutError(f"download exceeded {total_timeout}s total: {kie_url}")
             f.write(chunk)
     print(f"  [kie] saved {Path(dest_path).stat().st_size // 1024}KB → {dest_path}")

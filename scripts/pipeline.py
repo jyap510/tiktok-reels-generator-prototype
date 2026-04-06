@@ -130,20 +130,54 @@ def step_generate_videos(prompts: dict, frame_kie_urls: list, out_dir: Path, log
         })
         task_ids.append(task_id)
 
-    # Poll each to completion
+    # Poll each to completion; tolerate per-video download failures
     video_paths = []
     video_kie_urls = []
+    download_errors = []
     for i, task_id in enumerate(task_ids):
-        print(f"\n  [step5] polling video {i+1}/3 (taskId={task_id})")
-        task_data = kie_client.poll_task(task_id)
-        video_url = kie_client.extract_result_url(task_data)
-        video_kie_urls.append(video_url)
         dest = str(out_dir / f"video{i+1}.mp4")
-        kie_client.download_file(video_url, dest)
-        video_paths.append(dest)
-        print(f"  [step5] video{i+1} saved → {dest}")
+        # If a previous run already downloaded this file, skip re-download
+        if Path(dest).exists():
+            print(f"  [step5] video{i+1} already on disk, skipping download")
+            video_paths.append(dest)
+            video_kie_urls.append(None)
+            continue
+        print(f"\n  [step5] polling video {i+1}/3 (taskId={task_id})")
+        try:
+            task_data = kie_client.poll_task(task_id)
+            video_url = kie_client.extract_result_url(task_data)
+            video_kie_urls.append(video_url)
+            kie_client.download_file(video_url, dest)
+            video_paths.append(dest)
+            print(f"  [step5] video{i+1} saved → {dest}")
+        except Exception as e:
+            print(f"  [step5] WARNING: video{i+1} download failed — {e}")
+            download_errors.append({"index": i + 1, "task_id": task_id, "error": str(e)})
+            video_kie_urls.append(None)
 
-    log_step(log, "step5_videos", "success", t, task_ids=task_ids, kie_urls=video_kie_urls)
+    # Recovery: check disk for any videos that landed (covers mid-run interruptions)
+    recovered = []
+    for i in range(3):
+        p = out_dir / f"video{i+1}.mp4"
+        if p.exists() and str(p) not in video_paths:
+            print(f"  [step5] recovered video{i+1} from disk")
+            recovered.append(str(p))
+    video_paths = sorted(set(video_paths) | set(recovered), key=lambda x: x)
+
+    if not video_paths:
+        log_step(log, "step5_videos", "total_failure", t,
+                 task_ids=task_ids, errors=download_errors)
+        raise RuntimeError("Step 5 total failure: no videos downloaded or recovered")
+
+    if download_errors or recovered:
+        status = "partial"
+        print(f"  [step5] partial result: {len(video_paths)}/3 videos available")
+    else:
+        status = "success"
+
+    log_step(log, "step5_videos", status, t,
+             task_ids=task_ids, kie_urls=video_kie_urls,
+             recovered=len(recovered), errors=download_errors)
     return video_paths
 
 
