@@ -1,0 +1,70 @@
+{
+  "run_id": "5aa742b4",
+  "started_at": "2026-04-07T13:06:11.230667+00:00",
+  "input_file": "/home/jay/Desktop/Coding Stuf/tiktok-upload-pipeline/data/B09LYF2ST7.json",
+  "output_dir": "/home/jay/Desktop/Coding Stuf/tiktok-upload-pipeline/results/5aa742b4",
+  "step1_ingest": {
+    "status": "success",
+    "duration_s": 0.0,
+    "asin": "B09LYF2ST7"
+  },
+  "step2_prompts": {
+    "status": "success",
+    "duration_s": 44.9
+  },
+  "step3_avatar": {
+    "status": "success",
+    "duration_s": 31.7,
+    "task_id": "f00e51ff13bc7c7009a7311423ae9103",
+    "kie_url": "https://tempfile.aiquickdraw.com/images/1775567243047-ku59glimtd.png"
+  },
+  "step4_frames": {
+    "status": "success",
+    "duration_s": 190.4,
+    "task_ids": [
+      "c07f7606d248f8c53c8cd536a9dcbfaf",
+      "f43c5c6335e3221dc91cbd638ff7a442",
+      "c594177500629544192aa559789aac47"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/images/1775567303448-2f0x8k7n5hp.png",
+      "https://tempfile.aiquickdraw.com/images/1775567353956-16w3n7d0ii3.png",
+      "https://tempfile.aiquickdraw.com/images/1775567417943-5bz958ej7zl.png"
+    ]
+  },
+  "step5_videos": {
+    "status": "success",
+    "duration_s": 195.1,
+    "task_ids": [
+      "cbed53d05368b0621c1fba85214dba23",
+      "b386c2b7a565c160c47ad478005de520",
+      "1d81feb91a55a3623b1db7698cf8a9e9"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/r/cbed53d05368b0621c1fba85214dba23_1775567580_ct0j7hhx.mp4",
+      "https://tempfile.aiquickdraw.com/r/b386c2b7a565c160c47ad478005de520_1775567587_rilskasp.mp4",
+      "https://tempfile.aiquickdraw.com/r/1d81feb91a55a3623b1db7698cf8a9e9_1775567608_j5r7z7j5.mp4"
+    ],
+    "recovered": 0,
+    "errors": []
+  },
+  "step6_merge": {
+    "status": "success",
+    "duration_s": 0.7,
+    "output": "/home/jay/Desktop/Coding Stuf/tiktok-upload-pipeline/results/5aa742b4/final.mp4"
+  },
+  "step7_tiktok": {
+    "status": "success",
+    "duration_s": 0.0,
+    "upload_id": "tt_upload_d5165f2d6682",
+    "video_id": "tt_video_4ff1bd340d1040f8",
+    "product_asin": "B09LYF2ST7",
+    "product_title": "BERIBES Bluetooth Headphones Over Ear, 65H Playtime and 6 EQ Music Modes Wireles",
+    "video_path": "/home/jay/Desktop/Coding Stuf/tiktok-upload-pipeline/results/5aa742b4/final.mp4",
+    "video_size_kb": 26603,
+    "timestamp": "2026-04-07T13:13:57.778475+00:00",
+    "mock": true
+  },
+  "status": "success",
+  "finished_at": "2026-04-07T13:13:57.778877+00:00"
+}
