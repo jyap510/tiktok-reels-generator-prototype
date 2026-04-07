@@ -49,13 +49,23 @@ def create_task(model: str, input_params: dict) -> str:
 def poll_task(task_id: str, interval: int = 30, max_attempts: int = 40) -> dict:
     """Poll until task reaches success or fail. Returns task data dict."""
     for attempt in range(1, max_attempts + 1):
-        r = requests.get(
-            f"{KIE_BASE}/api/v1/jobs/recordInfo",
-            params={"taskId": task_id},
-            headers=_headers(),
-            timeout=30,
-        )
-        r.raise_for_status()
+        http_retries = 2
+        for http_attempt in range(http_retries + 1):
+            try:
+                r = requests.get(
+                    f"{KIE_BASE}/api/v1/jobs/recordInfo",
+                    params={"taskId": task_id},
+                    headers=_headers(),
+                    timeout=30,
+                )
+                r.raise_for_status()
+                break
+            except Exception as e:
+                if http_attempt < http_retries:
+                    print(f"  [poll] transient error (retry {http_attempt+1}/{http_retries}): {e}")
+                    time.sleep(5)
+                else:
+                    raise
         data = r.json()
         task_data = data.get("data", {})
         state = task_data.get("state", "unknown")
@@ -111,17 +121,31 @@ def get_download_url(kie_url: str) -> str:
     return data["data"]
 
 
-def download_file(kie_url: str, dest_path: str, total_timeout: int = 120) -> None:
-    """Download a KIE-hosted file to local dest_path via the download-url proxy."""
-    direct_url = get_download_url(kie_url)
-    print(f"  [kie] downloading → {dest_path}")
-    r = requests.get(direct_url, timeout=(10, 30), stream=True)
-    r.raise_for_status()
+def download_file(kie_url: str, dest_path: str, total_timeout: int = 120, retries: int = 3) -> None:
+    """Download a KIE-hosted file to local dest_path via the download-url proxy.
+    Writes to a .part file and renames atomically on success. Retries up to `retries` times."""
     Path(dest_path).parent.mkdir(parents=True, exist_ok=True)
-    deadline = time.time() + total_timeout
-    with open(dest_path, "wb") as f:
-        for chunk in r.iter_content(chunk_size=8192):
-            if time.time() > deadline:
-                raise TimeoutError(f"download exceeded {total_timeout}s total: {kie_url}")
-            f.write(chunk)
-    print(f"  [kie] saved {Path(dest_path).stat().st_size // 1024}KB → {dest_path}")
+    part_path = dest_path + ".part"
+    last_exc = None
+    for attempt in range(1, retries + 1):
+        try:
+            direct_url = get_download_url(kie_url)
+            print(f"  [kie] downloading → {dest_path} (attempt {attempt}/{retries})")
+            r = requests.get(direct_url, timeout=(10, 30), stream=True)
+            r.raise_for_status()
+            deadline = time.time() + total_timeout
+            with open(part_path, "wb") as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    if time.time() > deadline:
+                        raise TimeoutError(f"download exceeded {total_timeout}s total: {kie_url}")
+                    f.write(chunk)
+            os.replace(part_path, dest_path)
+            print(f"  [kie] saved {Path(dest_path).stat().st_size // 1024}KB → {dest_path}")
+            return
+        except Exception as e:
+            last_exc = e
+            Path(part_path).unlink(missing_ok=True)
+            if attempt < retries:
+                print(f"  [kie] download failed (attempt {attempt}/{retries}): {e} — retrying in 5s")
+                time.sleep(5)
+    raise last_exc

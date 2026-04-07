@@ -18,7 +18,7 @@ def merge_videos(video_paths: list, output_path: str) -> None:
         "-c", "copy",
         output_path,
     ]
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
     concat_list.unlink(missing_ok=True)
 
     if result.returncode != 0:

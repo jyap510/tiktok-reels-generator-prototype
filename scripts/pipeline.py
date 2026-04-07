@@ -79,9 +79,11 @@ def step_generate_avatar(prompts: dict, out_dir: Path, log: dict) -> str:
     })
     task_data = kie_client.poll_task(task_id)
     avatar_kie_url = kie_client.extract_result_url(task_data)
+    # Pre-log before download so task_id/url survive a download failure
+    log_step(log, "step3_avatar", "attempted", t, task_id=task_id, kie_url=avatar_kie_url)
     kie_client.download_file(avatar_kie_url, str(out_dir / "avatar.png"))
     print(f"  [step3] avatar saved → {out_dir / 'avatar.png'}")
-    log_step(log, "step3_avatar", "success", t, task_id=task_id, kie_url=avatar_kie_url)
+    log["step3_avatar"]["status"] = "success"
     return avatar_kie_url
 
 
@@ -106,10 +108,12 @@ def step_generate_frames(prompts: dict, product: dict, avatar_kie_url: str, out_
         task_data = kie_client.poll_task(task_id)
         frame_url = kie_client.extract_result_url(task_data)
         frame_kie_urls.append(frame_url)
+        # Pre-log before download so task_ids/urls survive a download failure
+        log_step(log, "step4_frames", "attempted", t, task_ids=task_ids, kie_urls=frame_kie_urls)
         kie_client.download_file(frame_url, str(out_dir / f"frame{i+1}.png"))
         print(f"  [step4] frame{i+1} saved → {out_dir / f'frame{i+1}.png'}")
 
-    log_step(log, "step4_frames", "success", t, task_ids=task_ids, kie_urls=frame_kie_urls)
+    log["step4_frames"]["status"] = "success"
     return frame_kie_urls
 
 
@@ -137,7 +141,7 @@ def step_generate_videos(prompts: dict, frame_kie_urls: list, out_dir: Path, log
     for i, task_id in enumerate(task_ids):
         dest = str(out_dir / f"video{i+1}.mp4")
         # If a previous run already downloaded this file, skip re-download
-        if Path(dest).exists():
+        if Path(dest).exists() and Path(dest).stat().st_size > 0:
             print(f"  [step5] video{i+1} already on disk, skipping download")
             video_paths.append(dest)
             video_kie_urls.append(None)
@@ -162,7 +166,7 @@ def step_generate_videos(prompts: dict, frame_kie_urls: list, out_dir: Path, log
         if p.exists() and str(p) not in video_paths:
             print(f"  [step5] recovered video{i+1} from disk")
             recovered.append(str(p))
-    video_paths = sorted(set(video_paths) | set(recovered), key=lambda x: x)
+    video_paths = sorted(set(video_paths) | set(recovered), key=lambda x: int(Path(x).stem.replace("video", "")))
 
     if not video_paths:
         log_step(log, "step5_videos", "total_failure", t,
