@@ -1,0 +1,103 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# TikTok Ads
+
+TikTok is a mobile-first platform with aggressive device fingerprinting. It evaluates accounts based on device type, IP reputation, session consistency, and behavioral patterns — and applies restrictions faster than most other platforms.
+
+## Quick checklist
+
+* 1 account = 1 browser profile
+* 1 profile = 1 static mobile or residential proxy
+* Match profile OS to your device OS
+* Do not change proxy or fingerprint after first login
+* Use mobile proxy for new account creation — TikTok trusts mobile IPs more
+
+TikTok is a mobile-first platform with aggressive device fingerprinting. It evaluates accounts based on device type, IP reputation, session consistency, and behavioral patterns — and applies restrictions faster than most other platforms.
+
+## Step 1. Set up environment in Gologin
+
+Prepare a clean and consistent environment before account creation.
+
+Recommended setup:
+
+* Create a new browser profile
+* Assign a dedicated proxy
+* Keep fingerprint settings unchanged
+* Ensure stable internet connection
+
+TikTok relies heavily on IP reputation and device consistency.
+
+Avoid:
+
+* changing proxy regions frequently
+* modifying fingerprint settings after use
+
+## Step 2. Warm up the browser before registration
+
+Before opening TikTok, spend 10–15 minutes browsing other websites inside the profile. TikTok places particular emphasis on session history signals. A fresh browser with no history is one of the strongest ban triggers during registration.
+
+## Step 3. Create the account
+
+* Space registrations at least 20–30 minutes apart
+* Use a unique phone number or email per account
+* Do not create more than 2–3 accounts per session
+* Avoid identical registration patterns (same username format, same bio)
+
+## Step 4. Warm up the account
+
+### Warmup timeline
+
+| **Period** | **Focus**           | **What to do**                                |
+| :--------- | :------------------ | :-------------------------------------------- |
+| Day 0      | Setup               | Profile completion + feed browsing            |
+| Days 1–7   | Passive consumption | Watch videos, like content, follow creators   |
+| Days 8–14  | Light interaction   | Comments, duets, occasional posts             |
+| Week 3     | Normal activity     | Regular posting, switch to Business if needed |
+| Week 4+    | Ads-ready           | TikTok Ads Manager setup                      |
+
+### Safe activity levels
+
+| **Action** | **Recommended level**  |
+| :--------- | :--------------------- |
+| Likes      | 20–30 / day            |
+| Follows    | 10–20 / day            |
+| Comments   | 3–5 / day              |
+| Posts      | After warmup (week 2+) |
+| Bio link   | After week 1           |
+
+## TikTok Ads Manager setup
+
+Only set up TikTok Ads after the personal account is warmed up — minimum 2 weeks of organic activity.
+
+* Go to [ads.tiktok.com](http://ads.tiktok.com) and create an Ads Manager account
+* Link it to your warmed-up TikTok account
+* Set up billing — use a unique payment method per account
+* Launch a small test campaign (\$10–20/day budget)
+* Increase spend gradually after the first week
+
+## Common ban triggers
+
+### Immediate bans
+
+* Logging in from a different IP than the registration IP
+* Using the same phone number for multiple accounts
+* Fresh browser with no history opening TikTok directly
+
+### Gradual restrictions
+
+* Sudden spike in followers or activity
+* Posting the same video from multiple accounts
+* High-volume actions in rapid succession
+
+## See also
+
+* [Static vs Rotating proxies](https://gologin.com/docs/static-vs-dynamic-proxies)
+* [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case)
+* [Proxy & Fingerprint Setup per Platform](https://gologin.com/docs/proxy-and-fingerprint-setup-per-platform)
+* [Maintaining trust score](https://gologin.com/docs/maintaining-trust-score)
+* [Common mistakes to avoid](https://gologin.com/docs/common-mistakes-to-avoid)
+
+
+Built with [Mintlify](https://mintlify.com).

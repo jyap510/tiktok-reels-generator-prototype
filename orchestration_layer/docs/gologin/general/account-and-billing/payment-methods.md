@@ -1,0 +1,49 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Payment methods
+
+## Changing your payment method
+
+Currently, you cannot change the payment method without making a payment. Here's what you can do:
+
+* remove the current payment method at the **main menu at the top-right >** **Settings & Members > Billing Plans > Payment Methods > Delete the payment method**
+
+  <img src="https://mintcdn.com/gologin/icD2z3poOwslds91/images/Untitled-2(1).jpg?fit=max&auto=format&n=icD2z3poOwslds91&q=85&s=439c034f7d1617f6a59f20ce538cddd7" alt="Untitled-2 (1).jpg" width="1888" height="672" data-path="images/Untitled-2(1).jpg" />
+* wait for the current plan to elapse and purchase a new one with the new card or PayPal
+
+You can also purchase the new plan immediately while your current plan is active, to update your payment method.
+
+## Cancelling the subscription
+
+If you want to cancel the current subscription, you just need to remove your payment method from your account. Go to the **main menu at the top-right >** **Settings & Members > Billing Plans > Payment Methods > Delete the payment method**
+
+## Cryptocurrency payments
+
+GoLogin accepts cryptocurrency payments in the following coins:
+
+* **BTC** (Bitcoin)
+* **LTC** (Litecoin)
+* **BCH** (Bitcoin Cash)
+* **DOGE** (Dogecoin)
+* **ETH** (Ethereum — ERC-20 network only)
+
+<Warning>
+  Only send ETH on the **ERC-20 network**. If you send crypto on the wrong network (e.g., TRC-20, BEP-20), the payment **will not arrive and cannot be recovered**. Always double-check the network before confirming your transaction.
+</Warning>
+
+After sending a crypto payment, allow some time for the transaction to be confirmed on the blockchain. If your subscription is not updated after the transaction has been confirmed, restart the GoLogin app and wait up to 24 hours. If the issue persists, contact support with your transaction hash.
+
+## Corporate card issues
+
+Some corporate or business credit cards may be declined by our payment processor. If your corporate card is not accepted:
+
+* Try using a **personal credit or debit card** instead.
+* Use **PayPal** as an alternative payment method.
+* Pay with **cryptocurrency** (see above).
+
+If you need an invoice for your organization, go to **main menu at the top-right > Settings & Members > Billing Plans > Payment History > Download receipt**.
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,76 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# FAQ
+
+### Do I need a proxy to use Gologin?
+
+A proxy is strongly recommended when managing multiple accounts.
+
+While Gologin creates separate browser fingerprints for each profile, websites can still link accounts through the same IP address. Using a different proxy for each profile helps keep sessions isolated.
+
+### Can I use my own proxy provider?
+
+Yes. Gologin supports proxies from any third-party provider.
+
+You can add external proxies manually in the profile settings, import them in bulk, or manage them through the **Proxy Manager**.
+
+### Which proxy type should I use?
+
+For most account management tasks, **residential proxies** are recommended because they are harder for websites to detect.
+
+Other proxy types may also work depending on your use case:
+
+* **Mobile proxies** – high trust, often used for social media platforms
+* **Datacenter proxies** – faster but easier for websites to detect
+
+### Can I use one proxy for multiple profiles?
+
+Technically yes, but it is **not recommended**.
+
+Using the same proxy for multiple profiles may increase the risk that websites link those accounts together.
+
+For better isolation, assign a **different proxy to each profile**.
+
+### Why is my proxy not working?
+
+Common reasons include:
+
+* incorrect IP, port, username, or password
+* proxy server not responding
+* blocked or expired proxy
+* insufficient traffic balance
+
+You can verify your proxy connection using the **proxy testing tools** in Gologin.
+
+### Can I use HTTP and SOCKS proxies in Gologin?
+
+Yes. Gologin supports both **HTTP/HTTPS** and **SOCKS5** proxies.
+
+Most proxy providers support these protocols, and Gologin can automatically detect the correct protocol in many cases.
+
+### Does Gologin provide built-in proxies?
+
+Yes. Gologin offers integrated proxies that can be attached directly to browser profiles without external setup.
+
+You can also use third-party proxies if you need more locations or proxy options.
+
+### What does "2 GB residential proxy" mean?
+
+The 2 GB refers to data transfer (traffic), not storage or RAM. It is the amount of data that passes through the proxy while you browse. Regular browsing uses approximately 0.5-1 GB per day per active profile.
+
+### If I use my own proxy, does it consume the included 2 GB GoLogin traffic?
+
+No. The included GoLogin proxy traffic is only consumed when using GoLogin's built-in proxies. Your own third-party proxies use traffic from your proxy provider, not from your GoLogin allowance.
+
+### How much proxy traffic will I need?
+
+Rough estimates per profile per day:
+
+* **Light browsing** (social media, emails): 0.3-0.5 GB
+* **Active work** (ads management, content posting): 0.5-1 GB
+* **Heavy usage** (video calls, media-heavy sites): 1-3 GB
+
+
+Built with [Mintlify](https://mintlify.com).

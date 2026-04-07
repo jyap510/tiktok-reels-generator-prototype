@@ -1,0 +1,94 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Key concepts
+
+To use Gologin effectively, it is important to understand three core concepts that define how browser environments are separated and protected.
+
+These components work together to create independent browsing identities for each account.
+
+## Browser profiles
+
+A **browser profile** in Gologin is an isolated browser environment that simulates a separate device.
+
+Each profile contains its own:
+
+* browser fingerprint
+* cookies and session data
+* local storage and cache
+* browser extensions
+* proxy connection
+
+Because profiles are isolated from each other, websites treat them as different users or devices.
+
+This allows you to manage multiple accounts without sessions interfering with each other, which becomes especially important when working with multiple accounts at scale, as described in \
+[Managing existing accounts](https://gologin.com/docs/managing-existing-accounts).
+
+## Browser fingerprints
+
+A **browser fingerprint** is a set of technical parameters that websites use to identify a device.
+
+These parameters may include:
+
+* operating system
+* browser version
+* screen resolution
+* installed fonts
+* graphics and WebGL data
+* timezone and language settings
+
+Gologin generates a unique fingerprint for each profile so that websites see every profile as a different device.
+
+A browser fingerprint determines how websites identify your device. To understand this in detail, see \
+[How browser fingerprints work](https://gologin.com/docs/how-browser-fingerprints-work).
+
+## Proxies
+
+A **proxy** assigns a different IP address to a browser profile.
+
+Since websites track both browser fingerprints and IP addresses, using proxies helps separate network identities between profiles.
+
+With proxies, each profile can appear to connect from a different location or network.
+
+Using a proxy together with a unique browser fingerprint helps create a consistent and independent browsing identity.
+
+Proxies are used to separate accounts at the network level.  If you're not familiar with how they work, start with [What is a proxy](https://gologin.com/docs/proxy/introduction/what-is-a-proxy).
+
+Once you understand these components, the next step is applying them when creating profiles. \
+See [Creating profiles](https://gologin.com/docs/browser-profiles/profile-management/creating-and-launching-profiles).
+
+## Profile OS must match your device OS
+
+The operating system set in your profile fingerprint should match the OS of the device you're using to open the profile. For example:
+
+* Opening a Windows profile on a Mac can create detectable mismatches
+* Sites like iphey.com and pixelscan.net will flag this as a fingerprint inconsistency
+* LinkedIn and other sensitive platforms may log you out immediately
+
+<Warning>
+  If you work on a Mac, create Mac profiles. If you work on Windows, create Windows profiles. Cross-platform usage (creating on one OS, opening on another) can compromise your accounts.
+</Warning>
+
+## Default fingerprint settings are safe
+
+GoLogin automatically generates realistic fingerprint settings for each new profile. You do not need to customize WebGL, Canvas, Audio, or other fingerprint parameters unless you have a specific reason to do so.
+
+## How to verify your fingerprint
+
+After launching a profile, visit one of these checkers:
+
+* **iphey.com** -- shows an overall trust score and flags issues
+* **pixelscan.net** -- detailed fingerprint analysis
+
+A "green" or "trusted" result means your profile looks like a real browser to websites.
+
+## See also
+
+* [Quick start: from zero to your first profile](https://gologin.com/docs/getting-started/introduction/quick-start-from-zero-to-your-first-profile)
+* [First-time checklist](https://gologin.com/docs/getting-started/setup/first-time-checklist)
+* [What is a proxy](https://gologin.com/docs/proxy/introduction/what-is-a-proxy)
+* [Profile fingerprint settings](https://gologin.com/docs/profile-fingerprint-settings)
+
+
+Built with [Mintlify](https://mintlify.com).

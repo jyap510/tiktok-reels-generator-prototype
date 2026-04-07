@@ -1,0 +1,148 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Quickstart
+
+This guide will get you all set up and ready to use the GoLogin API. We'll cover how to get started using one of our API clients and how to make your first API request. We'll also look at where to go next to find all the information you need to take full advantage of our powerful REST API.
+
+<Note>
+  Before you can make requests to the GoLogin API, you will need to grab your
+  API key from your dashboard. You find it under [Settings » API](https://app.gologin.com/personalArea/TokenApi).
+</Note>
+
+## Making your first anonymous scrapping request
+
+<CodeGroup>
+  ```js node.js theme={null}
+  import { GologinApi } from 'gologin';
+
+  // Token can be passed here in code or from env 
+  const token = process.env.GL_API_TOKEN || 'your dev token here';
+  const gologin = GologinApi({
+    token,
+    // If you want to run particular profile you need to pass profileId param
+  });
+
+  async function main() {
+    // This line of code creates new profile that will be run. If you want to run existed profile - delete this line of code
+    const profile = await gologin.createProfileRandomFingerprint();
+    const profileId = profile.id;
+
+    // This line of code adds gologin proxy to the profile.
+    await gologin.addGologinProxyToProfile(profileId, 'US');
+
+    // This line of code starts the browser and return object that can be managed by puppeteer
+    const { browser } = await gologin.launch({ profileId });
+
+    // Opens new page in browser
+    const page = await browser.newPage();
+
+    // Goes to website and waits untill all parts of the website is loaded
+    await page.goto('https://iphey.com/', { waitUntil: 'networkidle2' });
+
+    // Reads profile check result in website
+    const status = await page.$eval('.trustworthy:not(.hide)',
+      (elt) => elt?.innerText?.trim(),
+    );
+
+    await new Promise((resolve) => setTimeout(resolve, 10000));
+    console.log('status', status);
+
+    // This line of code deletes used profile. If you dont want to delete used profie - remove this line
+    await gologin.deleteProfile(profileId);
+
+    return status;
+  }
+
+  main().catch(console.error)
+    .finally(gologin.exit);
+  ```
+
+  ```python Python theme={null}
+  import time
+  import os
+  from gologin import GoLogin
+  from selenium import webdriver
+  from selenium.webdriver.chrome.service import Service
+  from webdriver_manager.chrome import ChromeDriverManager
+
+
+  # Initialize GoLogin
+  gl = GoLogin({
+  	"token": os.environ.get('GL_API_TOKEN', 'your dev token'),
+  	})
+  profile = gl.createProfileRandomFingerprint({ "os": "win" })
+  profile_id = profile.get('id')
+  gl.setProfileId(profile_id)
+  # Add proxy to the profile
+  gl.addGologinProxyToProfile(profile_id, "us")
+
+  # Start Browser and get websocket url
+  debugger_address = gl.start()
+
+  # Get Chromium version for webdriver
+  chromium_version = gl.get_chromium_version()
+
+
+  # Install webdriver
+  service = Service(ChromeDriverManager(driver_version=chromium_version).install())
+
+  chrome_options = webdriver.ChromeOptions()
+  chrome_options.add_experimental_option("debuggerAddress", debugger_address)
+
+  driver = webdriver.Chrome(service=service, options=chrome_options)
+
+  # Give command to Selenium to open the page
+  driver.get("http://www.python.org")
+
+  time.sleep(30)
+  driver.quit()
+  time.sleep(10)
+
+  gl.delete(profile_id)
+
+  gl.stop()
+  ```
+</CodeGroup>
+
+## Running code yourself in Node.js
+
+<CodeGroup>
+  ```bash bash theme={null}
+  # Install required packages
+  npm i gologin
+
+  # Run the code - change filename.js to your actual filename and add your token
+  GL_API_TOKEN=[YOUR_GOLOGIN_API_TOKEN] node filename.js
+  ```
+</CodeGroup>
+
+## Running code yourself in Python
+
+<CodeGroup>
+  ```bash bash theme={null}
+  # create local env for the project
+  python3 -m venv venv
+
+  # Install required packages
+  source venv/bin/activate && pip install gologin selenium webdriver-manager
+
+  # Run the script. Your file should not be named gologin.py as it will cause conflict with import
+  GL_API_TOKEN=[YOUR_GOLOGIN_API_TOKEN] python3 filename.py
+  ```
+</CodeGroup>
+
+## What's next?
+
+Great, you're now set up with an API client and have made your first request to the API. Here are a few links that might be handy as you venture further into the Gologin API:
+
+* [Grab your API key from the Settings > API](https://app.gologin.com/personalArea/TokenApi)
+* [Gologin Web Access CLI](/cli-tools/web-access) — unified CLI for scraping and browser automation (no code needed)
+* [Agent Browser CLI](/cli-tools/agent-browser) — cloud browser CLI built for AI agents
+* [Local Agent Browser CLI](/cli-tools/local-agent-browser) — local Orbita CLI with profiles and runbooks
+* [AI Skills](/api-reference/ai-integrations/ai-skills) — plug-and-play skills for Claude Code
+* [MCP Server](/api-reference/ai-integrations/mcp-server) — manage profiles through AI conversations
+
+
+Built with [Mintlify](https://mintlify.com).

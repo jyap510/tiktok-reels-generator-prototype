@@ -1,0 +1,74 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Best Proxy for Your Case
+
+<Tip>
+  TL:DR - Go for Residential and Mobile proxies for social media and e-commerce.
+</Tip>
+
+Choosing the right proxy type is critical for ensuring efficiency, security, and success in your online activities. Whether you're managing social media accounts, scraping data, or accessing geo-blocked content, the type of proxy you use can make or break your efforts. Below, we break down the most popular proxy types for various use cases.
+
+## Decision table
+
+| **Platform / task**    | **Proxy type**        | **Static or rotating**        | **Notes**                                        |
+| :--------------------- | :-------------------- | :---------------------------- | :----------------------------------------------- |
+| LinkedIn               | Residential or mobile | **Static or sticky rotating** | IP changes cause immediate session logout        |
+| Facebook / Meta Ads    | Residential or mobile | **Static or sticky rotating** | Geo-consistency required for ad accounts         |
+| Instagram              | Mobile                | **Rotating**                  | Mobile IPs have highest trust                    |
+| TikTok (new accounts)  | Mobile                | **Rotating**                  | Mobile-first platform, mobile IPs convert better |
+| Amazon                 | Residential or ISP    | **Static**                    | Rotating IPs link accounts — instant ban risk    |
+| eBay                   | Residential or ISP    | **Static**                    | Same as Amazon                                   |
+| Etsy                   | Residential           | **Static**                    |                                                  |
+| PayPal / financial     | Residential           | **Static**                    | IP change = suspected compromise                 |
+| Betting platforms      | Mobile                | **Static**                    | Speed matters; mobile IPs are trusted            |
+| Crypto / KYC platforms | Residential           | **Static**                    | KYC systems check IP consistency                 |
+| Reddit                 | Residential           | **Static or sticky rotating** | Less strict than LinkedIn/Facebook               |
+| Google Ads             | Residential           | **Static**                    |                                                  |
+| Web scraping (light)   | Residential rotating  | **Rotating**                  | Different IP per request helps avoid blocks      |
+| Web scraping (heavy)   | Datacenter rotating   | **Rotating**                  | Faster and cheaper at scale                      |
+| Geo-testing / QA       | Gologin built-in      | **Rotating**                  | Fine for one-off checks                          |
+
+## Proxy types explained simply
+
+**Residential proxies** use IP addresses registered to real homes and ISPs. Websites trust them the most because they look like genuine user connections. They're slower and more expensive than datacenter proxies, but essential for sensitive platforms.
+
+**Mobile proxies** route traffic through mobile carrier networks (4G/5G). Mobile IPs are shared by thousands of real users, which makes them very difficult for platforms to block without collateral damage. Best for social media and platforms that heavily target mobile users.
+
+**ISP proxies** are hosted in data centers but registered through internet service providers. They combine the stability of datacenter proxies with better trust levels. Good for e-commerce marketplaces.
+
+**Datacenter proxies** are fast and cheap, hosted on cloud servers. Platforms can detect them more easily than residential IPs, but they work fine for scraping and testing tasks where trust level is less critical.
+
+**Rotating vs static:** A rotating proxy assigns a new IP on each connection or at set intervals. A static proxy keeps the same IP address across all sessions. For any platform where you maintain a logged-in account over time, always use static.
+
+## How many proxies do I need?
+
+One proxy per profile. Never share a proxy between multiple profiles — platforms link accounts that share an IP address.
+
+If you have 20 LinkedIn profiles, you need 20 separate static proxies — one dedicated IP for each.
+
+## Gologin built-in proxies vs third-party proxies
+
+GoLogin's built-in proxies are residential rotating proxies included with your plan. They're convenient for testing and low-stakes tasks, but should not be used for long-term account management on sensitive platforms like Amazon, LinkedIn, or financial services.
+
+For serious work, use a dedicated third-party proxy service with static IPs.
+
+See [Gologin built-in proxies — limitations](https://gologin.com/docs/proxy/gologin-proxies/what-are-gologin-proxies#important-gologin-proxies-are-rotating) for a full explanation of when not to use built-in proxies.
+
+## Recommended providers
+
+See [Recommended proxy providers](https://gologin.com/best-proxy-server-services/) for a list of services GoLogin users commonly use, organized by use case.
+
+## See also
+
+[Residential, Mobile or Datacenter](https://gologin.com/docs/residential-mobile-or-datacenter)
+
+[Static vs Rotating proxies](https://gologin.com/docs/static-vs-dynamic-proxies)
+
+[Proxy traffic — how much do I need](https://gologin.com/docs/proxy/gologin-proxies/how-much-proxy-traffic-do-i-need)
+
+[Proxy & Fingerprint Setup per Platform](https://gologin.com/docs/proxy-and-fingerprint-setup-per-platform)
+
+
+Built with [Mintlify](https://mintlify.com).

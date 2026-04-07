@@ -1,0 +1,182 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# MCP Server
+
+> Manage Gologin browser profiles through AI conversations via the Model Context Protocol
+
+Gologin MCP Server lets you manage browser profiles through AI conversations using the [Model Context Protocol](https://modelcontextprotocol.io/). Connect it to Claude Desktop, Cursor, Claude Code, or any MCP-compatible client and control profiles with natural language.
+
+***
+
+## What you can do
+
+* **Profile management** — create, update, delete, and list browser profiles
+* **Proxy configuration** — set up proxies on profiles
+* **Fingerprint control** — customize browser fingerprints and user agents
+* **Folder organization** — create folders and organize profiles
+* **Browser sessions** — start and stop browser sessions
+* **Account info** — check subscription status and usage
+
+***
+
+## Install
+
+### Requirements
+
+* Node.js 18 or higher
+* A Gologin API token
+* An active Gologin account
+
+### Get your API token
+
+1. Log in at [gologin.com](https://gologin.com)
+2. Open **API & MCP** in the dashboard
+3. Open the **API** tab
+4. Click **New Token** and copy it
+
+### Claude Desktop
+
+1. Open Claude Desktop → **Settings**
+2. Click **Developer** in the sidebar, then **Edit Config**
+3. Add to `claude_desktop_config.json`:
+
+```json  theme={null}
+{
+  "mcpServers": {
+    "gologin-mcp": {
+      "command": "npx",
+      "args": ["gologin-mcp"],
+      "env": {
+        "API_TOKEN": "your-gologin-api-token-here"
+      }
+    }
+  }
+}
+```
+
+4. Restart Claude Desktop
+5. Check **Settings → Connectors** for "gologin-mcp LOCAL"
+
+### Claude Code
+
+Add to your Claude Code MCP settings:
+
+```json  theme={null}
+{
+  "mcpServers": {
+    "gologin-mcp": {
+      "command": "npx",
+      "args": ["gologin-mcp"],
+      "env": {
+        "API_TOKEN": "your-gologin-api-token-here"
+      }
+    }
+  }
+}
+```
+
+### Cursor
+
+Use the same JSON configuration in Cursor's MCP settings file.
+
+### Other MCP clients
+
+Any client that supports the Model Context Protocol can use the same configuration structure.
+
+***
+
+## Usage examples
+
+Once connected, talk to your AI assistant naturally:
+
+**Account**
+
+* "What's my Gologin account status?"
+* "Check my subscription details"
+
+**Creating profiles**
+
+* "Create a new browser profile with a US proxy"
+* "Set up 5 profiles for social media management"
+
+**Managing profiles**
+
+* "Show me all my profiles"
+* "Update the proxy for profile ID 123 to use a UK proxy"
+* "Delete the profile named 'test-profile'"
+
+**Organization**
+
+* "Create a folder called 'Social Media Accounts'"
+* "Move profile XYZ to the Social Media folder"
+
+**Browser sessions**
+
+* "Start a browser session for my profile"
+* "Stop all running browser sessions"
+
+***
+
+## Real-world scenarios
+
+### Set up profiles for a new client
+
+You're onboarding a new client who needs 10 browser profiles for different regional ad accounts:
+
+> "Create 10 browser profiles named 'Client X - US', 'Client X - UK', 'Client X - DE' and so on. Set each one with a residential proxy from its respective country. Put them all in a folder called 'Client X'."
+
+Claude creates the profiles, configures proxies, and organizes them — all through natural language.
+
+### Audit your existing setup
+
+> "Show me all profiles that don't have a proxy configured. Also, which profiles haven't been used in the last 30 days?"
+
+Quick way to find misconfigured or abandoned profiles without clicking through the dashboard.
+
+### Prepare profiles before automation
+
+MCP Server handles the setup; CLI tools handle the execution:
+
+1. **MCP:** "Create 5 profiles with US proxies for scraping, put them in a 'Scraping' folder"
+2. **CLI:** `gologin-agent-browser open https://target.com --profile profile_1` to run automation
+3. **MCP:** "Delete all profiles in the 'Scraping' folder" when done
+
+### Team management
+
+> "How many active sessions are running right now? What's my plan's session limit?"
+> "Check my subscription — how many profiles do I have left?"
+
+Useful for team leads who need to monitor usage without opening the dashboard.
+
+***
+
+## MCP Server vs CLI tools vs AI Skills
+
+| Tool                                                  | Best for                                           | How it works                          |
+| ----------------------------------------------------- | -------------------------------------------------- | ------------------------------------- |
+| **MCP Server**                                        | Profile management, account operations             | Natural language through MCP protocol |
+| [CLI Tools](/cli-tools/web-access)                    | Web scraping, browser automation, batch operations | Shell commands                        |
+| [AI Skills](/api-reference/ai-integrations/ai-skills) | Plug-and-play agent capabilities in Claude Code    | Skill extensions wrapping CLI tools   |
+
+MCP Server focuses on **profile and account management**. For web scraping and browser automation, use the [CLI tools](/cli-tools/web-access) or [AI Skills](/api-reference/ai-integrations/ai-skills).
+
+***
+
+## Related
+
+* [AI Skills](/api-reference/ai-integrations/ai-skills) — plug-and-play web access skills for Claude Code
+* [Web Access CLI](/cli-tools/web-access) — unified scraping + browser CLI
+* [Agent Browser CLI](/cli-tools/agent-browser) — cloud browser CLI for AI agents
+
+<Card title="npm package" icon="npm" href="https://www.npmjs.com/package/gologin-mcp">
+  gologin-mcp
+</Card>
+
+<Card title="Source code" icon="github" href="https://github.com/gologinapp/gologin-mcp">
+  gologinapp/gologin-mcp
+</Card>
+
+
+Built with [Mintlify](https://mintlify.com).

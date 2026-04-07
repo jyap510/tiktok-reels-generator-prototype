@@ -1,0 +1,43 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# What is a Proxy
+
+A proxy is a server that acts as an intermediary between your device and the internet.\
+Instead of connecting directly to a website, your traffic is routed through the proxy server.
+
+This means websites see the **proxy IP address** instead of your real IP address, making it appear as if the request is coming from a different location.
+
+When used together with **Gologin**, a proxy works alongside the browser fingerprint of a profile.\
+Each profile can connect through a different proxy, helping websites recognize them as separate devices.
+
+## Why using a proxy is important
+
+Using a proxy is **crucial** when working with GoLogin.
+
+Websites track user activity by analyzing both **browser fingerprints and IP address**.\
+Even if you use different browser profiles, multiple accounts will still get linked by the same IP address.
+
+Using a proxy allows each profile to operate from a different network location, reducing the chance that accounts will be associated with the same device.
+
+## Where to get a proxy
+
+Gologin supports both **third-party proxy providers** and **built-in Gologin proxies**.
+
+You can connect proxies from external providers by entering the proxy credentials in the profile settings.
+
+Gologin also offers built-in proxy options that can be configured directly inside the application.
+
+For a list of recommended proxy providers, see [**Recommended proxy providers**](https://gologin.com/proxies/proxy-type/).
+
+## See also
+
+* [VPN vs Proxy](https://gologin.com/docs/proxy/introduction/vpn-vs-proxy)
+* [Residential, Mobile or Datacenter](https://gologin.com/docs/residential-mobile-or-datacenter)
+* [Static vs Rotating proxies](https://gologin.com/docs/static-vs-dynamic-proxies)
+* [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case)
+* [Gologin vs 3rd-party proxies](https://gologin.com/docs/proxy/proxy-management/gologin-vs-3rd-party-proxies)
+
+
+Built with [Mintlify](https://mintlify.com).

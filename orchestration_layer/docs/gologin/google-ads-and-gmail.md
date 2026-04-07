@@ -1,0 +1,95 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Google Ads & Gmail
+
+Google ties its services together — Gmail, Search, YouTube, Maps, and Ads all share account trust signals. An account that only uses Google Ads without any normal Gmail or Search activity looks automated. That's the core challenge.
+
+## Quick checklist
+
+* 1 account = 1 browser profile
+* 1 profile = 1 static residential proxy
+* Keep proxy location consistent across sessions
+* Match profile OS to your device OS
+* Use multiple Google services — not just Ads
+* Do not change proxy or fingerprint after first login
+
+## Step 1. Set up your Gologin profile
+
+* \*\*Proxy: \*\*static residential — Google correlates login history with IP
+* \*\*Fingerprint: \*\*leave defaults — Google checks browser version consistency across services
+
+## Step 2. Warm up the browser before registration
+
+Before opening Google, browse other sites for 10–15 minutes. Then open [google.com](http://google.com) and search for a few things before creating an account. This ensures the profile doesn't look like it was created exclusively to run ads.
+
+## Step 3. Create the Gmail account
+
+* Space registrations at least 30–60 minutes apart
+* Use a unique phone number per account for verification
+* Complete the account setup fully — recovery email, profile photo, account name
+* Avoid creating more than 2 accounts per day per proxy location
+
+## Step 4. Build Google account history
+
+This step is what most people skip — and it's why Google Ads accounts get suspended.
+
+Spend 1–2 weeks using the account as a normal Google user:
+
+* Send and receive emails from the Gmail account (at least 5–10 per week)
+* Use Google Search regularly from within the profile
+* Watch YouTube for 15–20 minutes a few times
+* Open Google Maps, check a location
+
+Google evaluates cross-service activity. An account that jumps straight to Ads with no Gmail or Search history is flagged as suspicious.
+
+## Step 5. Warm up the account
+
+| **Period** | **Focus**         | **What to do**                                  |
+| :--------- | :---------------- | :---------------------------------------------- |
+| Day 0      | Setup             | Account creation + profile completion           |
+| Days 1–7   | Gmail warmup      | Send/receive emails, use Google Search, YouTube |
+| Days 8–14  | Cross-service use | Maps, Docs, Calendar — normal Google activity   |
+| Week 3     | Ads preparation   | Add billing, verify business info               |
+| Week 4+    | Campaigns         | Start with small budgets (\$5–10/day)           |
+
+## Google Ads setup
+
+Only set up Google Ads after 2–3 weeks of normal account activity.
+
+* Go to [ads.google.com](http://ads.google.com) — sign in with your warmed-up Google account
+* Set up billing — use a unique card per account
+* Verify your business information
+* Create one campaign with a small daily budget (\$5–10)
+* Increase budgets gradually, no more than 20–30% per week
+
+<Warning>
+  Do not use the same credit card or billing address across multiple Google Ads accounts. Google links accounts through shared payment methods and will suspend all of them simultaneously. Use virtual cards (Revolut, Wise, Privacy.com) for each account.
+</Warning>
+
+## Common ban triggers
+
+### Immediate suspensions
+
+* Same card used across multiple ad accounts
+* No Gmail or Search activity before launching ads
+* Datacenter or VPN IP during account creation
+* Account created and ads launched same day
+
+### Gradual restrictions
+
+* Budget spikes from \$10/day to \$500/day in one step
+* Ad copy that triggers automated policy review
+* Billing payment failures
+
+## See also
+
+* [Static vs Rotating proxies](https://gologin.com/docs/static-vs-dynamic-proxies)
+* [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case)
+* [Facebook / Meta Ads](https://gologin.com/docs/facebook-meta-ads) — similar warmup logic
+* [Maintaining trust score](https://gologin.com/docs/maintaining-trust-score)
+* [Common mistakes to avoid](https://gologin.com/docs/common-mistakes-to-avoid)
+
+
+Built with [Mintlify](https://mintlify.com).

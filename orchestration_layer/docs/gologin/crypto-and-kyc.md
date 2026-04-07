@@ -1,0 +1,94 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Crypto & KYC Platforms
+
+Crypto platforms split into two categories: exchanges and wallets (Binance, Coinbase, Kraken) where KYC ties the account to a real person, and airdrop/farming platforms (Galxe, Zealy, Layer3, Premint) where the goal is managing multiple accounts across campaigns.
+
+## Quick checklist
+
+* 1 account = 1 browser profile
+* 1 profile = 1 static residential proxy
+* Keep proxy location consistent — especially after KYC
+* Do not change fingerprint or proxy after identity verification
+* For farming: treat accounts as disposable — don't mix farming and real exchange accounts
+
+## Exchanges & KYC platforms
+
+After KYC, consistency is everything. A login from a new IP or a changed fingerprint triggers a security review, additional verification, or account freeze.
+
+### Gologin profile setup
+
+* \*\*Proxy:\*\* static residential — same IP for every session
+* \*\*Proxy location:\*\* match the country on your identity documents if possible
+
+<Warning>
+  Never change the proxy on a Gologin profile after completing KYC on a crypto exchange. The exchange stores your device environment at verification time. A different IP or fingerprint on the next login is treated as account takeover.
+</Warning>
+
+## Warmup timeline
+
+| **Period** | **Focus**          | **What to do**                                   |
+| :--------- | :----------------- | :----------------------------------------------- |
+| Day 0      | Registration       | Account creation + email verification            |
+| Days 1–3   | KYC                | Submit identity documents, complete verification |
+| Days 4–7   | Exploration        | Browse the platform, explore trading interface   |
+| Week 2     | Small transactions | Deposit a small amount, make 1–2 trades          |
+| Week 3+    | Normal use         | Regular trading activity                         |
+
+### Common ban triggers — exchanges
+
+* IP change after KYC (even same country, different city)
+* Device fingerprint mismatch between sessions
+* Large deposits immediately after account creation
+* Multiple accounts with same payment method or bank account
+
+## Airdrop & Points Farming (Galxe, Zealy, Premint, Layer3)
+
+Web3 campaigns — airdrops, quests, points programs — often allow one entry per person. Gologin is used here to manage multiple legitimate accounts (for example, for a team where each member participates separately) while keeping those accounts technically isolated from each other.
+
+### **SHow platforms detect linked accounts**
+
+Platforms use two types of signals:
+
+Browser and network signals (what Gologin addresses):
+
+* Same IP address across multiple accounts
+* Same browser fingerprint
+* Accounts completing tasks at identical times from the same environment
+
+On-chain signals (outside Gologin's scope):
+
+* Blockchains are public — all transactions are permanently visible
+* If multiple wallet addresses receive funds from the same source wallet, they are trivially linked on-chain
+* Platforms use tools like Nansen or Arkham to analyze wallet relationships before distributing tokens
+
+Gologin isolates the browser environment and IP. On-chain wallet relationships are a separate concern each user manages according to their own setup and the platform's rules.
+
+### Gologin setup for multi-account campaigns
+
+If you are managing accounts on behalf of multiple team members, each person should have:
+
+* A dedicated Gologin profile
+* A unique residential proxy
+* Their own connected wallet — not funded from a shared team wallet
+
+### Managing at scale
+
+For teams with 10+ accounts across campaigns:
+
+* Organize profiles in Gologin folders by campaign or team member
+* Use tags to track status (active, completed, pending)
+* Use the Gologin API to launch and manage profiles programmatically
+* Keep a record of which profile corresponds to which team member and wallet
+
+## See also
+
+* [Static vs Rotating proxies](https://gologin.com/docs/static-vs-dynamic-proxies)
+* [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case)
+* [Maintaining trust score](https://gologin.com/docs/maintaining-trust-score)
+* [API Quickstart](https://gologin.com/docs/api-reference/introduction/quickstart) — for managing large numbers of farming profiles programmatically
+
+
+Built with [Mintlify](https://mintlify.com).

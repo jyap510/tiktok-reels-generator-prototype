@@ -1,0 +1,54 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Static vs Rotating proxies
+
+### Static proxies
+
+Static proxies use a fixed IP address that remains the same over time.
+
+They are recommended for long-term account management where a stable login location is required.
+
+### Sticky proxies
+
+Sticky proxies maintain the same IP address for a limited session period (usually 10–30 minutes) before rotating.
+
+They are useful when short-term session consistency is needed, also good for account management.
+
+### Rotating proxies
+
+Rotating proxies automatically assign a new IP address from a proxy pool.
+
+Rotation may occur:
+
+* on every request
+* after a session ends
+* after a set time interval
+
+They are typically used for high-volume scraping or data collection. They generally can be used for account management if they keep the same IP during the session.
+
+### Which type for which platform?
+
+| Platform              | Recommended proxy type             | Why                                                                        |
+| --------------------- | ---------------------------------- | -------------------------------------------------------------------------- |
+| LinkedIn              | Static residential or mobile       | IP changes trigger immediate security review                               |
+| Facebook / Meta Ads   | Static residential or sticky       | Geo-consistency required for ad accounts                                   |
+| Amazon / eBay / Etsy  | Static ISP                         | Rotating IPs link accounts and trigger bans                                |
+| TikTok (new accounts) | Mobile                             | Mobile IPs have highest trust for account creation                         |
+| Web scraping          | Rotating residential or datacenter | Speed and volume matter more than consistency                              |
+| Betting platforms     | Mobile                             | Highest trust level, platforms are aggressive against desktop fingerprints |
+
+<Warning>
+  Using rotating proxies for Amazon seller accounts is a common mistake that leads to account bans. Amazon links accounts by IP - if your IP rotates, multiple accounts may be flagged as connected.
+</Warning>
+
+See also
+
+* [What are Gologin proxies](https://gologin.com/docs/proxy/gologin-proxies/what-are-gologin-proxies) — Gologin built-in proxies are rotating by default
+* [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case)
+* [Amazon, eBay, Shopify](https://gologin.com/docs/amazon-e-bay-shopify) — marketplace accounts require static proxies
+* [LinkedIn](https://gologin.com/docs/linkedin) — LinkedIn requires static proxies
+
+
+Built with [Mintlify](https://mintlify.com).

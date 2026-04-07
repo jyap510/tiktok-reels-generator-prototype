@@ -1,0 +1,56 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Maintaining trust score
+
+Most platforms evaluate accounts based on long-term behavior patterns rather than individual actions.
+
+Trust is built gradually through consistent environments and realistic usage over time. The more stable your setup and behavior are, the less likely platforms are to trigger additional checks.
+
+### Key principles
+
+To maintain a stable trust score, follow these core principles:
+
+* **Keep a consistent environment**\
+  Use the same profile, proxy, and location. Avoid frequent changes to IP, country, or fingerprint settings.
+* **Grow activity gradually**\
+  New accounts should start with minimal activity and increase it step by step.
+* **Maintain session continuity**\
+  Use the same profile regularly instead of switching between profiles or creating new ones.
+* **Avoid sudden changes**\
+  Sharp increases in activity, location changes, or device changes may trigger additional checks.
+* **Act like a real user**\
+  Natural behavior includes pauses, varied actions, and non-repetitive patterns.
+
+### What lowers trust
+
+These actions may reduce account trust and lead to additional checks:
+
+* Using multiple accounts with the same IP
+* Changing proxy locations frequently
+* Modifying fingerprint settings after use
+* Running the same profile on multiple devices at the same time
+* Performing too many actions right after account creation
+
+### Why it matters
+
+If trust drops, platforms may apply restrictions such as:
+
+* additional verification
+* reduced visibility
+* temporary limitations
+
+In some cases, accounts may lose access to certain features until trust is rebuilt.
+
+Stable profiles and consistent behavior help maintain long-term account access.
+
+See also
+
+* [Profile hygiene checklist](https://gologin.com/docs/profile-hygiene-checklist)
+* [Common mistakes to avoid](https://gologin.com/docs/common-mistakes-to-avoid)
+* [Creating new accounts safely](https://gologin.com/docs/creating-new-accounts-safely)
+* [Guides & Best Practices overview](https://gologin.com/docs/best-practices-overview) — platform-specific activity limits
+
+
+Built with [Mintlify](https://mintlify.com).

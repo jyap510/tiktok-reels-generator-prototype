@@ -1,0 +1,111 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Supported platforms & installation
+
+> Gologin system requirements and installation process
+
+You can download the Gologin app for any supported system using the link below:
+
+👉 [**Download Gologin**](https://gologin.com/download/)
+
+## Hardware requirements
+
+* **RAM:** minimum 4GB
+* **Free disk space:** at least 1 GB
+
+## Supported operating systems
+
+### **Windows**
+
+* Windows 11
+* Windows 10
+* Windows Server 2016
+
+### Mac OS (M-series and Intel chips)
+
+* macOS 26 Tahoe
+* macOS 15 Sequoia **(browser version 122 and above)**
+* macOS 14 Sonoma
+* macOS 13 Ventura
+* macOS 12 Monterey
+
+### Linux
+
+* Ubuntu
+* Mint
+
+### Android
+
+* Android 10.0 and above
+* 3+ GB RAM
+
+## Installation process
+
+### Windows
+
+1. Download the app installer from [here](https://gologin.com/download/)
+2. Navigate to your **Downloads** folder
+3. Double-click the downloaded file and follow the installation prompts
+
+### Mac OS
+
+1. Download the app installer from [here](https://gologin.com/download/)
+2. Navigate to your **Downloads** folder
+3. Double-click the file and follow the instructions
+
+### Linux, Ubuntu example
+
+Gologin for Linux is supplied as an **AppImage** file. It's a self-contained executable file. that doesn't require traditional installation. You can always access the app using this file.
+
+1. Download the AppImage file using this [link](https://gologinteam.slack.com/archives/C03JMQ7N3KM/p1718199757259269?thread_ts=1717430061.753839\&cid=C03JMQ7N3KM)
+2. Navigate to your **Downloads** folder
+3. Right-click on the `gologin.tar` > **Extract**
+4. Go to the **gologin** folder > launch the Gologin with a double-click
+
+**If the app doesn't open**
+
+* you might need to make the file executable. Paste the following into the terminal:
+  ```bash bash theme={null}
+  cd ~/Downloads/gologin
+  chmod +x <filename>
+  ```
+  replace `<filename>` with the actual file name
+* you might need a **libfuse2** package on newer systems. Paste the following into the terminal and try launching the app again.
+  ```bash bash theme={null}
+    sudo apt install libfuse2
+  ```
+
+### Android
+
+To use Gologin on Android, you will need two apps installed on your phone: the **Gologin app** and **Orbita browser**. Both apps are available on the Google Play Store.
+
+1. Open the **Google Play Store** on your phone
+2. Look for a search bar at the top and type **Gologin** > **install the app**
+3. Type **Orbita** in the search bar and **install it**
+
+Once both apps are installed, you're ready to go!
+
+## Unsupported setups
+
+Gologin does **not** support the following platforms:
+
+* Any 32-bit systems
+* Windows 7, 8, 8.1, Server 2012 (any revision) or lower
+* macOS El Captain, Sierra, High-Sierra, Mojave, Catalina, Big Sur or lower
+* iOS, (iPhone and iPad)
+* Chrome OS
+
+## See also
+
+* [First-time checklist](https://gologin.com/docs/getting-started/setup/first-time-checklist)
+* [Gologin Web, Mobile & Chrome OS](https://gologin.com/docs/general/gologin-web-and-mobile)
+* [Key concepts](https://gologin.com/docs/getting-started/introduction/key-concepts-profiles-fingerprints-proxies)
+* [Updating the Gologin app](https://gologin.com/docs/general/updating-the-gologin-app)
+
+\
+\\
+
+
+Built with [Mintlify](https://mintlify.com).

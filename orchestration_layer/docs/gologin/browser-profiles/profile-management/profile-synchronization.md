@@ -1,0 +1,45 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Profile synchronization
+
+**Profile synchronization** in Gologin allows your browser profiles - complete with all fingerprints, cookies, local storage, and extensions - to be automatically saved to the cloud. This means:
+
+* You can **access the same profile from the web or on any device** with Gologin installed
+* Your team members can **collaborate on shared profiles**
+* Profiles remain **consistent**, no matter where they're launched from
+
+## How sync works
+
+When a profile is closed correctly, Gologin uploads the latest profile data to cloud servers. The next time the profile is launched, the saved state is restored. This ensures your session data, cookies, and browser state remain consistent.
+
+## How to use your profiles safely
+
+* **Make sure the sync process is complete before shutting down.**\
+  The state should indicate **ready** and you should have the **Run** button active on the profile, that means the profile data is synced.
+* **Close the profiles before shutting down the computer or closing the app.**\
+  Close profiles by **closing the profile window** or clicking **Stop** in the app to complete the sync.
+* **Do not use one profile on different devices at the same time.**\
+  While you can do it, it is not advised: only one of the concurrently launched profiles can be synced to the cloud servers. It may create discrepancies between what gets saved in the profile and what the website is expecting to see, which may lead to lowering your trust score.
+* **Do not close the profile while you don't have Internet connection.**\
+  If the sync is not complete, you may lose the current progress and will have to recover data from the previous sessions.
+
+<Frame>
+    <img src="https://mintcdn.com/gologin/hczFLINlWR59bacM/images/profile_sync_wait_for_ready.gif?s=1e0f10e76e6d5f5b798983a3d46d1069" alt="Profile Sync Wait For Ready" width="713" height="292" data-path="images/profile_sync_wait_for_ready.gif" />
+</Frame>
+
+## Sync safety rules
+
+To ensure profile data remains intact, follow these rules:
+
+* Make sure the sync process is complete before shutting down the application
+* Wait until the profile status shows Ready
+* Always close profiles before shutting down your computer
+* Do not run the same profile on multiple devices simultaneously
+* Avoid closing profiles when your internet connection is unstable
+
+Running the same profile on different devices at the same time may create inconsistencies in stored session data.
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,385 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Gologin Agent Browser CLI
+
+> Cloud browser automation CLI built for AI agents with snapshots, refs, and a persistent daemon
+
+Gologin Agent Browser CLI turns Gologin Cloud Browser into a persistent, scriptable runtime for AI agents. It provides compact page snapshots, ref-based interaction, session memory, and shell-friendly output.
+
+Unlike writing Puppeteer/Playwright code from scratch, this CLI gives agents a ready-made command surface for browser automation — no boilerplate, no session management code.
+
+***
+
+## Why cloud browser
+
+Local browser automation has hard limits for agent workflows:
+
+* Local browsers are easier to detect
+* No profile-based fingerprinting
+* No persistent cloud browser profiles
+* No built-in proxy layer
+* Hard to standardize across agents and environments
+
+Agent Browser CLI takes the opposite approach:
+
+* Cloud browser runtime instead of a local process
+* Gologin profiles as the session identity layer
+* Proxy-aware sessions
+* Anti-detect capabilities inherited from Gologin
+* A persistent daemon that keeps sessions alive across CLI calls
+
+***
+
+## Install
+
+```bash  theme={null}
+npm install -g gologin-agent-browser-cli
+```
+
+Or run without global install:
+
+```bash  theme={null}
+npx gologin-agent-browser-cli --help
+```
+
+Requires Node.js >= 18.
+
+***
+
+## Credentials
+
+| Variable               | Required         | Description                    |
+| ---------------------- | ---------------- | ------------------------------ |
+| `GOLOGIN_TOKEN`        | Yes (for `open`) | Gologin API token              |
+| `GOLOGIN_PROFILE_ID`   | Optional         | Default profile ID             |
+| `GOLOGIN_DAEMON_PORT`  | Optional         | Daemon port (default: `44777`) |
+| `GOLOGIN_CONNECT_BASE` | Optional         | Cloud Browser endpoint         |
+
+### Get a token
+
+1. Sign up or log in at [gologin.com](https://gologin.com)
+2. Open **API & MCP** in the dashboard
+3. Open the **API** tab
+4. Click **New Token**
+5. Copy the generated access token
+
+```bash  theme={null}
+export GOLOGIN_TOKEN='your_gologin_token'
+```
+
+### Config file
+
+`~/.gologin-agent-browser/config.json`
+
+***
+
+## Architecture
+
+Two parts:
+
+1. **`gologin-agent-browser` CLI** — parses commands, auto-starts daemon, prints compact output
+2. **Persistent local daemon** — owns live browser sessions, connects to Gologin Cloud Browser through Playwright `connectOverCDP`, keeps the active page in memory, builds snapshots, resolves refs, tracks session metadata
+
+Transport is local only:
+
+* Unix socket at `${TMPDIR:-/tmp}/gologin-agent-browser.sock`
+* Localhost HTTP on `127.0.0.1:${GOLOGIN_DAEMON_PORT:-44777}`
+
+If you do not provide a profile ID, the daemon creates a temporary Gologin cloud profile through the API.
+
+***
+
+## How refs work
+
+`snapshot` prints a compact page view and assigns refs like `@e1`, `@e2`, `@e3` to interactive elements. You act on them directly:
+
+```bash  theme={null}
+gologin-agent-browser snapshot
+# output shows page content with refs like @e1, @e2, @e3...
+
+gologin-agent-browser click @e3
+gologin-agent-browser type @e5 "search query"
+gologin-agent-browser fill @e7 "username"
+```
+
+Refs are best-effort and should be regenerated after navigation or major DOM changes. On dynamic pages, `find` is usually a better fallback than stale refs.
+
+***
+
+## Quick start
+
+```bash  theme={null}
+export GOLOGIN_TOKEN='your_token'
+
+# open a page in cloud browser
+gologin-agent-browser open https://example.com
+
+# read the page as a compact snapshot
+gologin-agent-browser snapshot
+
+# interact with elements
+gologin-agent-browser click @e3
+gologin-agent-browser type @e5 "hello world"
+
+# take a screenshot
+gologin-agent-browser screenshot ./page.png
+
+# close the session
+gologin-agent-browser close
+```
+
+***
+
+## Agent loop example
+
+A typical AI agent loop:
+
+```
+1. open <url>
+2. snapshot          → agent reads page content
+3. click/type/fill   → agent acts on refs
+4. snapshot          → agent reads result
+5. repeat 3-4 as needed
+6. screenshot        → save artifact
+7. close
+```
+
+***
+
+## Full command reference
+
+### Diagnostics
+
+| Command  | Description                          |
+| -------- | ------------------------------------ |
+| `doctor` | Check daemon health and connectivity |
+
+### Session management
+
+| Command      | Description                         |
+| ------------ | ----------------------------------- |
+| `open <url>` | Open URL in a cloud browser session |
+| `close`      | Close the current session           |
+| `sessions`   | List active sessions                |
+| `current`    | Show current session info           |
+
+### Page reading
+
+| Command               | Description                             |
+| --------------------- | --------------------------------------- |
+| `snapshot`            | Compact text snapshot with element refs |
+| `screenshot <path>`   | Save page screenshot                    |
+| `pdf <path>`          | Save page as PDF                        |
+| `get <kind> [target]` | Get page properties                     |
+
+### Interaction
+
+| Command                         | Description             |
+| ------------------------------- | ----------------------- |
+| `click <ref>`                   | Click an element        |
+| `dblclick <ref>`                | Double-click            |
+| `type <ref> <text>`             | Type text (appends)     |
+| `fill <ref> <text>`             | Fill input (replaces)   |
+| `hover <ref>`                   | Hover over element      |
+| `select <ref> <value>`          | Select dropdown value   |
+| `check <ref>` / `uncheck <ref>` | Toggle checkbox         |
+| `focus <ref>`                   | Focus an element        |
+| `find ...`                      | Semantic element search |
+
+### Keyboard and scroll
+
+| Command                       | Description              |
+| ----------------------------- | ------------------------ |
+| `press <key> [target]`        | Press a keyboard key     |
+| `scroll <direction> [pixels]` | Scroll the page          |
+| `scrollintoview <ref>`        | Scroll element into view |
+
+### Navigation
+
+| Command             | Description                 |
+| ------------------- | --------------------------- |
+| `back`              | Go back                     |
+| `forward`           | Go forward                  |
+| `reload`            | Reload the page             |
+| `wait <target\|ms>` | Wait for element or timeout |
+
+### Tabs
+
+| Command            | Description     |
+| ------------------ | --------------- |
+| `tabs`             | List open tabs  |
+| `tabopen [url]`    | Open a new tab  |
+| `tabfocus <index>` | Switch to a tab |
+| `tabclose [index]` | Close a tab     |
+
+### Cookies and storage
+
+| Command                 | Description         |
+| ----------------------- | ------------------- |
+| `cookies`               | Export cookies      |
+| `cookies-import <file>` | Import cookies      |
+| `cookies-clear`         | Clear cookies       |
+| `storage-export [path]` | Export localStorage |
+| `storage-import <file>` | Import localStorage |
+| `storage-clear`         | Clear localStorage  |
+
+### Advanced
+
+| Command                  | Description                 |
+| ------------------------ | --------------------------- |
+| `eval <expression>`      | Evaluate JavaScript in page |
+| `upload <ref> <file...>` | Upload files                |
+
+### Aliases
+
+| Alias              | Maps to          |
+| ------------------ | ---------------- |
+| `goto`, `navigate` | `open`           |
+| `tabnew`           | `tabopen`        |
+| `tabswitch`        | `tabfocus`       |
+| `js`               | `eval`           |
+| `key`              | `press`          |
+| `scrollinto`       | `scrollintoview` |
+| `quit`, `exit`     | `close`          |
+
+***
+
+## Use cases and examples
+
+### Check if your site passes anti-detect tests
+
+```bash  theme={null}
+gologin-agent-browser open https://iphey.com/ --profile your_profile_id
+gologin-agent-browser wait 3000
+gologin-agent-browser snapshot     # read the trust score
+gologin-agent-browser screenshot ./iphey-result.png
+gologin-agent-browser close
+```
+
+### Log into a web app and extract dashboard data
+
+```bash  theme={null}
+gologin-agent-browser open https://app.example.com/login
+gologin-agent-browser snapshot
+
+# agent reads snapshot, finds login form
+gologin-agent-browser fill @e4 "user@company.com"
+gologin-agent-browser fill @e6 "password"
+gologin-agent-browser click @e8
+
+gologin-agent-browser wait 3000
+gologin-agent-browser snapshot     # agent reads dashboard content
+
+# navigate to the report page
+gologin-agent-browser click @e12   # "Reports" link
+gologin-agent-browser wait 2000
+gologin-agent-browser snapshot     # agent extracts report data
+gologin-agent-browser screenshot ./report.png
+gologin-agent-browser close
+```
+
+### Fill out a multi-step form
+
+```bash  theme={null}
+gologin-agent-browser open https://forms.example.com/apply
+
+# step 1: personal info
+gologin-agent-browser snapshot
+gologin-agent-browser fill @e3 "John Doe"
+gologin-agent-browser fill @e5 "john@example.com"
+gologin-agent-browser select @e7 "United States"
+gologin-agent-browser click @e9   # Next
+
+# step 2: upload and submit
+gologin-agent-browser wait 1000
+gologin-agent-browser snapshot
+gologin-agent-browser upload @e4 ./resume.pdf
+gologin-agent-browser check @e6   # agree to terms
+gologin-agent-browser click @e8   # Submit
+
+gologin-agent-browser wait 2000
+gologin-agent-browser snapshot     # confirm success
+gologin-agent-browser close
+```
+
+### Take screenshots of competitor pages
+
+```bash  theme={null}
+# use different profiles with different geos
+for profile in us_profile de_profile jp_profile; do
+  gologin-agent-browser open https://competitor.com --profile $profile
+  gologin-agent-browser wait 3000
+  gologin-agent-browser screenshot ./${profile}-homepage.png
+  gologin-agent-browser close
+done
+```
+
+### Search on a site that blocks scraping
+
+Some sites require JavaScript execution, login, or interaction before showing results. Use the browser to search:
+
+```bash  theme={null}
+gologin-agent-browser open https://protected-directory.com
+gologin-agent-browser snapshot
+gologin-agent-browser find "search input"
+gologin-agent-browser type @found "machine learning engineer San Francisco"
+gologin-agent-browser press Enter
+gologin-agent-browser wait 3000
+gologin-agent-browser snapshot     # agent reads search results
+gologin-agent-browser screenshot ./search-results.png
+gologin-agent-browser close
+```
+
+### Save and restore session state
+
+Export cookies and storage to reuse across sessions:
+
+```bash  theme={null}
+# after logging in
+gologin-agent-browser cookies --output ./session-cookies.json
+gologin-agent-browser storage-export ./session-storage.json
+gologin-agent-browser close
+
+# later, restore the session
+gologin-agent-browser open https://app.example.com
+gologin-agent-browser cookies-import ./session-cookies.json
+gologin-agent-browser storage-import ./session-storage.json
+gologin-agent-browser reload
+gologin-agent-browser snapshot     # already logged in
+```
+
+***
+
+## Parallel sessions
+
+Use explicit `--session` IDs for independent cloud tasks. Clean up with `close --all` or `sessions --prune --older-than-ms`.
+
+***
+
+## Proxy rules
+
+* Preconfigured profiles: proxy is set on the profile via Gologin dashboard or API
+* Temporary profiles: support no proxy or custom proxy host/port
+* `--proxy-country` is only available for preconfigured profiles
+
+***
+
+## Related
+
+* [Gologin Web Access CLI](/cli-tools/web-access) — unified CLI (scraping + browser)
+* [Local Agent Browser CLI](/cli-tools/local-agent-browser) — local Orbita alternative
+* [Cloud Browser Getting Started](/api-reference/cloud-browser/getting-started) — Puppeteer/Playwright examples
+* [AI Skills](/api-reference/ai-integrations/ai-skills) — plug-and-play skills for Claude Code
+
+<Card title="npm package" icon="npm" href="https://www.npmjs.com/package/gologin-agent-browser-cli">
+  gologin-agent-browser-cli
+</Card>
+
+<Card title="Source code" icon="github" href="https://github.com/GologinLabs/agent-browser">
+  GologinLabs/agent-browser
+</Card>
+
+
+Built with [Mintlify](https://mintlify.com).

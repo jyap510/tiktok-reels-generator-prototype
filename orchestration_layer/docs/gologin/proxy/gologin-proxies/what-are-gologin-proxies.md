@@ -1,0 +1,88 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# What are Gologin Proxies
+
+Gologin proxies are IP addresses **integrated directly into the Gologin browser**. When a proxy is attached to a browser profile, it defines **where your internet traffic comes from** and helps websites see each profile as a **separate, real user**.
+
+This approach prevents websites and platforms from **linking multiple accounts together** based on IP address data and reduces the risk of blocks, restrictions, or security checks.
+
+## Built-in Proxies vs Custom Proxies
+
+Gologin supports **two ways to use proxies**, depending on your needs and experience level.
+
+* **Built-in proxies** Built-in proxies are **provided and managed by Gologin**. They are ready to use, require no external setup, and work seamlessly with our browser fingerprinting system. They are the best option if you want a **simple, stable, and fast setup** without dealing with third-party services.
+* **Custom proxies** Custom proxies are **purchased from third-party providers** and manually added to Gologin. This option gives you more flexibility in choosing proxy providers, locations, and proxy formats. These are better suited for **advanced users** who need more control over their proxy infrastructure.
+
+Built-in proxies are ideal for **simplicity and reliability**, while custom proxies offer **more control** for advanced setups.
+
+## Types of Gologin Proxies
+
+Depending on your plan and needs, Gologin may offer different proxy types, such as:
+
+* **Residential proxies** – real user IPs, suitable for most platforms
+* **Mobile proxies** – IPs from mobile networks, useful for higher trust environments
+* **Datacenter proxies** – faster and cheaper, but easier to detect
+
+Each type fits different tasks and risk levels.
+
+## Important: Gologin proxies are rotating
+
+Gologin residential proxies automatically rotate IP addresses every 5-30 minutes. This means your IP will change during a browsing session.
+
+**This is fine for:**
+
+* Web scraping
+* Short browsing sessions
+* General research
+
+**When NOT to use built-in proxies**
+
+<Warning>
+  Do not use built-in Gologin proxies for Amazon, eBay, Etsy, PayPal, or any marketplace that monitors account history. Rotating IPs are one of the fastest ways to get accounts linked and banned on these platforms.
+</Warning>
+
+* Amazon and eBay detect when the same account logs in from different IP addresses over time. They use this as a signal that an account is being managed by a third party or is part of a multi-account scheme. A rotating proxy changes your IP on every session — exactly the pattern they flag.
+* LinkedIn logs out sessions and triggers security reviews when it sees an IP change between sessions. Built-in proxies will cause frequent logouts and verification prompts.
+* Betting platforms require consistent IP addresses per account. An IP change is treated as suspicious login activity and often leads to account restriction.
+* PayPal and financial platforms flag IP changes as potential account compromise. They may freeze the account or require identity verification.
+
+## What to use instead
+
+For long-term account management on any sensitive platform, use a static residential proxy or static ISP proxy — one dedicated IP per account that never changes.
+
+| Platform               | Recommended proxy type             |
+| ---------------------- | ---------------------------------- |
+| Amazon / eBay / Etsy   | Static residential or ISP          |
+| LinkedIn               | Static residential or mobile       |
+| Facebook / Meta Ads    | Static residential or mobile       |
+| Betting sites          | Mobile (static)                    |
+| Web scraping           | Rotating residential or datacenter |
+| Testing / quick checks | Gologin built-in proxies are fine  |
+
+See [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case) for a full breakdown, or [Recommended proxy providers](https://gologin.com/best-proxy-server-services/) for specific services.
+
+## About the included traffic allowance
+
+Each Gologin plan includes a proxy traffic allowance measured in gigabytes. This is the data that passes through the proxy while your profiles browse — not storage.
+
+**Rough estimates:**
+
+* Light browsing (checking feeds, reading pages): \~0.3–0.5 GB per profile per day
+* Active work (loading media, running ads): \~1–2 GB per profile per day
+* 10 LinkedIn profiles used 2 hours/day: \~3–6 GB per month
+
+If you connect your own third-party proxy to a profile, it does not consume your Gologin traffic allowance — only traffic routed through Gologin's own proxy network counts.
+
+## See also
+
+* [Gologin vs 3rd-party proxies](https://gologin.com/docs/proxy/proxy-management/gologin-vs-3rd-party-proxies)
+* [How Gologin proxies work](https://gologin.com/docs/proxy/gologin-proxies/how-gologin-proxies-work-and-what-they-offer)
+* [How much proxy traffic do I need?](https://gologin.com/docs/proxy/gologin-proxies/how-much-proxy-traffic-do-i-need)
+* [VPN vs Proxy](https://gologin.com/docs/proxy/introduction/vpn-vs-proxy) — what's the difference
+* [Static vs Rotating proxies](https://gologin.com/docs/static-vs-dynamic-proxies) — why static matters for account management
+* [Adding your first proxy](https://gologin.com/docs/proxy/gologin-proxies/gologin-proxy-management/adding-your-first-proxy)
+
+
+Built with [Mintlify](https://mintlify.com).

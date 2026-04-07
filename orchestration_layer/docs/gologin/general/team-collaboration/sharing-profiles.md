@@ -1,0 +1,106 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Sharing Profiles, Folders & Workspace
+
+You can collaborate with your team in several ways in Gologin:
+
+• invite members to your workspace\
+• share individual profiles\
+• share entire folders with multiple profiles
+
+Each option provides different levels of access depending on how your team works.
+
+If you need to share just one or a couple of profiles, you don't have to use Workspaces for that: you can use the **Share profile** feature directly from your profile list!
+
+## Inviting Workspace Team Members
+
+<Info>
+  **Note:** if you choose to share the workspace access, the team member will have access to **all** the included profiles and folders.
+</Info>
+
+To start collaborating with your team and add members:
+
+1. Navigate to the **main menu** at the top-right > **Invite members**
+2. Enter the **teammate's email address**
+3. Select the access type: **Workspace** or **Selected Folders**
+4. Choose the role: **Run**, **Edit** or **Full access**
+5. Click **Send invite**
+
+<Frame>
+    <img src="https://mintcdn.com/gologin/icD2z3poOwslds91/images/GoLogin_ws_invite.gif?s=404d4198a545469a3279b4c09cf88037" alt="Go Login Ws Invite" width="1188" height="767" data-path="images/GoLogin_ws_invite.gif" />
+</Frame>
+
+## How to share a profile
+
+1. Hover over the **three dots** on a profile > **Share**
+2. Enter the **user email**
+3. Select a role:\
+   **Can run** - can **view** and **run** the profiles you shared
+   **Can edit** - can **run**, **clone**, and **edit** the settings of the profiles you shared
+   **Full access** - the same as **edit** but also can **share** profiles
+4. Click **Share** to apply changes
+
+To remove a share you can **click on the role** > **Remove**
+
+<img src="https://mintcdn.com/gologin/icD2z3poOwslds91/images/GoLogin_share_profile.gif?s=3b2a124da871ede1b60b643be4e994c0" alt="GoLogin_share_profile.gif" width="1188" height="767" data-path="images/GoLogin_share_profile.gif" />
+
+After the share is applied, the profile will appear in the colleague's profile list.
+
+<Info>
+  **Note**: you can share multiple profiles at once using the bulk actions.
+</Info>
+
+## How to share folder
+
+You can share a folder with team members to give them access to all profiles inside it.
+
+## Steps
+
+1. Open the **main menu** in the top-right corner.
+2. Click **Invite members**.
+3. Enter the **user's email address**.
+4. Select **Selected Folders**.
+5. Choose the folder you want to share.
+6. Select the permission level:
+   * **Can run**
+   * **Can edit**
+   * **Full access**
+7. Click **Send invite**.
+
+The invited user will receive an email and gain access to the selected folder after accepting the invitation.
+
+<Frame>
+    <img src="https://mintcdn.com/gologin/8-TCYPLH69QLImdl/images/0312(1)(1).gif?s=4813660e0c1c741cc5cc731bf01f4efe" alt="0312 (1)(1)" width="1920" height="1080" data-path="images/0312(1)(1).gif" />
+</Frame>
+
+## Changing or revoking access
+
+To change or revoke the workspace access:
+
+1. Navigate to the **main menu** at the top-right > **Settings & Members**
+2. **Locate the member** In the Settings & Members tab > **click at their permission**
+3. **Change the permission** as needed
+4. To revoke the workspace access click **Remove member** in the access menu.
+
+<Frame>
+    <img src="https://mintcdn.com/gologin/icD2z3poOwslds91/images/GoLogin_ws_member_settings.gif?s=c8aba1065295997cf856f5b0cc204aae" alt="Go Login Ws Member Settings" width="1188" height="767" data-path="images/GoLogin_ws_member_settings.gif" />
+</Frame>
+
+## What counts as a profile share
+
+**1 share = 1 instance of a shared profile.**\
+For example: if you share **2 profiles to 5 people** or **10 profiles to a single colleague**, in both cases it will use up **10 shares**.
+
+Only the existing shares are counted towards the limit. If you remove some of the unnecessary shares, you will regain back the sharing slots.
+
+See also
+
+* [Team collaboration FAQ](https://gologin.com/docs/general/team-collaboration/faq-team-collaboration)
+* [Roles & Permissions](https://gologin.com/docs/general/team-collaboration/workspace-roles-and-permissions)
+* [Accessing Shared Workspace](https://gologin.com/docs/general/team-collaboration/accessing-shared-workspace-or-folders)
+* [Key concepts — OS must match your device](https://gologin.com/docs/getting-started/introduction/key-concepts-profiles-fingerprints-proxies#profile-os-must-match-your-device-os)
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,118 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# What is web unlocker?
+
+Web Unlocker is a universal scraping API. Send any URL, get back fully rendered HTML, a screenshot, and a network archive — no infrastructure to manage, no blocks, no failed requests.
+
+It works as a complete replacement for your scraping stack: browser automation, proxy management, fingerprinting, CAPTCHA solving — all handled in a single API call. Whether you're scraping a simple static page or a heavily protected JavaScript-rendered site, the same endpoint handles it.
+
+***
+
+## What it solves
+
+Modern websites are hard to scrape. A plain `curl` or `requests` call often returns a challenge page, a blank response, or broken HTML because the content is loaded by JavaScript. Web Unlocker handles all of this automatically:
+
+* **JavaScript rendering** — pages are loaded in a real browser and fully executed before content is captured
+* **Anti-bot bypass** — Cloudflare, DataDome, PerimeterX and similar protections are handled automatically
+* **Smart IP rotation** — requests are routed through clean residential IPs with realistic browser fingerprints
+* **CAPTCHA solving** — common CAPTCHA challenges are resolved without manual intervention
+* **Price tier targeting** — routes requests through the appropriate proxy tier for the target site
+
+***
+
+## What you get back
+
+Every successful task returns three types of content:
+
+| Content        | Format           | Description                                            |
+| -------------- | ---------------- | ------------------------------------------------------ |
+| **HTML**       | Full HTML string | The complete rendered DOM of the page                  |
+| **Screenshot** | PNG image        | A screenshot of the page as it appeared in the browser |
+| **Archive**    | ZIP (HAR)        | Network log with all requests, headers, and resources  |
+
+***
+
+## Pricing
+
+Web Unlocker uses **success-based billing** — you are only charged when the request succeeds. Failed attempts are free.
+
+Pricing scales with volume:
+
+| Plan         | Price per 1,000 requests | Monthly price | Included requests | Overage per 1,000 |
+| ------------ | ------------------------ | ------------- | ----------------- | ----------------- |
+| Growth       | \$0.98                   | \$49/mo       | 50,000            | \$1.20            |
+| Professional | \$0.75                   | \$149/mo      | 200,000           | \$1.00            |
+| Business     | \$0.60                   | \$299/mo      | 500,000           | \$0.90            |
+| Premium      | \$0.45                   | \$899/mo      | 2,000,000         | \$0.70            |
+
+For custom volume pricing, contact **[webunlocker@gologin.com](mailto:webunlocker@gologin.com)**.
+
+***
+
+## Web Unlocker vs. self-managed proxies
+
+Running your own proxy infrastructure is expensive and fragile. Web Unlocker handles everything as a managed service:
+
+|                        | Web Unlocker           | Self-managed proxies             |
+| ---------------------- | ---------------------- | -------------------------------- |
+| Setup                  | One API call           | Weeks of infrastructure work     |
+| CAPTCHA solving        | Built-in               | Build or buy separately          |
+| Browser fingerprinting | Built-in               | Build or buy separately          |
+| IP rotation            | Automatic              | Manual pool management           |
+| Maintenance            | None                   | Ongoing                          |
+| Billing                | Per successful request | Fixed cost regardless of success |
+
+***
+
+## Common use cases
+
+* **Price monitoring** — scrape e-commerce sites that block automated requests
+* **Lead generation** — extract contact data from directories and business listings
+* **Market research** — collect product data, reviews, or job listings at scale
+* **Content aggregation** — build news or data feeds from sites without an API
+* **AI pipelines** — feed rendered HTML into LLMs for extraction or summarization
+
+***
+
+## How it works
+
+Web Unlocker runs a real Chromium browser in the cloud for each task. When you send a URL:
+
+1. A browser is launched with a residential IP and realistic browser fingerprint
+2. The page is navigated, JavaScript is executed, and dynamic content is loaded
+3. Anti-bot challenges and CAPTCHAs are handled automatically
+4. The rendered HTML, a screenshot, and a network archive are captured and returned
+
+You never manage infrastructure. There are no browsers to spin up, no proxy lists to maintain, and no bypass logic to build. Web Unlocker effectively replaces an entire scraping stack — browser automation framework, proxy provider, anti-bot solution — with a single HTTP request.
+
+***
+
+## How to use it
+
+Send a GET request with the target URL as a query parameter. The response is the fully rendered HTML.
+
+```bash  theme={null}
+curl "https://parsing.webunlocker.gologin.com/v1/scrape?url=https%3A%2F%2Fexample.com" \
+  -H "apikey: YOUR_API_KEY"
+```
+
+See the [Quickstart](./web-unlocker-quickstart.md) for examples in Python and JavaScript, or [Use Cases](./web-unlocker-use-cases.md) for common integration patterns.
+
+***
+
+## CLI and SDK
+
+In addition to the raw HTTP API, Gologin provides higher-level tools for working with Web Unlocker:
+
+* **[Web Unlocker SDK and CLI](/scraping-api-sdk-and-cli)** — minimal TypeScript SDK (`gologin-webunlocker`) with typed methods and a CLI for quick scraping
+* **[Gologin Web Access CLI](/cli-tools/web-access)** — unified CLI that combines Web Unlocker with Cloud Browser, adding batch scraping, crawling, search, change tracking, and structured extraction
+* **[AI Skills](/api-reference/ai-integrations/ai-skills)** — plug-and-play skills for Claude Code agents
+
+## Get access
+
+Web Unlocker is currently in early access. To get an API key, contact: **[ermakova.t@gologin.com](mailto:ermakova.t@gologin.com)**
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,44 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# First-time checklist
+
+Before creating your first browser profiles in Gologin, it’s recommended to prepare your environment. This helps avoid account issues and ensures profiles work correctly.
+
+Use this checklist to get started.
+
+### 1. Install Gologin
+
+Download and install the Gologin application for your operating system.
+
+### 2. Log in to your Gologin account
+
+Sign in using the account you created during registration.
+
+### 3. Prepare proxies
+
+Make sure you have proxies ready to use.\
+Using a separate proxy for each profile helps prevent accounts from being linked.
+
+### 4. Create your first browser profile
+
+Create a profile to simulate a separate browser environment with its own fingerprint and storage.
+
+### 5. Assign a proxy to the profile
+
+Add a proxy so the profile connects from a unique IP address.
+
+### 6. Launch the profile
+
+Click **Run** to start the profile and begin working with your accounts.
+
+## See also
+
+* [What are Gologin proxies](https://gologin.com/docs/proxy/gologin-proxies/what-are-gologin-proxies)
+* [Adding your first proxy](https://gologin.com/docs/proxy/gologin-proxies/gologin-proxy-management/adding-your-first-proxy)
+* [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case)
+* [Key concepts](https://gologin.com/docs/getting-started/introduction/key-concepts-profiles-fingerprints-proxies)
+
+
+Built with [Mintlify](https://mintlify.com).

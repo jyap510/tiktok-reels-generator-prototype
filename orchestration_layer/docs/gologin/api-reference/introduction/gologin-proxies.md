@@ -1,0 +1,99 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Gologin proxies
+
+GoLogin provides high-quality proxies that can be programmatically created and managed with just a few lines of code. These proxies integrate seamlessly with browser profiles, ensuring reliable connections and consistent IP addresses for your automation needs.
+
+### Why Use GoLogin Proxies?
+
+* **Ease of Integration**: Add proxies to profiles with a single API call
+* **Global Coverage**: Access proxies from multiple locations worldwide
+* **Stability**: Enterprise-grade infrastructure ensures reliable connections
+* **Anti-Detection**: Properly configured proxies reduce fingerprinting risks
+* **Streamlined Workflow**: No need to manage separate proxy providers
+
+# Run profile with Gologin proxy
+
+<CodeGroup tag="iphey.com" label="Check trustworthiness status">
+  ```js node.js theme={null}
+  import { GologinApi } from 'gologin';
+
+  const token = process.env.GL_API_TOKEN || 'your dev token here';
+  const gologin = GologinApi({
+    token,
+  });
+
+  async function main() {
+    const profile = await gologin.createProfileRandomFingerprint();
+    const profileId = profile.id;
+    await gologin.addGologinProxyToProfile(profileId, 'US');
+
+    const { browser } = await gologin.launch({ profileId });
+    const page = await browser.newPage();
+
+    await page.goto('https://iphey.com/', { waitUntil: 'networkidle2' });
+    const status = await page.$eval('.trustworthy:not(.hide)',
+      (elt) => elt?.innerText?.trim(),
+    );
+
+    await new Promise((resolve) => setTimeout(resolve, 10000));
+    console.log('status', status);
+
+    return status;
+  }
+
+  main().catch(console.error)
+    .finally(gologin.exit);
+  ```
+
+  ```python Python theme={null}
+  import time
+  from gologin import GoLogin
+  from selenium import webdriver
+  from selenium.webdriver.chrome.service import Service
+  from webdriver_manager.chrome import ChromeDriverManager
+
+
+  # Initialize GoLogin
+  gl = GoLogin({
+  	"token": "your dev token",
+  	})
+  profile = gl.createProfileRandomFingerprint({ "os": "win" })
+  profile_id = profile.get('id')
+  gl.setProfileId(profile_id)
+  # Add proxy to the profile
+  gl.addGologinProxyToProfile(profile_id, "us")
+
+  # Start Browser and get websocket url
+  debugger_address = gl.start()
+
+  # Get Chromium version for webdriver
+  chromium_version = gl.get_chromium_version()
+
+
+  # Install webdriver
+  service = Service(ChromeDriverManager(driver_version=chromium_version).install())
+
+  chrome_options = webdriver.ChromeOptions()
+  chrome_options.add_experimental_option("debuggerAddress", debugger_address)
+
+  driver = webdriver.Chrome(service=service, options=chrome_options)
+
+  # Give command to Selenium to open the page
+  driver.get("http://www.python.org")
+
+  time.sleep(30)
+  driver.quit()
+  time.sleep(10)
+
+  gl.delete(profile_id)
+
+  gl.stop()
+
+  ```
+</CodeGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

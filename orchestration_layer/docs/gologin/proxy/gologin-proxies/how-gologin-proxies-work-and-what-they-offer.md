@@ -1,0 +1,56 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# How Gologin proxies work 
+
+Gologin proxies are integrated directly into the Gologin environment and can be attached to browser profiles without additional configuration.
+
+When a proxy is assigned to a profile, all internet traffic from that profile is routed through the proxy server. This means websites see the proxy IP address instead of your real IP address.
+
+Using separate proxies for different profiles helps keep sessions isolated and reduces the chance that multiple accounts will be linked together.
+
+### How traffic is routed
+
+When a proxy is assigned to a Gologin browser profile, all network requests from that profile are routed through the proxy server.
+
+The process works as follows:
+
+1. A browser profile sends a request to open a website.
+2. The request is first sent to the proxy server assigned to that profile.
+3. The proxy forwards the request to the destination website.
+4. The website sends the response back to the proxy server.
+5. The proxy returns the response to the browser profile.
+
+Because of this routing process, the website sees the **proxy IP address** instead of the real IP address of your device.
+
+Each browser profile can use a different proxy, which helps isolate sessions and makes profiles appear as separate browsing environments.
+
+## Available proxy types
+
+Depending on your plan, Gologin may offer several proxy types, including:
+
+* Residential rotating
+* Mobile rotating
+* Datacenter sticky
+
+For a detailed explanation of proxy types, see **Proxy Types**.
+
+## What Gologin proxies offer
+
+Using Gologin proxies provides several advantages:
+
+* quick setup without third-party configuration
+* easy assignment of proxies to profiles
+* integration with Gologin browser profiles
+* simplified proxy management within the application
+
+See also
+
+* [What are Gologin proxies](https://gologin.com/docs/proxy/gologin-proxies/what-are-gologin-proxies)
+* [Adding your first proxy](https://gologin.com/docs/proxy/gologin-proxies/gologin-proxy-management/adding-your-first-proxy)
+* [View and top up proxy traffic](https://gologin.com/docs/proxy/gologin-proxies/gologin-proxy-management/view-and-top-up-proxy-traffic)
+* [Website compatibility checker](https://gologin.com/docs/proxy/gologin-proxies/website-compatibility-checker)
+
+
+Built with [Mintlify](https://mintlify.com).

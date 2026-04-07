@@ -1,0 +1,83 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# What is Gologin and who it's for
+
+> How Gologin can help you reach your goals
+
+Gologin is an **antidetect browser** that helps you manage **multiple online accounts** safely and efficiently without triggering **blocks, security flags, or repeated logins**. It’s designed for **individuals and teams** who need control over **digital identities** on multiple websites.
+
+All accounts are organized in **one table**, and the **collaboration feature** allows you to securely share access with your team without sharing passwords.
+
+## How to think about Gologin
+
+Each browser profile in Gologin is like a **separate laptop**. It has its own:
+
+* Browser fingerprint (screen size, fonts, WebGL, etc.)
+* IP address (via proxy)
+* Cookies and saved sessions
+* Installed extensions
+
+When you open a Gologin profile, it’s as if you’re opening a completely different computer. Websites see a unique device, not your real machine.
+
+**Gologin is NOT:**
+
+* A VPN (VPNs encrypt traffic but don’t change your browser fingerprint)
+* A Chrome extension (Gologin is a standalone browser based on Chromium)
+* A password manager or account management tool
+* A social media scheduling tool
+
+**Gologin IS:**
+
+* An anti-detect browser that creates isolated browser environments
+* A tool that makes each browser session look like a different device
+* Available as a desktop app (Windows, Mac, Linux) and as a web app (app.gologin.com)
+
+<Info>
+  **Gologin Web**: You can access your profiles from any browser at app.gologin.com — no installation required. This is useful for Chrome OS users or when you can’t install desktop software. Cloud session limits apply by plan.
+</Info>
+
+## What Gologin does
+
+* **Creates unique browser profiles**\
+  Each profile looks like a different user on a different device, masking your real identity.
+* **Manages multiple accounts**\
+  Stay logged into several accounts (for example, social media or marketplaces) at the same time without conflicts.
+* **Masks digital fingerprints**\
+  Hides parameters like device, software, location, and IP to prevent tracking and account flags.
+* **Integrates proxies**\
+  Assign different locations and IP addresses to each profile using proxy services.
+* **Offers team features**\
+  Secure account sharing and team access without exposing passwords.
+
+## Who is Gologin for (Use Cases)
+
+* **Digital marketers**\
+  Managing many client accounts.
+* **E-commerce sellers & dropshippers**\
+  Selling on platforms like Amazon, eBay, Shopify, Etsy, and others.
+* **Social media managers**\
+  Handling multiple profiles on platforms like Facebook, Instagram, TikTok, Reddit, and others.
+* **Web scraping & SEO professionals**\
+  Tracking search rankings in different regions.
+* **Ad specialists**\
+  Reviewing campaigns from different audience perspectives.
+* **Traffic arbitrage specialists**\
+  Running ad campaigns across multiple platforms.
+* **Automation developers**\
+  Testing solutions in isolated sessions.
+* **Anyone who needs to keep online identities separate**\
+  For security and compliance.
+
+If you're new to Gologin, the next step is understanding how platforms actually detect and link accounts.
+
+## See also
+
+* [Key concepts: profiles, fingerprints, proxies](https://gologin.com/docs/getting-started/introduction/key-concepts-profiles-fingerprints-proxies)
+* [Quick start: from zero to your first profile](https://gologin.com/docs/getting-started/introduction/quick-start-from-zero-to-your-first-profile)
+* [Extra FAQ — too obvious to ask, too important to ignore](https://gologin.com/docs/getting-started/introduction/untitled-page)
+* [How Gologin protects your identity](https://gologin.com/docs/how-gologin-protects-your-identity)
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,97 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Creating new accounts safely
+
+New accounts are evaluated differently from established ones.
+
+During the first days, platforms closely monitor how the account is created, how it behaves, and whether its environment looks consistent and realistic.
+
+The goal is not to avoid detection, but to follow patterns that match how real users typically join and start using a platform.
+
+## Set up a clean environment
+
+A new account should be created in a clean and consistent environment.
+
+In Gologin, this means:
+
+* using a dedicated browser profile
+* assigning a unique proxy
+* keeping fingerprint settings unchanged after setup
+
+The environment should remain stable from the moment of registration.
+
+Changing IP address, location, or device parameters immediately after signup is one of the most common causes of early verification.
+
+## Start with low activity
+
+New accounts do not behave actively right away.
+
+A typical early pattern includes:
+
+* browsing the platform
+* viewing pages
+* performing small interactions
+
+Avoid:
+
+* posting immediately
+* sending many actions in a short time
+* aggressive or repetitive behavior
+
+Even valid actions may look suspicious if performed too quickly.
+
+## Grow activity gradually
+
+Account activity should increase step by step.
+
+In the beginning:
+
+* keep actions minimal
+* focus on passive behavior
+
+Over time:
+
+* increase activity naturally
+* transition to normal usage patterns
+
+This progression helps platforms build trust in the account.
+
+## Maintain consistency over time
+
+Consistency is more important than individual actions.
+
+To keep a stable account:
+
+* use the same profile
+* keep the same proxy and location
+* avoid frequent environment changes
+
+Even small inconsistencies can disrupt trust signals, especially in early stages.
+
+## Common early mistakes
+
+Avoid these typical issues when working with new accounts:
+
+* changing proxy or location right after signup
+* modifying fingerprint settings after first use
+* performing high activity immediately
+* switching between profiles
+* logging in from multiple environments
+
+## Key takeaway
+
+New accounts build trust through time, consistency, and realistic behavior.
+
+Gologin provides a clean and isolated environment, but long-term stability depends on how that environment is used in practice.
+
+See also
+
+* [Managing existing accounts](https://gologin.com/docs/managing-existing-accounts)
+* [Maintaining trust score](https://gologin.com/docs/maintaining-trust-score)
+* [Cookie Bot](https://gologin.com/docs/browser-profiles/profile-features/cookie-bot) — cookie warming before registration
+* [Guides & Best Practices overview](https://gologin.com/docs/best-practices-overview) — pick the guide for your platform
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,50 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Folders
+
+When working with many browser profiles in Gologin, organization tools help keep your workspace structured and easy to manage.
+
+Gologin provides several ways to organize profiles efficiently, including **folders, groups, tags, statuses and profile sorting**.
+
+**Folders** allow you to separate profiles by project, platform, or workflow. Folders appear at the top of the Profiles page and allow you to quickly switch between profile collections.
+
+## How to create a folder
+
+1. Click the **3 dots** next to the **All profiles** button, at the top of the Profiles page
+2. Select **Add folder**
+3. Enter the folder name
+4. Create or move profiles into the folder
+
+<Frame>
+    <img src="https://mintcdn.com/gologin/pCb28zkpcbLZzMmX/images/create_new_folder.gif?s=c71df1310014dd06613a9a5938669432" alt="Create New Folder" width="1391" height="793" data-path="images/create_new_folder.gif" />
+</Frame>
+
+## Managing profiles in a folder
+
+You can create new profiles right in the folder or move the existing ones into it.
+
+To **create profiles** in the folder, just navigate to the folder in the top folders bar and start creating them as usual. As long as you're in the folder, all the new profiles will be created there.
+
+To **move profiles** into the folder:
+
+* either **click 3 dots on the profile > Folders > select the folder**
+* or **select multiple profiles > Folders > Add to Folder > select the folder**
+
+<Frame>
+    <img src="https://mintcdn.com/gologin/pCb28zkpcbLZzMmX/images/add_profiles_to_a_folder.gif?s=c162a65c9e2f4d9772600db3f08ffdae" alt="Add Profiles To A Folder" width="1391" height="793" data-path="images/add_profiles_to_a_folder.gif" />
+</Frame>
+
+You can **remove profiles** from a folder doing the same actions in reverse.
+
+<Tip>
+  One profile can be a part of several folders
+</Tip>
+
+<Check>
+  You can share access to a folder starting with Business plan and above, learn how to do it [here](https://gologin.com/docs/general/team-collaboration/sharing-profiles#how-to-share-folder)
+</Check>
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,59 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Profile hygiene checklist
+
+Maintaining clean and consistent profiles is essential for stable account performance.
+
+Before working with a profile, make sure the setup follows these basic rules:
+
+### Environment
+
+* **One account per profile**\
+  Each account should always be used in a dedicated browser profile.
+* **One proxy per profile**\
+  Do not reuse the same IP address across multiple accounts.
+* **Fixed location**\
+  Keep the same country and region. Avoid frequent changes.
+* **Consistent fingerprint**\
+  Do not modify fingerprint settings after the profile has been used.
+
+### Session management
+
+* **Always close profiles correctly**\
+  Close profiles using the Stop button or by closing the browser window to ensure data is saved.
+* **Wait for sync to complete**\
+  Make sure the profile status shows Ready before shutting down the app.
+* **Do not interrupt sessions**\
+  Avoid closing profiles while offline or during unstable internet connection.
+
+### Usage rules
+
+* **Do not run one profile on multiple devices simultaneously**\
+  This can cause data conflicts and inconsistencies.
+* **Avoid mixing accounts**\
+  Do not log multiple accounts in the same profile.
+* **Keep activity consistent**\
+  Avoid sudden changes in behavior, location, or device setup.
+
+## Why it matters
+
+Breaking these rules can lead to:
+
+* session resets
+* additional verification
+* inconsistent profile data
+* reduced account trust
+
+Following this checklist helps maintain stable environments and reduces the risk of account issues.
+
+See also
+
+* [Maintaining trust score](https://gologin.com/docs/maintaining-trust-score)
+* [Common mistakes to avoid](https://gologin.com/docs/common-mistakes-to-avoid)
+* [Profile fingerprint settings](https://gologin.com/docs/profile-fingerprint-settings)
+* [Static vs Rotating proxies](https://gologin.com/docs/static-vs-dynamic-proxies)
+
+
+Built with [Mintlify](https://mintlify.com).

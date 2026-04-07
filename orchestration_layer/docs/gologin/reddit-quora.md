@@ -1,0 +1,95 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Reddit, Quora
+
+Reddit and Quora are community-driven platforms where account trust is built through participation history, not technical signals. Both platforms care less about your IP or fingerprint than they do about how your account behaves over time.
+
+Looking for the LinkedIn guide? LinkedIn has its own dedicated page. See: [https://gologin.com/docs/linkedin](https://gologin.com/docs/linkedin)
+
+## Quick checklist
+
+* 1 account = 1 browser profile
+* 1 profile = 1 proxy (residential; rotating is acceptable for Reddit)
+* Keep proxy region stable within a country
+* Do not create multiple accounts per day from the same IP
+
+## Reddit
+
+Reddit evaluates accounts primarily through account age, karma, and behavior patterns. GoLogin helps manage multiple Reddit accounts without them being linked. The platform itself is less aggressive at detection than Facebook or LinkedIn.
+
+## Warmup timeline
+
+| **Period** | **Focus**           | **What to do**                                              |
+| :--------- | :------------------ | :---------------------------------------------------------- |
+| Day 0      | Setup               | Create account, add avatar                                  |
+| Days 1–7   | Lurking             | Browse subreddits, read posts                               |
+| Days 8–14  | Light participation | Upvote posts, occasional comments                           |
+| Week 3     | Normal activity     | Post in subreddits, build karma                             |
+| Week 4+    | Promotion-ready     | Self-promotion within community rules (max 10% of activity) |
+
+### Safe activity levels
+
+| **Action**      | **Recommended level**     |
+| :-------------- | :------------------------ |
+| Upvotes         | 20–30 / day               |
+| Comments        | 3–5 / day                 |
+| Posts           | 1–2 / day after warmup    |
+| Subreddit joins | 5–10 / day                |
+| Self-promotion  | Max 10% of total activity |
+
+### Reddit-specific rules
+
+* Most active subreddits require positive karma to post — build karma in smaller communities first
+* Reddit's spam filter tracks identical posts across accounts — duplicate content gets flagged automatically
+* Many subreddits have minimum account age rules (30, 90, 180 days) — check before posting
+* Do not post the same link from multiple accounts, even in different subreddits
+
+### Common ban triggers — Reddit
+
+* Posting promotional links on a brand-new account
+* Same post or comment submitted from multiple accounts
+* Creating 5+ accounts from the same IP in one session
+* Vote manipulation (upvoting your own posts from other accounts)
+
+## Quora
+
+Quora is more conservative than Reddit. It's an answer-focused platform where accounts are expected to provide genuine expertise. Quora actively removes low-quality answers and promotional content.
+
+### Warmup timeline
+
+| **Period** | **Focus**      | **What to do**                                         |
+| :--------- | :------------- | :----------------------------------------------------- |
+| Day 0      | Setup          | Create account, complete profile with real-looking bio |
+| Days 1–7   | Reading        | Follow topics, read answers                            |
+| Days 8–14  | Light activity | Upvote answers, follow writers                         |
+| Week 3     | Participate    | Write 2–3 genuine answers per day                      |
+| Week 4+    | Promotion      | Include links sparingly in relevant answers            |
+
+### Safe activity levels
+
+| **Action**       | **Recommended level**            |
+| :--------------- | :------------------------------- |
+| Upvotes          | 10–15 / day                      |
+| Answers          | 2–4 / day                        |
+| Questions        | 1–2 / day                        |
+| Links in answers | 1 per answer, only when relevant |
+
+### Common ban triggers — Quora
+
+* New account answering questions with affiliate or promotional links immediately
+* Identical answers posted across multiple questions
+* Accounts with no profile information or activity history
+
+## See also
+
+* [LinkedIn](https://gologin.com/docs/linkedin) — dedicated guide for LinkedIn
+* [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case)
+* [Maintaining trust score](https://gologin.com/docs/maintaining-trust-score)
+* [Common mistakes to avoid](https://gologin.com/docs/common-mistakes-to-avoid)
+
+\\
+
+
+Built with [Mintlify](https://mintlify.com).

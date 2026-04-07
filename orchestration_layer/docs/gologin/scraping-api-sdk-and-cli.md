@@ -1,0 +1,220 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Scraping API SDK and CLI
+
+Gologin Web Unlocker is a **single-endpoint scraping API** for JS-heavy and protected websites.
+
+You send a URL, receive rendered page HTML/text, and process it in your own extraction pipeline.
+
+## Why use it as a Scraping API
+
+* One endpoint for any target URL
+* API-key auth, no browser orchestration required
+* HTML-first response that plugs into existing parsers
+* Easy fit for ETL, monitoring, AI ingestion, and data pipelines
+
+## Endpoint
+
+`GET https://parsing.webunlocker.gologin.com/v1/scrape?url={encoded_url}`
+
+## Authentication
+
+Send your API key in headers:
+
+```http  theme={null}
+apikey: <API_KEY>
+```
+
+## Request model
+
+| Name  | In    | Type                  | Required | Description          |
+| ----- | ----- | --------------------- | -------- | -------------------- |
+| `url` | query | string (absolute URL) | yes      | Target URL to scrape |
+
+## Quickstart
+
+### cURL
+
+```bash  theme={null}
+curl "https://parsing.webunlocker.gologin.com/v1/scrape?url=https%3A%2F%2Fexample.com" \
+  -H "apikey: YOUR_API_KEY"
+```
+
+### Python
+
+```python  theme={null}
+import requests
+
+response = requests.get(
+    "https://parsing.webunlocker.gologin.com/v1/scrape",
+    params={"url": "https://example.com"},
+    headers={"apikey": "YOUR_API_KEY"}
+)
+
+print(response.status_code)
+print(response.text[:500])
+```
+
+### JavaScript (fetch)
+
+```js  theme={null}
+const response = await fetch(
+  "https://parsing.webunlocker.gologin.com/v1/scrape?url=" +
+    encodeURIComponent("https://example.com"),
+  { headers: { apikey: "YOUR_API_KEY" } }
+);
+
+const html = await response.text();
+console.log(response.status, html.slice(0, 500));
+```
+
+## Response behavior
+
+Current response body is **raw rendered HTML/text**.
+
+* `200` -> success, body contains page HTML/text
+* `401` / `403` -> invalid or missing API key
+* `422` -> invalid or missing `url`
+* `429` -> rate limit
+* `500+` -> temporary server-side error
+
+## Retry guidance
+
+Retry with exponential backoff for:
+
+* network errors
+* `408`, `429`, `500`, `502`, `503`, `504`
+
+## Scope note
+
+Current public endpoint is HTML-first. Do not assume extra backend endpoints (for example screenshot/crawl/search/usage) unless explicitly documented and enabled for your account.
+
+## Official Node.js SDK
+
+Install:
+
+```bash  theme={null}
+npm i gologin-webunlocker
+```
+
+### SDK quick start
+
+```ts  theme={null}
+import { WebUnlocker } from "gologin-webunlocker";
+
+const client = new WebUnlocker({
+  apiKey: process.env.GOLOGIN_WEBUNLOCKER_API_KEY!
+});
+
+const result = await client.scrape("https://example.com");
+console.log(result.status);
+console.log(result.content.slice(0, 500));
+```
+
+### Constructor options
+
+```ts  theme={null}
+new WebUnlocker({
+  apiKey: "wu_live_xxx",
+  baseUrl: "https://parsing.webunlocker.gologin.com",
+  timeoutMs: 15000,
+  maxRetries: 2
+});
+```
+
+### Core SDK methods
+
+* `scrape(url)` -> normalized response object
+* `scrapeRaw(url)` -> native `Response`
+* `buildScrapeUrl(url)` -> full request URL
+
+### SDK-side derived methods (from returned HTML)
+
+These are **not separate backend endpoints**; they are derived from API HTML in the SDK:
+
+* `scrapeText(url)` -> plain text
+* `scrapeMarkdown(url)` -> markdown
+* `scrapeJSON(url)` -> structured metadata (`title`, `meta`, `links`, `headings`)
+* `batchScrape(urls, { concurrency })` -> helper for multiple scrape calls
+
+### Typed errors
+
+* `WebUnlockerError`
+* `AuthenticationError`
+* `RateLimitError`
+* `APIError`
+* `TimeoutError`
+* `NetworkError`
+
+Mapping:
+
+* `401` / `403` -> `AuthenticationError`
+* `429` -> `RateLimitError`
+* `500+` -> `APIError`
+* timeout/abort -> `TimeoutError`
+* fetch/network failure -> `NetworkError`
+
+## CLI
+
+```bash  theme={null}
+gologin-webunlocker <command> <url> [options]
+```
+
+Commands:
+
+* `scrape` (raw HTML/text)
+* `text` (derived text)
+* `markdown` (derived markdown)
+* `json` (derived metadata)
+
+Examples:
+
+```bash  theme={null}
+gologin-webunlocker scrape https://example.com --api-key wu_live_xxx
+GOLOGIN_WEBUNLOCKER_API_KEY=wu_live_xxx gologin-webunlocker text https://example.com
+GOLOGIN_WEBUNLOCKER_API_KEY=wu_live_xxx gologin-webunlocker json https://example.com
+```
+
+## Typical scraping use cases
+
+* price and catalog monitoring
+* lead and directory enrichment
+* market intelligence pipelines
+* content aggregation and indexing
+* LLM ingestion and extraction workflows
+
+## Gologin Web Access CLI (unified)
+
+For a more powerful CLI that combines Web Unlocker with Cloud Browser in a single command surface, use `gologin-web-access`:
+
+```bash  theme={null}
+npm install -g gologin-web-access
+
+export GOLOGIN_WEB_UNLOCKER_API_KEY="wu_..."
+
+# all scraping commands from gologin-webunlocker, plus:
+gologin-web-access batch-scrape url1 url2 url3 --format text --summary
+gologin-web-access search "query" --limit 10
+gologin-web-access map https://example.com --limit 50
+gologin-web-access crawl https://docs.example.com --format markdown --limit 20
+gologin-web-access extract https://example.com --schema ./schema.json
+gologin-web-access change-track https://example.com --format markdown
+
+# plus cloud browser interaction (requires GOLOGIN_TOKEN)
+gologin-web-access open https://example.com
+gologin-web-access snapshot
+gologin-web-access click e3
+```
+
+See [Gologin Web Access CLI](/cli-tools/web-access) for the full reference.
+
+## Source docs
+
+* [What is Web Unlocker](/what-is-web-unlocker)
+* [Web Unlocker Quick Start](/web-unlocker-quick-start)
+* [Web Unlocker Use Cases](/web-unlocker-use-cases)
+
+
+Built with [Mintlify](https://mintlify.com).

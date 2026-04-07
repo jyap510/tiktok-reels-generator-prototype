@@ -1,0 +1,57 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Overview
+
+This section provides practical guides for building and managing accounts across different platforms.
+
+Each guide focuses on how platforms evaluate accounts — including environment consistency, behavior patterns, and activity development over time.
+
+The goal is to help you create stable setups and maintain long-term account access through predictable, realistic usage.
+
+## What you’ll find here
+
+Each guide includes:
+
+* recommended environment setup
+* account creation and early activity guidelines
+* platform-specific behavior patterns
+* common risk scenarios to avoid
+
+## Available guides
+
+[Facebook / Meta Ads ](https://gologin.com/docs/facebook-meta-ads)— account setup, warm-up, and ad account stability
+
+[TikTok Ads](https://gologin.com/docs/tik-tok-ads) — mobile-first behavior, gradual activity, and scaling
+
+[Google Ads & Gmail](https://gologin.com/docs/google-ads-and-gmail) — cross-service usage and account trust building
+
+[Amazon, eBay, Shopify](https://gologin.com/docs/amazon-e-bay-shopify) — seller account setup and marketplace stability
+
+[Reddit, LinkedIn, Quora](https://gologin.com/docs/reddit-linked-in-quora) — community behavior and visibility patterns
+
+[Crypto & KYC platforms](https://gologin.com/docs/crypto-and-kyc) — verification consistency and secure access
+
+If you are creating accounts for the first time, it is recommended to follow [Creating new accounts safely](https://gologin.com/docs/creating-new-accounts-safely) before applying platform-specific strategies.
+
+## How to use this section
+
+* Start with the platform you are working with
+* Follow the recommended setup and activity patterns
+* Keep your environment and behavior consistent over time
+
+## More guides coming
+
+This section will continue to expand with additional platforms and workflows.
+
+If there is a platform or use case you would like to see covered, you can contact the Gologin team.
+
+## What to read next
+
+To use platform guides effectively, start by understanding how platforms evaluate accounts: [Maintaining trust score](https://gologin.com/docs/maintaining-trust-score)\
+\
+Then make sure your environment is set up correctly: [Profile fingerprint settings](https://gologin.com/docs/profile-fingerprint-settings)
+
+
+Built with [Mintlify](https://mintlify.com).

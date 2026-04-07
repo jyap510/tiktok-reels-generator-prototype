@@ -1,0 +1,72 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Residential, Mobile or Datacenter
+
+The most common proxy types are residential, mobile, ISP, and datacenter proxies.
+
+### Residential Proxies
+
+Residential proxies use IP addresses assigned to real household devices by internet service providers.
+
+Because they appear as normal users, they are harder for websites to detect.
+
+They are commonly used for:
+
+* social media management
+* advertising accounts
+* e-commerce platforms
+* account management
+
+Residential proxies are usually more expensive but provide higher trust levels.
+
+### Mobile Proxies
+
+Mobile proxies route traffic through mobile carrier networks (4G or 5G).
+
+These IP addresses are shared by many real mobile users, which makes them highly trusted by websites.
+
+They are commonly used for:
+
+* social media automation
+* ad verification
+* mobile platform testing
+
+### ISP Proxies
+
+ISP proxies are hosted in data centers but registered through internet service providers.
+
+They combine some advantages of both datacenter and residential proxies:
+
+* stable IP addresses
+* good speed
+* higher trust compared to datacenter proxies
+
+They are often used for:
+
+* SEO monitoring
+* account management
+* long-term sessions
+
+### Datacenter Proxies
+
+Datacenter proxies are hosted on servers in data centers rather than residential networks.
+
+They are usually faster and cheaper than residential proxies, **but websites may detect them more easily.**
+
+They are commonly used for:
+
+* web scraping
+* automation tasks
+* testing workflows
+
+See also
+
+* [Static vs Rotating proxies](https://gologin.com/docs/static-vs-dynamic-proxies)
+* [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case)
+* [Proxy & Fingerprint Setup per Platform](https://gologin.com/docs/proxy-and-fingerprint-setup-per-platform)
+* [Gologin vs 3rd-party proxies](https://gologin.com/docs/proxy/proxy-management/gologin-vs-3rd-party-proxies)
+
+
+Built with [Mintlify](https://mintlify.com).

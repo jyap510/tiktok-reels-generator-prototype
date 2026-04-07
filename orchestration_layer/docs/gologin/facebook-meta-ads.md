@@ -1,0 +1,118 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Facebook / Meta Ads
+
+Facebook is one of the most fingerprint-aware platforms. It cross-references IP address, device environment, behavioral patterns, and payment history to evaluate accounts. Inconsistencies between any of these signals trigger verification checks.
+
+## Quick checklist
+
+* 1 account = 1 browser profile
+* 1 profile = 1 static residential or mobile proxy
+* Never reuse a proxy across profiles
+* Match profile OS to your device OS
+* Do not change proxy or fingerprint after first login
+
+## Step 1. Set up your Gologin profile
+
+Recommended settings:
+
+* \*\*Proxy: \*\*static residential or mobile — assign before opening Facebook for the first time
+* \*\*Fingerprint: \*\*leave defaults — do not adjust Canvas, WebGL, or AudioContext manually
+
+Once logged into Facebook in a profile, do not change proxy or fingerprint settings. Facebook stores device data server-side. A fingerprint change looks like a new device trying to access your account.
+
+## Step 2. Warm up the browser before registration
+
+Before creating a new account, spend 10–15 minutes browsing normally inside the profile:
+
+* Open 3–5 unrelated websites
+* Scroll, click, pause naturally
+* Do not go to Facebook yet
+
+This builds session history and makes the environment look like a real device. A completely fresh browser with no history is a strong detection signal.
+
+## Step 3. Create the account
+
+* Space account registrations at least 30–60 minutes apart
+* Use a unique phone number for each account
+* Do not create more than 2–3 accounts per day per proxy location
+* Avoid identical registration flows across accounts
+
+If Facebook asks for phone verification during registration — complete it. Do not skip or use the same number twice.
+
+## Step 4. Complete the profile
+
+* Upload a profile photo and cover photo
+* Fill in basic information (location, workplace, education)
+* Follow 5–10 pages related to your niche
+* Join 1–2 groups
+
+Do not post links, create events, or send friend requests in the first 24 hours.
+
+## Step 5. Warm up the account
+
+Facebook evaluates new accounts heavily during the first 2–3 weeks.
+
+### Warmup timeline
+
+| **Period** | **Focus**         | **What to do**                                  |
+| :--------- | :---------------- | :---------------------------------------------- |
+| Day 0      | Setup             | Profile completion + 15 min browsing            |
+| Days 1–7   | Passive           | Browse feed, watch videos, like posts           |
+| Days 8–14  | Light interaction | Comments, page follows, 2–3 friend requests/day |
+| Week 3     | Normal use        | Groups, more interactions, occasional posts     |
+| Week 4+    | Ads-ready         | Business Manager + ad account setup             |
+
+### Safe activity levels
+
+| **Action**          | **Recommended level** |
+| :------------------ | :-------------------- |
+| Friend requests     | 5–10 / day            |
+| Page follows        | 5–10 / day            |
+| Post likes          | 15–30 / day           |
+| Group joins         | 1–2 / day             |
+| External link posts | After week 3          |
+
+## Meta Ads setup
+
+Only set up Meta Ads after the personal profile is warmed up — minimum 1–2 weeks of activity.
+
+* Create a Business Manager account ([business.facebook.com](http://business.facebook.com))
+* Add your personal profile as an admin
+* Create one ad account — start with one
+* Add a unique payment method
+* Launch a small test campaign (\$5–10/day)
+* Increase spend gradually over 1–2 weeks
+
+<Warning>
+  Do not add the same payment method to multiple ad accounts. Facebook links accounts through shared payment methods. Each ad account needs a unique payment source.
+</Warning>
+
+## Common risk triggers
+
+### Immediate bans
+
+* Logging in from a new IP after the account was already active
+* Same payment method across multiple ad accounts
+* Creating 5+ accounts in one day from the same proxy location
+* Running ads before profile warmup
+
+### Gradual restrictions
+
+* Posting the same content from multiple accounts
+* High friend request volume with low acceptance rate
+* Mass group joining in a short period
+* Unusual spending spikes in ads
+
+## See also
+
+* [Static vs Rotating proxies](https://gologin.com/docs/static-vs-dynamic-proxies)
+* [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case)
+* [Common mistakes to avoid](https://gologin.com/docs/common-mistakes-to-avoid)
+* [Maintaining trust score](https://gologin.com/docs/maintaining-trust-score)
+* [Proxy & Fingerprint Setup per Platform](https://gologin.com/docs/proxy-and-fingerprint-setup-per-platform)
+
+
+Built with [Mintlify](https://mintlify.com).

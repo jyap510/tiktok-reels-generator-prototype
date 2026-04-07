@@ -1,0 +1,49 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# How Gologin protects your identity
+
+Gologin protects your identity by creating separate browser profiles that behave like independent devices.
+
+Each profile has its own fingerprint, IP address, cookies, and session data. This prevents platforms from linking multiple accounts together.
+
+## Key mechanisms
+
+* **Isolated profiles** - Each profile runs in its own environment. No cookies, storage, or data are shared between profiles.
+* **Fingerprint simulation** - Gologin assigns realistic browser and device parameters, so each profile looks like a regular user.
+* **Proxy alignment** - Each profile can use its own proxy, matching IP address, location, and device configuration.
+* **Persistent sessions** - Profile data is saved between sessions, allowing websites to recognize the profile as a returning user.
+* **Environment consistency** - Profiles remain stable over time, which helps build trust and reduces additional checks.
+
+## Why it matters
+
+Most platforms evaluate users based on a combination of fingerprint, IP address, and behavior.
+
+If these signals are inconsistent, platforms may:
+
+* request additional verification
+* reset sessions
+* reduce account trust
+
+Gologin keeps these elements aligned within each profile, making activity appear consistent and natural.
+
+## Common mistakes
+
+Avoid these typical issues:
+
+* Using one proxy for multiple accounts
+* Logging into multiple accounts within the same profile
+* Changing fingerprint settings after logging in
+* Using low-quality or mismatched proxies
+* Switching locations or devices too frequently
+
+See also
+
+* [How browser fingerprints work](https://gologin.com/docs/how-browser-fingerprints-work)
+* [Maintaining trust score](https://gologin.com/docs/maintaining-trust-score)
+* [VPN vs Proxy](https://gologin.com/docs/proxy/introduction/vpn-vs-proxy)
+* [Profile fingerprint settings](https://gologin.com/docs/profile-fingerprint-settings)
+
+
+Built with [Mintlify](https://mintlify.com).

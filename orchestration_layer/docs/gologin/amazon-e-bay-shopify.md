@@ -1,0 +1,101 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Amazon, eBay, Shopify
+
+E-commerce marketplaces are the most aggressive at account linking. Amazon, eBay, and Shopify all maintain cross-account graphs — if two accounts share an IP, a payment method, a device fingerprint, or a shipping address, the platform will connect them. When one account is suspended, the linked accounts typically follow.
+
+## Quick checklist
+
+* 1 seller account = 1 browser profile
+* 1 profile = 1 static residential or ISP proxy
+* **Never use rotating proxies** — IP changes link accounts instantly
+* **Never use Gologin built-in proxies** — they are rotating by default
+* Unique payment method per account
+* Unique phone number and email per account
+
+## Step 1. Set up your Gologin profile
+
+* \*\*Proxy: \*\*static residential or ISP proxy — one dedicated IP per account, never shared
+* \*\*Fingerprint: \*\*leave defaults
+
+## Step 2. Warm up the account
+
+| **Period** | **Focus**      | **What to do**                        |
+| :--------- | :------------- | :------------------------------------ |
+| Day 0      | Setup          | Registration + identity verification  |
+| Days 1–3   | Exploration    | Browse seller tools, read policies    |
+| Days 4–7   | Light activity | Add 5–10 listings, set up shipping    |
+| Week 2     | Normal use     | Manage listings, respond to questions |
+| Week 3+    | Scale          | Increase listing volume gradually     |
+
+## Safe activity patterns
+
+| Action             | Recommended approach |
+| :----------------- | :------------------- |
+| Product listings   | Add gradually        |
+| Account edits      | Occasional updates   |
+| Dashboard activity | Regular browsing     |
+| Order processing   | Consistent handling  |
+
+## Payment isolation
+
+This is the most common reason marketplace accounts get linked and suspended together.
+
+Each account needs:
+
+* A unique credit or debit card
+* A unique PayPal account (if used)
+* A unique billing address
+
+Options that work: Revolut, Wise, N26 (multiple virtual cards), Privacy.com (US), prepaid debit cards.
+
+<Warning>
+  Sharing a card across Amazon seller accounts is treated as a Terms of Service violation. Amazon will suspend all linked accounts and hold funds for up to 90 days.
+</Warning>
+
+## Platform-specific notes
+
+### Amazon
+
+* IP changes between sessions trigger automatic account linking review
+* Appeals are hard — prevention is far easier than recovery
+* Business accounts require verified legal entity documents
+
+### eBay
+
+* Less strict than Amazon on IP, but still tracks device fingerprint
+* Each account needs separate bank details for eBay Managed Payments
+* Feedback score matters — new accounts have low buyer trust
+
+### Shopify
+
+* GoLogin is mainly used to manage multiple Shopify admin accounts or run operations from different locations
+* No cross-account detection like Amazon/eBay, but Shopify Payments has fraud detection on payouts
+
+## Common ban triggers
+
+### Amazon
+
+* Rotating or shared proxy IPs
+* Same payment method across accounts
+* Same device fingerprint on multiple seller logins
+* Related account suspension (Amazon bans by association)
+
+### eBay
+
+* Same IP or fingerprint as a previously suspended account
+* Listing the same items across multiple accounts simultaneously
+* Feedback manipulation patterns
+
+## See also
+
+* [Static vs Rotating proxies](https://gologin.com/docs/static-vs-dynamic-proxies)
+* [What are Gologin proxies](https://gologin.com/docs/proxy/gologin-proxies/what-are-gologin-proxies) — why built-in proxies aren't suitable for Amazon
+* [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case)
+* [Migrating from other anti-detect browsers](https://gologin.com/docs/general/migration-from-other-tools)
+* [Common mistakes to avoid](https://gologin.com/docs/common-mistakes-to-avoid)
+
+
+Built with [Mintlify](https://mintlify.com).

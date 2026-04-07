@@ -1,0 +1,90 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# FAQ: Subscription
+
+> Frequently asked questions about subscriptions
+
+### How do I start a free 7-day Trial?
+
+The 7-day free Trial starts automatically after you register on Gologin!
+
+To register in the app, just download the app at [https://gologin.com/download/](https://gologin.com/download/) and install it on your device. You will be presented with the registration window at the first launch.
+
+### Are Browser Profiles any different on a Trial plan other than on a Paid one? Are they any worse?
+
+No, they are not any worse or any different. You are getting the same quality on a Trial plan to test the features.
+
+### How do I buy a subscription plan?
+
+To purchase a subscription plan, go to the **main menu at the top-right > Settings & Members > Billing Plans > Change plan**
+
+### How do I change my payment method?
+
+Currently, you cannot change the payment method without making a payment. Here's what you can do:
+
+* remove the current payment method at the **main menu at the top-right >** **Settings & Members > Billing Plans > Payment Methods > Delete the payment method**
+
+  <img src="https://mintcdn.com/gologin/icD2z3poOwslds91/images/Untitled-2(1).jpg?fit=max&auto=format&n=icD2z3poOwslds91&q=85&s=439c034f7d1617f6a59f20ce538cddd7" alt="Untitled-2 (1).jpg" width="1888" height="672" data-path="images/Untitled-2(1).jpg" />
+* wait for the current plan to elapse and purchase a new one with the new card or PayPal
+
+You can also purchase the new plan immediately while your current plan is active, to update your payment method.
+
+### When does my subscription end?
+
+To get the date, go to **main menu at the top-right >** **Settings & Members > Billing plans > Payment history** section. The **Expires on** date would be the date of the next payment.
+
+### How do I get my invoice or receipt?
+
+**Main menu at the top-right >** **Settings & Members > Billing plans > Payment history > Download receipt**\
+For more details, please look into [<u>this article</u>](/account-migration-support/account-and-billing/invoices).
+
+### What payment methods do you accept?
+
+We accept Credit or Debit cards, PayPal and Crypto payments.
+
+### How do I cancel my subscription?
+
+Go to **main menu at the top-right > Settings & Members > Billing Plans > Cancel Subscription**. After canceling, click **Delete Payment Method** to prevent future charges. Your profiles remain accessible until the current billing period ends.
+
+### Does canceling automatically refund my payment?
+
+No. Cancellation stops future charges but does not trigger an automatic refund. To request a refund, contact support via the in-app chat. GoLogin offers a **7-day money-back guarantee** for new subscriptions.
+
+### How long does a refund take?
+
+Typically **5 business days**. In rare cases, it may take up to 21 business days depending on your payment provider.
+
+### How do I downgrade my plan?
+
+Downgrading is only possible after your current billing cycle ends. Cancel your current subscription, wait for it to expire, then subscribe to a lower plan. To switch to the **Forever Free** plan, you must have 3 or fewer profiles.
+
+### How do I add team members?
+
+Team members are available on **Business plan and above**. Go to **main menu at the top-right > Settings & Members > Billing Plans > Change Plan** and click **+** to add members.
+
+On the Professional plan, you can share individual profiles with users on the free plan as a workaround.
+
+### What are the cloud browser concurrent session limits?
+
+* **Professional:** 1 session
+* **Business:** 2 sessions
+* **Enterprise:** 3 sessions
+
+These limits apply to cloud (Run in Cloud / web app) launches only. Local desktop launches are not limited by plan.
+
+### Which cryptocurrency networks are supported?
+
+GoLogin accepts **BTC, LTC, BCH, DOGE, and ETH (ERC-20 network only)**.
+
+<Warning>
+  If you send crypto on the wrong network (e.g., TRC-20, BEP-20), the payment **will not arrive and cannot be recovered**. Always verify the network before sending.
+</Warning>
+
+### My payment went through but my subscription wasn't updated.
+
+Bank transfers and some PayPal payments may take several days to process. Try restarting the GoLogin app. If the issue persists after 24 hours, contact support with your payment confirmation.
+
+
+Built with [Mintlify](https://mintlify.com).

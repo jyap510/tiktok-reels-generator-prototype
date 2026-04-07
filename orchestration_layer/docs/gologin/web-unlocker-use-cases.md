@@ -1,0 +1,286 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Web unlocker use cases
+
+Web Unlocker is a scraping API — you send a URL, it returns the fully rendered HTML. This page shows the most common ways to put that to use.
+
+***
+
+## Scrape a page yourself
+
+The simplest use case: you need the content of a webpage that blocks regular HTTP requests.
+
+### Python
+
+```python  theme={null}
+import requests
+
+response = requests.get(
+    "https://parsing.webunlocker.gologin.com/v1/scrape",
+    params={"url": "https://example.com/product/123"},
+    headers={"apikey": "YOUR_API_KEY"}
+)
+
+html = response.text
+print(html)
+```
+
+### JavaScript
+
+```javascript  theme={null}
+const html = await fetch(
+  "https://parsing.webunlocker.gologin.com/v1/scrape?url=" +
+    encodeURIComponent("https://example.com/product/123"),
+  { headers: { apikey: "YOUR_API_KEY" } }
+).then((r) => r.text());
+
+console.log(html);
+```
+
+No browser to launch, no proxy to configure, no Cloudflare to fight. One call, you get the page.
+
+**Good for:**
+
+* Checking prices on a competitor's site
+* Pulling job listings, reviews, or product data
+* Monitoring pages for changes
+* One-off data collection scripts
+
+***
+
+## Feed content into an AI
+
+Web Unlocker returns raw HTML. Pass that into an LLM to extract structured data, summarize content, or answer questions about the page — no parsing logic needed.
+
+### Python + OpenAI
+
+```python  theme={null}
+import requests
+from openai import OpenAI
+
+html = requests.get(
+    "https://parsing.webunlocker.gologin.com/v1/scrape",
+    params={"url": "https://news.ycombinator.com"},
+    headers={"apikey": "YOUR_API_KEY"}
+).text
+
+client = OpenAI()
+response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[
+        {
+            "role": "user",
+            "content": f"Extract the top 5 story titles and their URLs from this HTML:\n\n{html[:8000]}"
+        }
+    ]
+)
+
+print(response.choices[0].message.content)
+```
+
+### JavaScript + Anthropic
+
+```javascript  theme={null}
+import Anthropic from "@anthropic-ai/sdk";
+
+const html = await fetch(
+  "https://parsing.webunlocker.gologin.com/v1/scrape?url=" +
+    encodeURIComponent("https://news.ycombinator.com"),
+  { headers: { apikey: "YOUR_API_KEY" } }
+).then((r) => r.text());
+
+const client = new Anthropic();
+const message = await client.messages.create({
+  model: "claude-opus-4-5",
+  max_tokens: 1024,
+  messages: [
+    {
+      role: "user",
+      content: `Extract the top 5 story titles and their URLs from this HTML:\n\n${html.slice(0, 8000)}`,
+    },
+  ],
+});
+
+console.log(message.content[0].text);
+```
+
+**Good for:**
+
+* Extracting structured data (prices, names, dates) without writing parsers
+* Summarizing articles or product pages
+* Comparing multiple pages and drawing conclusions
+* Building research or monitoring tools powered by AI
+
+***
+
+## Use it inside an AI agent
+
+Give your AI agent a `scrape` tool backed by Web Unlocker. The agent can then browse the web on its own — fetching pages, reading content, and taking action — without you writing any browsing logic.
+
+```python  theme={null}
+import requests
+import anthropic
+
+def scrape(url: str) -> str:
+    """Fetch a URL and return its rendered HTML."""
+    return requests.get(
+        "https://parsing.webunlocker.gologin.com/v1/scrape",
+        params={"url": url},
+        headers={"apikey": "YOUR_API_KEY"}
+    ).text
+
+tools = [
+    {
+        "name": "scrape",
+        "description": "Fetch the rendered HTML of any URL, including JavaScript-heavy and protected sites.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "url": {"type": "string", "description": "The URL to scrape"}
+            },
+            "required": ["url"]
+        }
+    }
+]
+
+client = anthropic.Anthropic()
+messages = [
+    {"role": "user", "content": "What is the current price of the iPhone 16 Pro on apple.com?"}
+]
+
+while True:
+    response = client.messages.create(
+        model="claude-opus-4-5",
+        max_tokens=1024,
+        tools=tools,
+        messages=messages
+    )
+
+    if response.stop_reason == "end_turn":
+        print(response.content[0].text)
+        break
+
+    tool_results = []
+    for block in response.content:
+        if block.type == "tool_use" and block.name == "scrape":
+            html = scrape(block.input["url"])
+            tool_results.append({
+                "type": "tool_result",
+                "tool_use_id": block.id,
+                "content": html[:10000]
+            })
+
+    messages.append({"role": "assistant", "content": response.content})
+    messages.append({"role": "user", "content": tool_results})
+```
+
+The agent decides when to scrape and what URL to fetch. Web Unlocker handles the actual retrieval.
+
+**Good for:**
+
+* Research agents that browse the web autonomously
+* Price comparison or deal-finding bots
+* Competitive intelligence pipelines
+* Any agent that needs real-time web data
+
+***
+
+## Scrape many pages at once
+
+Run requests concurrently to collect data from multiple URLs in parallel.
+
+```python  theme={null}
+import requests
+from concurrent.futures import ThreadPoolExecutor
+
+API_URL = "https://parsing.webunlocker.gologin.com/v1/scrape"
+API_KEY = "YOUR_API_KEY"
+
+urls = [
+    "https://example.com/page/1",
+    "https://example.com/page/2",
+    "https://example.com/page/3",
+]
+
+def scrape(url):
+    response = requests.get(
+        API_URL,
+        params={"url": url},
+        headers={"apikey": API_KEY}
+    )
+    return url, response.text
+
+with ThreadPoolExecutor(max_workers=5) as executor:
+    results = list(executor.map(scrape, urls))
+
+for url, html in results:
+    print(f"{url}: {len(html)} chars")
+```
+
+**Good for:**
+
+* Scraping entire product catalogs or listing pages
+* Bulk data collection for training datasets
+* Monitoring many pages simultaneously
+
+***
+
+## Summary
+
+| Use case             | What you do            | What you get              |
+| -------------------- | ---------------------- | ------------------------- |
+| Scrape a single page | GET with URL param     | Rendered HTML             |
+| Feed into an LLM     | Scrape → pass to model | Extracted data or summary |
+| AI agent tool        | Agent calls on demand  | Real-time web content     |
+| Bulk scraping        | Concurrent requests    | HTML for each URL         |
+
+***
+
+## Use it from the CLI
+
+Skip writing code entirely — use the Gologin Web Access CLI for common scraping workflows:
+
+```bash  theme={null}
+npm install -g gologin-web-access
+export GOLOGIN_WEB_UNLOCKER_API_KEY="wu_..."
+
+# batch scrape multiple pages
+gologin-web-access batch-scrape \
+  https://example.com/page/1 \
+  https://example.com/page/2 \
+  https://example.com/page/3 \
+  --format text --only-main-content --summary
+
+# crawl a site
+gologin-web-access crawl https://docs.example.com --format markdown --limit 50 --max-depth 2
+
+# monitor page changes
+gologin-web-access change-track https://example.com/pricing --format markdown
+
+# extract structured data with a schema
+gologin-web-access extract https://example.com/product/123 --schema ./product-schema.json
+
+# search the web
+gologin-web-access search "best antidetect browser 2026" --limit 10
+```
+
+See [Web Access CLI](/cli-tools/web-access) for the full command reference.
+
+***
+
+## Summary
+
+| Use case             | What you do                   | What you get                        |
+| -------------------- | ----------------------------- | ----------------------------------- |
+| Scrape a single page | GET with URL param            | Rendered HTML                       |
+| Feed into an LLM     | Scrape → pass to model        | Extracted data or summary           |
+| AI agent tool        | Agent calls on demand         | Real-time web content               |
+| Bulk scraping        | Concurrent requests           | HTML for each URL                   |
+| CLI workflows        | `gologin-web-access` commands | Text, markdown, JSON, batch results |
+
+See [Quickstart](./web-unlocker-quickstart.md) to make your first request.
+
+
+Built with [Mintlify](https://mintlify.com).

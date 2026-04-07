@@ -1,0 +1,31 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Private vs Shared
+
+### Private Proxies
+
+Private proxies are assigned to a single user.
+
+They offer:
+
+* better speed
+* higher reliability
+* lower risk of IP bans
+
+Private proxies are recommended when managing accounts in Gologin.
+
+### Shared or Free Proxies
+
+Shared proxies are used by multiple users at the same time.
+
+They are usually cheaper but may have:
+
+* slower performance
+* higher risk of blacklisting
+
+There's a chance of using the same proxy on the same website with another proxy user, keep that in mind for account management.
+
+
+Built with [Mintlify](https://mintlify.com).

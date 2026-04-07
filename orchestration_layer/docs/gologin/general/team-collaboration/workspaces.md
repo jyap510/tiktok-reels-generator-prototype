@@ -1,0 +1,65 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Workspaces
+
+> Setting up your Gologin Workspace for team collaboration
+
+## Introduction
+
+A **Workspace** is a team-based space that allows you to manage and share browser profiles securely with multiple users. Instead of everyone using their own profiles or accounts, your team can work under one Workspace with controlled access and real-time profile sync, using a single subscription plan.
+
+Once you've registered on Gologin, **your first Workspace is created automatically**. If your subscription plan supports it, you can start adding team members right away.
+
+## Purchasing the Team Member seats
+
+By default, the **Business**, **Enterprise**, and **Custom** plans include one additional Team Member seat. If you're working with a larger team and need more seats for collaboration, you can purchase additional ones:
+
+1. Open the **main menu** in the top-right corner.
+2. Go to **Settings & Members**.
+3. Open the **Billing Plans** tab.
+4. Click **Change plan**.
+5. Select the number of additional seats.
+6. Click **Pay now** and complete the payment.
+
+<Frame>
+    <img src="https://mintcdn.com/gologin/8-TCYPLH69QLImdl/images/0311.gif?s=b8f9b228f10889c1b056d331ed646fd8" alt="0311" width="1920" height="1080" data-path="images/0311.gif" />
+</Frame>
+
+After the purchase, new team members can be invited to the Workspace.
+
+## Access options
+
+You can share access to the either the entire Workspace or only to the specific folders:
+
+* **Workspace access** - provides access to your whole workspace, including all the profiles and folders.
+* **Selected folders** - grants access to the selected folders only. The team member will not be able to manage folders.
+
+## How to create more workspaces
+
+If you manage multiple teams and a single Workspace doesn't meet your needs, you can create a new one. Keep in mind that each Workspace requires a separate subscription.
+
+## Renaming your workspace
+
+To rename your Workspace:
+
+1. Open the **main menu**.
+2. Go to **Settings & Members**.
+3. Locate the Workspace name.
+4. Click the **pencil icon** next to it.
+5. Enter the new name.
+
+The change is applied automatically.
+
+<img src="https://mintcdn.com/gologin/icD2z3poOwslds91/images/GoLogin_ws_renaming.gif?s=948105324aea0703fa099dfe23cade79" alt="GoLogin_ws_renaming.gif" width="1188" height="767" data-path="images/GoLogin_ws_renaming.gif" />
+
+See also
+
+* [Roles & Permissions](https://gologin.com/docs/general/team-collaboration/workspace-roles-and-permissions)
+* [Sharing Profiles, Folders & Workspace](https://gologin.com/docs/general/team-collaboration/sharing-profiles)
+* [Team collaboration FAQ](https://gologin.com/docs/general/team-collaboration/faq-team-collaboration)
+* [Sample team setups](https://gologin.com/docs/sample-team-setups)
+
+
+Built with [Mintlify](https://mintlify.com).

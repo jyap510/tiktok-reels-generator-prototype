@@ -1,0 +1,143 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Quickstart
+
+This guide shows how to scrape your first URL using Web Unlocker.
+
+***
+
+## Prerequisites
+
+* A Web Unlocker API key (contact **[ermakova.t@gologin.com](mailto:ermakova.t@gologin.com)** to get one)
+* Python 3.x, Node.js, or any HTTP client
+
+***
+
+## Authentication
+
+All requests require your API key in the `apikey` header:
+
+```
+apikey: YOUR_API_KEY
+```
+
+The base URL for all API requests is:
+
+```
+https://parsing.webunlocker.gologin.com/v1
+```
+
+***
+
+## Make your first request
+
+Send a GET request with the target URL as a query parameter. The response is the fully rendered HTML of the page.
+
+### cURL
+
+```bash  theme={null}
+curl "https://parsing.webunlocker.gologin.com/v1/scrape?url=https%3A%2F%2Fexample.com" \
+  -H "apikey: YOUR_API_KEY"
+```
+
+### Python
+
+```python  theme={null}
+import requests
+
+response = requests.get(
+    "https://parsing.webunlocker.gologin.com/v1/scrape",
+    params={"url": "https://example.com"},
+    headers={"apikey": "YOUR_API_KEY"}
+)
+
+print(response.text)
+```
+
+### JavaScript (Node.js / Browser)
+
+```javascript  theme={null}
+const response = await fetch(
+  "https://parsing.webunlocker.gologin.com/v1/scrape?url=" +
+    encodeURIComponent("https://example.com"),
+  { headers: { apikey: "YOUR_API_KEY" } }
+);
+
+const html = await response.text();
+console.log(html);
+```
+
+***
+
+## What you get back
+
+The response body is the raw rendered HTML of the page — the same content you'd see if you opened the URL in a browser. No JSON wrapper, no parsing needed.
+
+```html  theme={null}
+<!DOCTYPE html>
+<html>
+  <head><title>Example Domain</title></head>
+  <body>...</body>
+</html>
+```
+
+***
+
+## Handling errors
+
+Check the HTTP status code before processing the response:
+
+| Status        | Meaning                                  |
+| ------------- | ---------------------------------------- |
+| `200`         | Success — response body is the page HTML |
+| `401`         | Invalid or missing API key               |
+| `422`         | Invalid or missing URL parameter         |
+| `429`         | Rate limit exceeded                      |
+| `500` / `503` | Server error — retry with backoff        |
+
+```python  theme={null}
+response = requests.get(
+    "https://parsing.webunlocker.gologin.com/v1/scrape",
+    params={"url": "https://example.com"},
+    headers={"apikey": "YOUR_API_KEY"}
+)
+
+if response.status_code == 200:
+    html = response.text
+else:
+    print(f"Error {response.status_code}: {response.text}")
+```
+
+***
+
+## Quick start with CLI
+
+You can also scrape pages using the Gologin CLI tools without writing code:
+
+### Web Unlocker CLI
+
+```bash  theme={null}
+npm install -g gologin-webunlocker
+
+GOLOGIN_WEBUNLOCKER_API_KEY=wu_... gologin-webunlocker scrape https://example.com
+GOLOGIN_WEBUNLOCKER_API_KEY=wu_... gologin-webunlocker text https://example.com
+GOLOGIN_WEBUNLOCKER_API_KEY=wu_... gologin-webunlocker markdown https://example.com
+```
+
+### Gologin Web Access CLI (unified)
+
+```bash  theme={null}
+npm install -g gologin-web-access
+
+export GOLOGIN_WEB_UNLOCKER_API_KEY="wu_..."
+gologin-web-access read https://example.com
+gologin-web-access scrape-json https://example.com
+gologin-web-access batch-scrape https://example.com/page/1 https://example.com/page/2 --format text
+```
+
+See [Web Unlocker SDK and CLI](/scraping-api-sdk-and-cli) and [Web Access CLI](/cli-tools/web-access) for full details.
+
+
+Built with [Mintlify](https://mintlify.com).

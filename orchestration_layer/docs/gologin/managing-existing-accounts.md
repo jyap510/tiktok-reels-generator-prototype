@@ -1,0 +1,83 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Managing existing accounts
+
+Managing existing accounts in Gologin is based on one core principle: consistency.
+
+Unlike new accounts, existing ones already have a history — including login environment, behavior patterns, and session data. Platforms expect this pattern to remain stable over time.
+
+Gologin helps preserve this consistency by keeping each account in a dedicated browser profile.
+
+## Using the same profile
+
+Each account should always be accessed through the same Gologin profile.
+
+The profile stores:
+
+• fingerprint\
+• cookies and session data\
+• local storage and browser state
+
+This allows platforms to recognize the account as a returning user.
+
+Switching profiles or creating a new one for an existing account may break this continuity and trigger verification checks.
+
+## Keeping proxy and location stable
+
+The proxy used with a profile should remain consistent.
+
+Avoid frequent changes to:
+
+* IP address
+* country
+* region
+
+If a proxy change is required, do it carefully — ideally within the same region and without sudden shifts
+
+## Preserving session data
+
+Gologin saves session data automatically when profiles are closed correctly.
+
+This includes cookies and login states that help maintain account trust.
+
+To avoid issues:
+
+* Always close profiles properly
+* Wait for sync to complete
+* Avoid clearing data unnecessarily
+
+Repeated logins from scratch may reduce trust and trigger additional checks.
+
+## Matching past behavior
+
+Existing accounts should continue behaving in line with their history.
+
+Avoid:
+
+* sudden increases in activity
+* new or inconsistent usage patterns
+* switching workflows too quickly
+
+Gologin provides a stable environment, but behavioral consistency is just as important.
+
+## Key takeaway
+
+Gologin gives you a controlled and consistent environment for each account.
+
+To maintain stability:
+
+* always use the same profile
+* keep your proxy setup consistent
+* avoid sudden changes in behavior or environment
+
+See also
+
+* [Creating new accounts safely](https://gologin.com/docs/creating-new-accounts-safely)
+* [Profile hygiene checklist](https://gologin.com/docs/profile-hygiene-checklist)
+* [Migrating from other anti-detect browsers](https://gologin.com/docs/general/migration-from-other-tools)
+* [Common mistakes to avoid](https://gologin.com/docs/common-mistakes-to-avoid)
+
+
+Built with [Mintlify](https://mintlify.com).

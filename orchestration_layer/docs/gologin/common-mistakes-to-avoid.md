@@ -1,0 +1,54 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Common mistakes to avoid
+
+Most account issues are not caused by a single action, but by inconsistent setups or unnatural behavior patterns.
+
+Below are the most common mistakes that lead to verification checks or restrictions.
+
+### Environment mistakes
+
+* **Using multiple accounts with the same proxy**\
+  Sharing one IP between accounts makes them easy to link.
+* **Frequently changing proxy location**\
+  Switching countries or regions breaks session consistency.
+* **Modifying fingerprint settings after use**\
+  Changing device parameters mid-usage makes the profile look like a different device.
+
+### Profile misuse
+
+* **Using one profile for multiple accounts**\
+  Each account should always have its own dedicated profile.
+* **Running the same profile on multiple devices at the same time**\
+  This can cause data conflicts and inconsistencies.
+* **Mixing work and personal activity**\
+  Logging personal accounts into working profiles increases risk.
+
+### Behavioral mistakes
+
+* **High activity right after account creation**\
+  New accounts that act too fast often trigger checks.
+* **Repetitive or identical actions**\
+  Same timing, same actions, same patterns across accounts look automated.
+* **Sudden spikes in activity**\
+  Sharp increases in actions may be flagged as unusual behavior.
+
+### Why it matters
+
+Platforms evaluate patterns, not individual actions.
+
+Even if each step seems harmless, combining these mistakes can significantly lower trust and lead to restrictions.
+
+Avoiding these issues is one of the most effective ways to maintain stable and long-term account performance.
+
+See also
+
+* [Maintaining trust score](https://gologin.com/docs/maintaining-trust-score)
+* [Profile hygiene checklist](https://gologin.com/docs/profile-hygiene-checklist)
+* [Static vs Rotating proxies](https://gologin.com/docs/static-vs-dynamic-proxies)
+* [Run with Sync](https://gologin.com/docs/browser-profiles/profile-features/run-with-sync) — when mirroring actions across profiles is risky
+
+
+Built with [Mintlify](https://mintlify.com).

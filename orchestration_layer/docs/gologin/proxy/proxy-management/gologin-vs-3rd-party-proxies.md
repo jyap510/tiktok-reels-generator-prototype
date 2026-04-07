@@ -1,0 +1,57 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gologin.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Gologin vs 3rd-party proxies
+
+Gologin supports two ways to use proxies with browser profiles:
+
+* **Gologin proxies** – integrated proxies managed directly inside Gologin
+* **3rd-party proxies** – proxies purchased from external providers and added manually
+
+Both options allow you to assign a separate IP address to each browser profile, helping isolate sessions and reduce the risk of accounts being linked.
+
+## Gologin proxies
+
+Gologin proxies are built into the Gologin environment and can be assigned to profiles without additional configuration.
+
+Key characteristics:
+
+* quick setup inside the application
+* proxy assignment directly from the **Profiles** page
+* built-in traffic monitoring
+* simplified proxy management
+
+This option is suitable if you want a **simple and fast setup** without using external proxy providers.
+
+## 3rd-party proxies
+
+3rd-party proxies are purchased from external proxy providers and manually added to Gologin.
+
+They provide:
+
+* access to large proxy networks
+* more location options
+* control over proxy rotation and sessions
+* compatibility with existing proxy infrastructure
+
+This option is typically used in **larger or more advanced setups**.
+
+## Choosing the right option
+
+| Option                | Best for                                       |
+| :-------------------- | :--------------------------------------------- |
+| **Gologin proxies**   | quick setup and simple proxy management        |
+| **3rd-party proxies** | advanced configurations and larger proxy pools |
+
+Both proxy types work with Gologin browser profiles, and users can combine them depending on their workflow.
+
+See also
+
+* [Best proxy for your case](https://gologin.com/docs/proxy/introduction/best-proxy-for-your-case)
+* [Recommended proxy providers](https://gologin.com/best-proxy-server-services/)
+* [Adding and managing proxies](https://gologin.com/docs/proxy/proxy-management/adding-proxies)
+* [How much proxy traffic do I need?](https://gologin.com/docs/proxy/gologin-proxies/how-much-proxy-traffic-do-i-need)
+
+
+Built with [Mintlify](https://mintlify.com).
