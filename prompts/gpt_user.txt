@@ -1,8 +1,0 @@
-Product: {title}
-Brand: {brand}
-Description (excerpt): {description}
-Top reviews:
-- "{review1}"
-- "{review2}"
-
-Generate the prompts now. Make the persona feel like a real person who genuinely discovered this product and can't stop talking about it.
