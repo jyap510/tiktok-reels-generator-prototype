@@ -1,0 +1,35 @@
+{
+  "run_id": "26d6dbbc",
+  "started_at": "2026-04-06T12:15:16.821925+00:00",
+  "input_file": "/home/jay/Desktop/Coding Stuf/tiktok-upload-pipeline/data/B09LYF2ST7.json",
+  "output_dir": "/home/jay/Desktop/Coding Stuf/tiktok-upload-pipeline/results/26d6dbbc",
+  "step1_ingest": {
+    "status": "success",
+    "duration_s": 0.0,
+    "asin": "B09LYF2ST7"
+  },
+  "step2_prompts": {
+    "status": "success",
+    "duration_s": 38.5
+  },
+  "step3_avatar": {
+    "status": "success",
+    "duration_s": 34.8,
+    "task_id": "e647ca9b372ae2e55f51dff52ad067ca",
+    "kie_url": "https://tempfile.aiquickdraw.com/images/1775477782195-7mggb14g1as.png"
+  },
+  "step4_frames": {
+    "status": "success",
+    "duration_s": 205.8,
+    "task_ids": [
+      "a040d48ba0ef41c5cc8c8346168befcc",
+      "62c528800165a01ba29c94c1145a3f68",
+      "1993f68c859c3c8b2874ec44deff2594"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/images/1775477831343-xnekcjwm808.png",
+      "https://tempfile.aiquickdraw.com/images/1775477900459-3adk5u8a1nb.png",
+      "https://tempfile.aiquickdraw.com/images/1775477974216-wrb7idw7wvb.png"
+    ]
+  }
+}

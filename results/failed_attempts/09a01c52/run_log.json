@@ -1,0 +1,18 @@
+{
+  "run_id": "09a01c52",
+  "started_at": "2026-04-07T12:13:59.358835+00:00",
+  "input_file": "/home/jay/Desktop/Coding Stuf/tiktok-upload-pipeline/data/B0BHJJ9Y77.json",
+  "output_dir": "/home/jay/Desktop/Coding Stuf/tiktok-upload-pipeline/results/09a01c52",
+  "step1_ingest": {
+    "status": "success",
+    "duration_s": 0.0,
+    "asin": "B0BHJJ9Y77"
+  },
+  "step2_prompts": {
+    "status": "success",
+    "duration_s": 60.2
+  },
+  "status": "error",
+  "error": "HTTPSConnectionPool(host='api.kie.ai', port=443): Max retries exceeded with url: /api/v1/jobs/recordInfo?taskId=e1dc8809190f1834f622d8c71a376c9f (Caused by NameResolutionError(\"HTTPSConnection(host='api.kie.ai', port=443): Failed to resolve 'api.kie.ai' ([Errno -2] Name or service not known)\"))",
+  "finished_at": "2026-04-07T12:16:11.154211+00:00"
+}
