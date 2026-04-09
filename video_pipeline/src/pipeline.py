@@ -36,6 +36,19 @@ RESULTS_DIR = ROOT / "results"
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 
+def inject_gender(prompts: dict) -> dict:
+    """Prefix every scene and video prompt with the persona gender so models cannot drift."""
+    gender = prompts.get("persona_gender", "").strip().lower()
+    if gender not in ("male", "female"):
+        print(f"  [gender] WARNING: persona_gender='{gender}' unrecognized, skipping injection")
+        return prompts
+    label = "male creator" if gender == "male" else "female creator"
+    prompts["scene_prompts"] = [f"{label}. {p}" for p in prompts["scene_prompts"]]
+    prompts["video_prompts"] = [f"{label}. {p}" for p in prompts["video_prompts"]]
+    print(f"  [gender] injected '{label}' prefix into all scene and video prompts")
+    return prompts
+
+
 def log_step(log: dict, step: str, status: str, start: float, **details):
     log[step] = {
         "status": status,
@@ -62,6 +75,10 @@ def step_generate_prompts(product: dict, log: dict) -> dict:
     t = time.time()
     prompts = gpt_prompts.generate_prompts(product)
 
+    prompts = inject_gender(prompts)
+
+    print(f"\n  ── persona_gender ──────────────────────────────────────")
+    print(f"  {prompts.get('persona_gender')}")
     print(f"\n  ── persona_prompt ──────────────────────────────────────")
     print(f"  {prompts['persona_prompt']}")
     for i, sp in enumerate(prompts["scene_prompts"], 1):

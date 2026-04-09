@@ -131,9 +131,11 @@ def generate_prompts(product: dict) -> dict:
         result = _parse_json(raw)
 
     # Validate structure
-    for key in ("persona_prompt", "scene_prompts", "video_prompts", "voiceover_script"):
+    for key in ("persona_gender", "persona_prompt", "scene_prompts", "video_prompts", "voiceover_script"):
         if key not in result:
             raise ValueError(f"Missing key '{key}' in GPT response: {result}")
+    if result["persona_gender"] not in ("male", "female"):
+        raise ValueError(f"persona_gender must be 'male' or 'female', got: {result['persona_gender']}")
     if len(result["scene_prompts"]) != 3 or len(result["video_prompts"]) != 3:
         raise ValueError(f"Expected 3 scene_prompts and 3 video_prompts, got: {result}")
 
