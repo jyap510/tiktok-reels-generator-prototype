@@ -61,13 +61,23 @@ def step_generate_prompts(product: dict, log: dict) -> dict:
     section("STEP 2 — GPT-5 Nano: generate prompts")
     t = time.time()
     prompts = gpt_prompts.generate_prompts(product)
-    print(f"\n  persona_prompt  : {prompts['persona_prompt'][:100]}...")
+
+    print(f"\n  ── persona_prompt ──────────────────────────────────────")
+    print(f"  {prompts['persona_prompt']}")
     for i, sp in enumerate(prompts["scene_prompts"], 1):
-        print(f"  scene_prompt[{i}] : {sp[:80]}...")
+        print(f"\n  ── scene_prompt[{i}] ─────────────────────────────────")
+        print(f"  {sp}")
     for i, vp in enumerate(prompts["video_prompts"], 1):
-        print(f"  video_prompt[{i}] : {vp[:80]}...")
-    print(f"  voiceover_script: {prompts['voiceover_script'][:100]}...")
-    log_step(log, "step2_prompts", "success", t)
+        print(f"\n  ── video_prompt[{i}] ─────────────────────────────────")
+        print(f"  {vp}")
+    print(f"\n  ── voiceover_script ────────────────────────────────────")
+    print(f"  {prompts['voiceover_script']}")
+
+    log_step(log, "step2_prompts", "success", t,
+             persona_prompt=prompts["persona_prompt"],
+             scene_prompts=prompts["scene_prompts"],
+             video_prompts=prompts["video_prompts"],
+             voiceover_script=prompts["voiceover_script"])
     return prompts
 
 
@@ -80,59 +90,92 @@ def step_generate_avatar(prompts, out_dir, log, avatar_mode="ai-generated", avat
         log_step(log, "step3_avatar", "skipped", t, mode="avatar-id", kie_url=avatar_id)
         return avatar_id
 
+    print(f"  [step3] prompt → {prompts['persona_prompt']}")
     task_id = kie_client.create_task("nano-banana-pro", {
         "prompt": prompts["persona_prompt"],
         "image_input": [],
-        "aspect_ratio": "1:1",
+        "aspect_ratio": "9:16",
         "resolution": "1K",
         "output_format": "png",
     })
     task_data = kie_client.poll_task(task_id)
     avatar_kie_url = kie_client.extract_result_url(task_data)
-    # Pre-log before download so task_id/url survive a download failure
-    log_step(log, "step3_avatar", "attempted", t, task_id=task_id, kie_url=avatar_kie_url)
+    log_step(log, "step3_avatar", "attempted", t, task_id=task_id, kie_url=avatar_kie_url,
+             prompt=prompts["persona_prompt"])
     kie_client.download_file(avatar_kie_url, str(out_dir / "avatar.png"))
     print(f"  [step3] avatar saved → {out_dir / 'avatar.png'}")
     log["step3_avatar"]["status"] = "success"
     return avatar_kie_url
 
 
+def step_generate_first_frame(prompts: dict, product: dict, avatar_kie_url: str, out_dir: Path, log: dict) -> str:
+    section("STEP 4 — Nano Banana Pro: UGC scene frame")
+    t = time.time()
+    product_images = product.get("images", [])[:2]
+    image_input = [avatar_kie_url] + product_images
+    print(f"  [step4] scene_prompt[0] → {prompts['scene_prompts'][0]}")
+    print(f"  [step4] image_input: avatar + {len(product_images)} product image(s)")
+
+    task_id = kie_client.create_task("nano-banana-pro", {
+        "prompt": prompts["scene_prompts"][0],
+        "image_input": image_input,
+        "aspect_ratio": "9:16",
+        "resolution": "1K",
+        "output_format": "png",
+    })
+    task_data = kie_client.poll_task(task_id)
+    frame_kie_url = kie_client.extract_result_url(task_data)
+    log_step(log, "step4_frame", "attempted", t, task_id=task_id, kie_url=frame_kie_url,
+             prompt=prompts["scene_prompts"][0], image_input_count=len(image_input))
+    kie_client.download_file(frame_kie_url, str(out_dir / "frame1.png"))
+    print(f"  [step4] frame1 saved → {out_dir / 'frame1.png'}")
+    log["step4_frame"]["status"] = "success"
+    return frame_kie_url
+
+
 def step_generate_audio(prompts: dict, out_dir: Path, log: dict) -> str:
-    section("STEP 4 — OpenAI TTS: generate voiceover audio")
+    section("STEP 5 — OpenAI TTS: generate voiceover audio")
     t = time.time()
     voice = prompts.get("persona_metadata", {}).get("voice", "nova")
-    print(f"  [step4] voice={voice}, script={prompts['voiceover_script'][:80]}...")
+    print(f"  [step5] voice={voice}")
+    print(f"  [step5] script → {prompts['voiceover_script']}")
     audio_bytes = tts.generate_audio(prompts["voiceover_script"], voice=voice)
     (out_dir / "voiceover.mp3").write_bytes(audio_bytes)
-    print(f"  [step4] voiceover saved → {out_dir / 'voiceover.mp3'}")
+    print(f"  [step5] voiceover saved → {out_dir / 'voiceover.mp3'} ({len(audio_bytes)//1024}KB)")
     cdn_url = kie_client.upload_stream(audio_bytes, "tts", f"tts_{uuid.uuid4().hex[:8]}.mp3")
-    log_step(log, "step4_audio", "success", t, cdn_url=cdn_url, voice=voice)
+    log_step(log, "step5_audio", "success", t, cdn_url=cdn_url, voice=voice,
+             script=prompts["voiceover_script"])
     return cdn_url
 
 
-def step_generate_avatar_video(prompts: dict, avatar_kie_url: str, audio_cdn_url: str, out_dir: Path, log: dict) -> list:
-    section("STEP 5 — Kling Avatar Standard: lip-synced 10s video")
+def step_generate_avatar_video(prompts: dict, scene_kie_url: str, audio_cdn_url: str, out_dir: Path, log: dict) -> list:
+    section("STEP 6 — Kling Avatar Standard: lip-synced 10s video")
     t = time.time()
+    print(f"  [step6] scene_frame → {scene_kie_url}")
+    print(f"  [step6] audio       → {audio_cdn_url}")
+    print(f"  [step6] video_prompt[0] → {prompts['video_prompts'][0]}")
 
     task_id = kie_client.create_task("kling/ai-avatar-standard", {
-        "image_url": avatar_kie_url,
+        "image_url": scene_kie_url,
         "audio_url": audio_cdn_url,
         "prompt": prompts["video_prompts"][0],
     })
-    print(f"  [step5] submitted avatar video task → taskId={task_id}")
-    log_step(log, "step5_videos", "submitted", t, task_ids=[task_id], mode="avatar")
+    print(f"  [step6] submitted → taskId={task_id}")
+    log_step(log, "step6_videos", "submitted", t, task_ids=[task_id], mode="avatar",
+             scene_kie_url=scene_kie_url, audio_cdn_url=audio_cdn_url,
+             prompt=prompts["video_prompts"][0])
 
     dest = str(out_dir / "video1.mp4")
     try:
         task_data = kie_client.poll_task(task_id)
         video_url = kie_client.extract_result_url(task_data)
         kie_client.download_file(video_url, dest)
-        print(f"  [step5] video1 saved → {dest}")
-        log["step5_videos"]["status"] = "success"
-        log["step5_videos"]["kie_urls"] = [video_url]
+        print(f"  [step6] video1 saved → {dest}")
+        log["step6_videos"]["status"] = "success"
+        log["step6_videos"]["kie_urls"] = [video_url]
     except Exception as e:
-        log["step5_videos"]["status"] = "error"
-        log["step5_videos"]["error"] = str(e)
+        log["step6_videos"]["status"] = "error"
+        log["step6_videos"]["error"] = str(e)
         raise
 
     return [dest]
@@ -396,26 +439,26 @@ def step_generate_videos(prompts: dict, frame_kie_urls: list, out_dir: Path, log
 
 
 def step_merge_videos(video_paths: list, out_dir: Path, log: dict) -> str:
-    section("STEP 6 — FFmpeg: merge clips")
+    section("STEP 7 — FFmpeg: merge clips")
     t = time.time()
     final_path = str(out_dir / "final.mp4")
 
     if len(video_paths) == 1:
         shutil.copy2(video_paths[0], final_path)
-        print(f"  [step6] single clip passthrough → {final_path}")
-        log_step(log, "step6_merge", "passthrough", t, output=final_path, clip_count=1)
+        print(f"  [step7] single clip passthrough → {final_path}")
+        log_step(log, "step7_merge", "passthrough", t, output=final_path, clip_count=1)
     else:
         video_merge.merge_videos(video_paths, final_path)
-        log_step(log, "step6_merge", "success", t, output=final_path, clip_count=len(video_paths))
+        log_step(log, "step7_merge", "success", t, output=final_path, clip_count=len(video_paths))
 
     return final_path
 
 
 def step_tiktok_upload(product: dict, final_path: str, out_dir: Path, log: dict):
-    section("STEP 7 — TikTok: mock upload")
+    section("STEP 8 — TikTok: mock upload")
     t = time.time()
     result = tiktok_mock.mock_upload(product, final_path, str(out_dir))
-    log_step(log, "step7_tiktok", "success", t, **{k: v for k, v in result.items() if k != "status"})
+    log_step(log, "step8_tiktok", "success", t, **{k: v for k, v in result.items() if k != "status"})
 
 
 # ── main ──────────────────────────────────────────────────────────────────────
@@ -515,8 +558,9 @@ def main():
                 frame_kie_urls = step_generate_frames(prompts, product, avatar_kie_url, out_dir, log)
                 video_paths = step_generate_videos(prompts, frame_kie_urls, out_dir, log)
         elif args.video_mode == "avatar":
+            scene_kie_url = step_generate_first_frame(prompts, product, avatar_kie_url, out_dir, log)
             audio_cdn_url = step_generate_audio(prompts, out_dir, log)
-            video_paths = step_generate_avatar_video(prompts, avatar_kie_url, audio_cdn_url, out_dir, log)
+            video_paths = step_generate_avatar_video(prompts, scene_kie_url, audio_cdn_url, out_dir, log)
         else:
             # image-to-video: original single 10s clip, no audio
             video_paths = step_generate_video_single(prompts, avatar_kie_url, out_dir, log)

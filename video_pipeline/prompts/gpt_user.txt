@@ -8,4 +8,4 @@ Top reviews:
 Generate the prompts now. Make the persona feel like a real person who genuinely discovered this product and can't stop talking about it.
 
 Single-clip mode: video_prompts[0] must work as a complete standalone 10s TikTok UGC pitch for this product.
-Voiceover: voiceover_script must be a natural spoken script (40-60 words, no stage directions) that pairs with the avatar video for TTS generation.
+Voiceover: voiceover_script must be a natural spoken script — 25-30 words MAX, no stage directions. Must stay under 15 seconds when spoken aloud.

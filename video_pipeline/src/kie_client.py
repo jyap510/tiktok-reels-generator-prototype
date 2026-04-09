@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).resolve().parent.parent.parent / ".env")
 
 KIE_BASE = "https://api.kie.ai"
+KIE_UPLOAD_BASE = "https://kieai.redpandaai.co"  # File Upload API uses a different base
 
 def _headers():
     key = os.environ.get("KIE_API_KEY")
@@ -155,7 +156,7 @@ def upload_stream(data: bytes, upload_path: str, file_name: str) -> str:
     """Upload raw bytes to KIE storage via multipart. Returns KIE-hosted downloadUrl (expires 3 days)."""
     print(f"  [kie] upload_stream: {file_name} ({len(data)} bytes) → {upload_path}")
     r = requests.post(
-        f"{KIE_BASE}/api/file-stream-upload",
+        f"{KIE_UPLOAD_BASE}/api/file-stream-upload",
         headers=_headers(),
         files={"file": (file_name, data, "application/octet-stream")},
         data={"uploadPath": upload_path, "fileName": file_name},
