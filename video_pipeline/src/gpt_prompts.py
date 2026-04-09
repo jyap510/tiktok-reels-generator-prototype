@@ -100,7 +100,7 @@ def _extract_output_text(output: list) -> str:
 
 
 def generate_prompts(product: dict) -> dict:
-    """Generate persona, scene, and video prompts from product data using GPT-5 Nano."""
+    """Generate persona, scene, video prompts, and voiceover_script from product data using GPT-5 Nano."""
     reviews = product.get("reviews", [])
     review1 = reviews[0]["comment"][:120] if len(reviews) > 0 else "Great product!"
     review2 = reviews[1]["comment"][:120] if len(reviews) > 1 else "Highly recommend."
@@ -131,7 +131,7 @@ def generate_prompts(product: dict) -> dict:
         result = _parse_json(raw)
 
     # Validate structure
-    for key in ("persona_prompt", "scene_prompts", "video_prompts"):
+    for key in ("persona_prompt", "scene_prompts", "video_prompts", "voiceover_script"):
         if key not in result:
             raise ValueError(f"Missing key '{key}' in GPT response: {result}")
     if len(result["scene_prompts"]) != 3 or len(result["video_prompts"]) != 3:

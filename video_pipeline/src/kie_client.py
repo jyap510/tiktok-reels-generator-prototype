@@ -149,3 +149,22 @@ def download_file(kie_url: str, dest_path: str, total_timeout: int = 120, retrie
                 print(f"  [kie] download failed (attempt {attempt}/{retries}): {e} — retrying in 5s")
                 time.sleep(5)
     raise last_exc
+
+
+def upload_stream(data: bytes, upload_path: str, file_name: str) -> str:
+    """Upload raw bytes to KIE storage via multipart. Returns KIE-hosted downloadUrl (expires 3 days)."""
+    print(f"  [kie] upload_stream: {file_name} ({len(data)} bytes) → {upload_path}")
+    r = requests.post(
+        f"{KIE_BASE}/api/file-stream-upload",
+        headers=_headers(),
+        files={"file": (file_name, data, "application/octet-stream")},
+        data={"uploadPath": upload_path, "fileName": file_name},
+        timeout=60,
+    )
+    r.raise_for_status()
+    result = r.json()
+    if not result.get("success"):
+        raise RuntimeError(f"upload_stream failed: {result}")
+    url = result["data"]["downloadUrl"]
+    print(f"  [kie] uploaded → {url}")
+    return url

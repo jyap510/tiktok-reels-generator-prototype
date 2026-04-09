@@ -4,7 +4,8 @@ Respond ONLY with valid JSON (no markdown fences, no extra text) in this exact s
 {
   "persona_prompt": "...",
   "scene_prompts": ["...", "...", "..."],
-  "video_prompts": ["...", "...", "..."]
+  "video_prompts": ["...", "...", "..."],
+  "voiceover_script": "..."
 }
 
 persona_prompt: A Nano Banana Pro image generation prompt for a neutral face portrait headshot. Realistic, expressive, magnetic person with natural warmth and personality radiating through their eyes. Plain white/neutral background, looking directly into camera, natural lighting. No props, no context — just the face. Full of life.
@@ -22,3 +23,5 @@ Each prompt describes natural human motion and energy:
 - Voice persona is energetic and speaks in short punchy bursts
 
 Prompts must be cohesive across all 3 clips so they stitch into one fluid video when used in multi-clip mode. The persona should feel alive and full of human zest throughout.
+
+voiceover_script: A natural spoken-word script for a 8-10 second TikTok UGC voiceover. Written exactly as someone would say it out loud — short punchy sentences, no brackets, no visual cues, no stage directions. Hook in the first sentence. Conversational and energetic. 40-60 words max. This will be converted to audio by a TTS engine, so it must read naturally when spoken.

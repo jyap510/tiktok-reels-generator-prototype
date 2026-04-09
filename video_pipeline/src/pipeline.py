@@ -2,8 +2,8 @@
 """
 TikTok UGC Video Automation Pipeline
 Usage:
-  python scripts/pipeline.py                          # random product from data/
-  python scripts/pipeline.py --input data/B0869BPD69.json
+  python src/pipeline.py                          # random product from data/
+  python src/pipeline.py --input data/B0869BPD69.json
 """
 import sys
 import os
@@ -17,7 +17,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# Ensure scripts/ is importable regardless of cwd
+# Ensure src/ is importable regardless of cwd
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from dotenv import load_dotenv
@@ -27,6 +27,7 @@ import kie_client
 import gpt_prompts
 import video_merge
 import tiktok_mock
+import tts
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -65,6 +66,7 @@ def step_generate_prompts(product: dict, log: dict) -> dict:
         print(f"  scene_prompt[{i}] : {sp[:80]}...")
     for i, vp in enumerate(prompts["video_prompts"], 1):
         print(f"  video_prompt[{i}] : {vp[:80]}...")
+    print(f"  voiceover_script: {prompts['voiceover_script'][:100]}...")
     log_step(log, "step2_prompts", "success", t)
     return prompts
 
@@ -93,6 +95,47 @@ def step_generate_avatar(prompts, out_dir, log, avatar_mode="ai-generated", avat
     print(f"  [step3] avatar saved → {out_dir / 'avatar.png'}")
     log["step3_avatar"]["status"] = "success"
     return avatar_kie_url
+
+
+def step_generate_audio(prompts: dict, out_dir: Path, log: dict) -> str:
+    section("STEP 4 — OpenAI TTS: generate voiceover audio")
+    t = time.time()
+    voice = prompts.get("persona_metadata", {}).get("voice", "nova")
+    print(f"  [step4] voice={voice}, script={prompts['voiceover_script'][:80]}...")
+    audio_bytes = tts.generate_audio(prompts["voiceover_script"], voice=voice)
+    (out_dir / "voiceover.mp3").write_bytes(audio_bytes)
+    print(f"  [step4] voiceover saved → {out_dir / 'voiceover.mp3'}")
+    cdn_url = kie_client.upload_stream(audio_bytes, "tts", f"tts_{uuid.uuid4().hex[:8]}.mp3")
+    log_step(log, "step4_audio", "success", t, cdn_url=cdn_url, voice=voice)
+    return cdn_url
+
+
+def step_generate_avatar_video(prompts: dict, avatar_kie_url: str, audio_cdn_url: str, out_dir: Path, log: dict) -> list:
+    section("STEP 5 — Kling Avatar Standard: lip-synced 10s video")
+    t = time.time()
+
+    task_id = kie_client.create_task("kling/ai-avatar-standard", {
+        "image_url": avatar_kie_url,
+        "audio_url": audio_cdn_url,
+        "prompt": prompts["video_prompts"][0],
+    })
+    print(f"  [step5] submitted avatar video task → taskId={task_id}")
+    log_step(log, "step5_videos", "submitted", t, task_ids=[task_id], mode="avatar")
+
+    dest = str(out_dir / "video1.mp4")
+    try:
+        task_data = kie_client.poll_task(task_id)
+        video_url = kie_client.extract_result_url(task_data)
+        kie_client.download_file(video_url, dest)
+        print(f"  [step5] video1 saved → {dest}")
+        log["step5_videos"]["status"] = "success"
+        log["step5_videos"]["kie_urls"] = [video_url]
+    except Exception as e:
+        log["step5_videos"]["status"] = "error"
+        log["step5_videos"]["error"] = str(e)
+        raise
+
+    return [dest]
 
 
 def step_generate_frames(prompts: dict, product: dict, avatar_kie_url: str, out_dir: Path, log: dict) -> list:
@@ -400,6 +443,13 @@ def main():
         help="KIE image URL to use as avatar (required when --avatar-mode=avatar-id)"
     )
     parser.add_argument(
+        "--video-mode",
+        choices=["avatar", "image-to-video"],
+        default="avatar",
+        dest="video_mode",
+        help="Single-clip video mode: avatar (lip-synced TTS) or image-to-video (no audio). Ignored when --multi-clip is set."
+    )
+    parser.add_argument(
         "--multi-clip",
         action="store_true",
         default=False,
@@ -464,8 +514,11 @@ def main():
             else:
                 frame_kie_urls = step_generate_frames(prompts, product, avatar_kie_url, out_dir, log)
                 video_paths = step_generate_videos(prompts, frame_kie_urls, out_dir, log)
+        elif args.video_mode == "avatar":
+            audio_cdn_url = step_generate_audio(prompts, out_dir, log)
+            video_paths = step_generate_avatar_video(prompts, avatar_kie_url, audio_cdn_url, out_dir, log)
         else:
-            # Default: single 10s clip from avatar
+            # image-to-video: original single 10s clip, no audio
             video_paths = step_generate_video_single(prompts, avatar_kie_url, out_dir, log)
 
         final_path = step_merge_videos(video_paths, out_dir, log)
