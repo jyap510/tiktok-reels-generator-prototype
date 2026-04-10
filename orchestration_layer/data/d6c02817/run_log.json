@@ -1,0 +1,84 @@
+{
+  "run_id": "d6c02817",
+  "started_at": "2026-04-09T15:26:16.676497+00:00",
+  "input_file": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/data/B0F11KQQF4.json",
+  "output_dir": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/d6c02817",
+  "step1_ingest": {
+    "status": "success",
+    "duration_s": 0.0,
+    "asin": "B0F11KQQF4"
+  },
+  "step2_prompts": {
+    "status": "success",
+    "duration_s": 61.2,
+    "persona_prompt": "A Nano Banana Pro image generation prompt for a neutral face portrait headshot. Realistic, expressive, magnetic person with natural warmth and personality radiating through their eyes. Plain white/neutral background, looking directly into camera, natural lighting. No props, no context \u2014 just the face.",
+    "scene_prompts": [
+      "9:16 vertical shot of a real gaming creator in their element, chest-up, centered, MSI RTX 5070 Ti 16G Gaming Trio OC held up with logo facing camera. The creator looks at camera with wide-eyed excitement, mouth mid-sentence. Background: realistic gaming desk with RGB PC, monitor glow, shallow depth. Warm key light on face, natural window light. Relatable, authentic setup.",
+      "9:16 vertical shot, same creator in the same setup, close-up of the MSI RTX 5070 Ti held near camera. The creator gestures at DLSS 4 and Tri FROZR 4 cooling, eyebrows up, engaged expression. Background softly blurred gaming desk, RGB glow. Card clearly visible with label facing camera.",
+      "9:16 vertical shot, same creator, grinning at camera, product visible, pointing to a link in bio area on screen. Realistic gaming setup in background, warm lighting. High-energy CTA with confident vibe."
+    ],
+    "video_prompts": [
+      "Animate a standalone 10-second Hook clip. Real gaming setup, creator talks non-stop: this MSI RTX 5070 Ti is a total game-changer, FPS skyrocket, 1440p feels unreal, eyes wide, leaning in, hands moving, hype energy.",
+      "Animate the Demo frame into a 5-second clip. The creator rapid-talks through DLSS 4 and TriFROZR 4 cooling while pointing at the card, energetic gestures and nodding.",
+      "Animate the CTA frame into a 5-second clip. The creator looks straight at camera with a big grin and delivers payoff line, grab yours now, link in bio, you know this is worth it."
+    ],
+    "voiceover_script": "MSI RTX 5070 Ti just turned my rig into a beast. DLSS 4 is unreal, temps stay cool, 1440p smooth as butter. Link in bio, grab yours."
+  },
+  "step3_avatar": {
+    "status": "success",
+    "duration_s": 31.3,
+    "task_id": "5e5cd4a22988fdd28753bd4457c82068",
+    "kie_url": "https://tempfile.aiquickdraw.com/images/1775748465362-6k0qwkdb98f.png",
+    "prompt": "A Nano Banana Pro image generation prompt for a neutral face portrait headshot. Realistic, expressive, magnetic person with natural warmth and personality radiating through their eyes. Plain white/neutral background, looking directly into camera, natural lighting. No props, no context \u2014 just the face."
+  },
+  "step4_frames": {
+    "status": "success",
+    "duration_s": 1.5,
+    "task_ids": [
+      "ed72600e98a07b8d1b5f757c5a104aa9",
+      "49759aadb333609b500d2723598ae9ef",
+      "7e44b7c8bec82631726c31a3fef612e2"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/images/1775748533144-1tqrujafkldj.png",
+      "https://tempfile.aiquickdraw.com/images/1775748510521-m09l86yioih.png",
+      "https://tempfile.aiquickdraw.com/images/1775748509994-ftbkwnkh73.png"
+    ],
+    "errors": []
+  },
+  "step5_videos": {
+    "status": "success",
+    "duration_s": 4.3,
+    "task_ids": [
+      "8d1c1092aad689050e52d66c24085e8b",
+      "e0755949563aa12abde9b10389b70de8",
+      "63262b57b2bdf54e74a38ea77494de24"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/r/8d1c1092aad689050e52d66c24085e8b_1775748698_ra7xjj21.mp4",
+      "https://tempfile.aiquickdraw.com/r/e0755949563aa12abde9b10389b70de8_1775748709_68aihdy6.mp4",
+      "https://tempfile.aiquickdraw.com/r/63262b57b2bdf54e74a38ea77494de24_1775748701_4p4b0xr9.mp4"
+    ],
+    "errors": []
+  },
+  "step7_merge": {
+    "status": "success",
+    "duration_s": 0.3,
+    "output": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/d6c02817/final.mp4",
+    "clip_count": 3
+  },
+  "step8_tiktok": {
+    "status": "success",
+    "duration_s": 0.0,
+    "upload_id": "tt_upload_811309089b32",
+    "video_id": "tt_video_a49c1c8d6e764f75",
+    "product_asin": "B0F11KQQF4",
+    "product_title": "MSI Gaming RTX 5070 Ti 16G Gaming Trio OC Graphics Card (16GB GDDR7, 256-bit, Ex",
+    "video_path": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/d6c02817/final.mp4",
+    "video_size_kb": 26666,
+    "timestamp": "2026-04-09T15:32:03.320602+00:00",
+    "mock": true
+  },
+  "status": "success",
+  "finished_at": "2026-04-09T15:32:03.320765+00:00"
+}
