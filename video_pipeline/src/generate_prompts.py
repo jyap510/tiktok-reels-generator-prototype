@@ -24,6 +24,7 @@ def main():
     parser.add_argument("--asin",        required=True)
     parser.add_argument("--title",       required=True)
     parser.add_argument("--description", default="")
+    parser.add_argument("--direction",   default="", help="Specific video direction or focus (appended to GPT prompt)")
     parser.add_argument("--images",      default="[]")
     parser.add_argument("--reviews",     default="[]")
     args = parser.parse_args()
@@ -35,11 +36,15 @@ def main():
         print(json.dumps({"status": "error", "error": f"JSON parse error in --images or --reviews: {e}"}))
         sys.exit(1)
 
+    description = args.description
+    if args.direction:
+        description = f"{description}\n\nVideo direction: {args.direction}".strip()
+
     product = {
         "asin": args.asin,
         "title": args.title,
         "brand": "",
-        "description": args.description,
+        "description": description,
         "images": images,
         "reviews": [{"comment": c} for c in review_strings],
     }
