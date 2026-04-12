@@ -1,8 +1,11 @@
 #!/usr/bin/env tsx
-// Run: npx tsx scripts/seed-from-hardcoded.ts
+// Run: npx tsx scripts/seed-from-hardcoded.ts [--listings-only]
 import Database from 'better-sqlite3';
 import fs from 'fs';
 import path from 'path';
+
+const LISTINGS_ONLY = process.argv.includes('--listings-only');
+const DATA_DIR = '/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/data';
 
 const ROOT = path.join(__dirname, '..');
 const DB_DIR = path.join(ROOT, 'db');
@@ -17,6 +20,40 @@ db.pragma('journal_mode = WAL');
 // Init schema
 const schema = fs.readFileSync(SCHEMA_PATH, 'utf-8');
 db.exec(schema);
+
+// ── Listings ──────────────────────────────────────────────────────────────────
+const insertListing = db.prepare(`
+  INSERT OR IGNORE INTO listings (asin, title, brand, description, images, reviews, json_path)
+  VALUES (@asin, @title, @brand, @description, @images, @reviews, @json_path)
+`);
+
+let insertedListings = 0;
+try {
+  const files = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json'));
+  for (const file of files) {
+    const filePath = path.join(DATA_DIR, file);
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    const info = insertListing.run({
+      asin: data.asin,
+      title: data.title,
+      brand: data.brand || null,
+      description: data.description || null,
+      images: JSON.stringify(data.images ?? []),
+      reviews: JSON.stringify(data.reviews ?? []),
+      json_path: filePath,
+    });
+    if (info.changes > 0) insertedListings++;
+  }
+  console.log(`Inserted ${insertedListings} listings`);
+} catch (err) {
+  console.log(`Listings seeding failed or directory not found: ${err}`);
+}
+
+if (LISTINGS_ONLY) {
+  console.log('--listings-only flag set, exiting');
+  db.close();
+  process.exit(0);
+}
 
 // ── Personas ─────────────────────────────────────────────────────────────────
 const insertPersona = db.prepare(`
