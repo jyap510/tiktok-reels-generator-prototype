@@ -1,0 +1,90 @@
+{
+  "run_id": "5d212197",
+  "started_at": "2026-04-09T12:50:43.678512+00:00",
+  "input_file": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/data/B0BHJJ9Y77.json",
+  "output_dir": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/5d212197",
+  "step1_ingest": {
+    "status": "success",
+    "duration_s": 0.0,
+    "asin": "B0BHJJ9Y77"
+  },
+  "step2_prompts": {
+    "status": "success",
+    "duration_s": 46.6,
+    "persona_prompt": "A Nano Banana Pro image generation prompt for a neutral face portrait headshot. Realistic, expressive, magnetic person with natural warmth and personality radiating through their eyes. Plain white/neutral background, looking directly into camera, natural lighting. No props, no context \u2014 just the face. Full of life.",
+    "scene_prompts": [
+      "9:16 vertical still, chest-up, person centered at a desk with RGB glow and monitors in the background, real tech creator energy. Right hand holds a Samsung 990 PRO NVMe SSD, edge visible near camera, product entering frame from right, eyes wide, open-mouthed smile. Warm key light on face, depth in background, headroom for text overlay.",
+      "9:16 vertical still, chest-up, same person at desk, product held close to camera, finger tracing a feature, eyebrows raised, engaged expression; SSD angled to clearly show logo; background with monitors and RGB glow softly blurred.",
+      "9:16 vertical still, chest-up, same person grinning directly at camera, product visible between hands, relaxed energy, head slightly tilted, room glow and monitors in background, headroom for CTA text."
+    ],
+    "video_prompts": [
+      "9:16 video arc for 10s standalone TikTok pitch. Right hand lifts the SSD into frame with a quick snap, head tilts, eyes widen, mouth opens slightly. Then the SSD moves toward the lens, right hand rotates slightly, finger traces the edge. Final moment: big grin, confident nod, direct eye contact, slight lean back, high-energy finish. No dialogue, continuous motion.",
+      "9:16 frame 2 motion: hands briefly hold SSD near camera, finger taps the edge to highlight a feature, eyebrows rise, eyes spark, wrist tilt as the lens focuses on logo; subtle camera drift; same lighting; maintain fast, punchy rhythm.",
+      "9:16 frame 3 motion: product held steady at center, both hands frame the SSD, big smile, eyes lock camera, head tilt and slight nod, product stays visible while tilt and push-back convey CTA energy."
+    ],
+    "voiceover_script": "Ever seen speeds like this? Samsung 990 PRO just turned my PC into a rocket. Install, boot, load, game on. Link in bio, grab yours now."
+  },
+  "step3_avatar": {
+    "status": "success",
+    "duration_s": 61.6,
+    "task_id": "ca9d03ea3e4237006e1a2336c45a0109",
+    "kie_url": "https://tempfile.aiquickdraw.com/images/1775739148408-stablx8wug.png",
+    "prompt": "A Nano Banana Pro image generation prompt for a neutral face portrait headshot. Realistic, expressive, magnetic person with natural warmth and personality radiating through their eyes. Plain white/neutral background, looking directly into camera, natural lighting. No props, no context \u2014 just the face. Full of life."
+  },
+  "step4_frames": {
+    "status": "success",
+    "duration_s": 1.5,
+    "task_ids": [
+      "6cd9b4ee815854b1c582d147c9a7586d",
+      "bea05579d76c4ffaf99c356951de6634",
+      "f2983b87d3058bafff6ac92b4713423f"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/images/1775739279731-sn5yeo11jk.png",
+      "https://tempfile.aiquickdraw.com/images/1775739244971-b2iokn80a66.png",
+      "https://tempfile.aiquickdraw.com/images/1775739203162-7zwrbr4bp.png"
+    ],
+    "errors": []
+  },
+  "step5_videos": {
+    "status": "partial",
+    "duration_s": 2.1,
+    "task_ids": [
+      "77819aa61c6148eb6e82bc383813e14f",
+      "6cb70a37bce41f9fdb4dbf5997932550",
+      "69789fdd3d4d17cce4b167319265ca6a"
+    ],
+    "kie_urls": [
+      null,
+      "https://tempfile.aiquickdraw.com/r/6cb70a37bce41f9fdb4dbf5997932550_1775739443_cl5kul89.mp4",
+      "https://tempfile.aiquickdraw.com/r/69789fdd3d4d17cce4b167319265ca6a_1775739444_47483r6e.mp4"
+    ],
+    "errors": [
+      {
+        "index": 1,
+        "task_id": "77819aa61c6148eb6e82bc383813e14f",
+        "error": "HTTPSConnectionPool(host='tempfile.1f6c22e0a6980b81e6d5c6c5f89b1984.r2.cloudflarestorage.com', port=443): Read timed out."
+      }
+    ]
+  },
+  "step7_merge": {
+    "status": "success",
+    "duration_s": 0.3,
+    "output": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/5d212197/final.mp4",
+    "clip_count": 3
+  },
+  "step8_tiktok": {
+    "status": "success",
+    "duration_s": 0.0,
+    "upload_id": "tt_upload_29739d82063b",
+    "video_id": "tt_video_9d4f628d83664cd2",
+    "product_asin": "B0BHJJ9Y77",
+    "product_title": "SAMSUNG 990 PRO SSD NVMe M.2 PCIe Gen4, M.2 2280 Internal Solid State Hard Drive",
+    "video_path": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/5d212197/final.mp4",
+    "video_size_kb": 23960,
+    "timestamp": "2026-04-09T13:03:58.175547+00:00",
+    "mock": true
+  },
+  "status": "success",
+  "finished_at": "2026-04-09T13:03:58.175713+00:00"
+}

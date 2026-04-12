@@ -1,0 +1,90 @@
+{
+  "run_id": "119eec57",
+  "started_at": "2026-04-09T15:07:36.598090+00:00",
+  "input_file": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/data/B0BHJJ9Y77.json",
+  "output_dir": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/119eec57",
+  "step1_ingest": {
+    "status": "success",
+    "duration_s": 0.0,
+    "asin": "B0BHJJ9Y77"
+  },
+  "step2_prompts": {
+    "status": "success",
+    "duration_s": 69.9,
+    "persona_prompt": "A Nano Banana Pro image generation prompt for a neutral face portrait headshot. Realistic, expressive, magnetic person with natural warmth and personality radiating through their eyes. Plain white/neutral background, looking directly into camera, natural lighting. No props, no context \u2014 just the face.",
+    "scene_prompts": [
+      "9:16 vertical, chest-up, centered, warm key light on face, realistic desk setup in background with monitor and RGB blur. The person holds the Samsung 990 PRO SSD box visible, points at it, wide-eyed and smiling in a surprised hook.",
+      "9:16 vertical, chest-up, same lighting and setting. The person holds the SSD close to camera, gestures at a feature while eyebrows raise, mid-sentence energy, explaining speed and install ease.",
+      "9:16 vertical, chest-up, same setup. The person grins at camera, product visible, relaxed confident CTA energy, inviting viewers to tap the link in bio."
+    ],
+    "video_prompts": [
+      "Kling 2.6 motion prompt for a 10-second standalone hook: 9:16 frame 0, creator leans in, eyes blazing, rapid-fire hype about Samsung 990 PRO, highlighting speed, ease of install, and gaming/build impact; hands gesture; bright desk glow; continuous talking.",
+      "Kling 2.6 motion prompt for the Demo: 9:16 frame 1, fast-talking through key feature while pointing at the SSD, eyebrows up, nodding, camera drift, high-energy delivery.",
+      "Kling 2.6 motion prompt for the CTA: 9:16 frame 2, big grin, looks into camera with conviction, delivers payoff line with chin-dip emphasis, product clearly visible, link-in-bio call-to-action."
+    ],
+    "voiceover_script": "Yo, this Samsung 990 PRO just turbocharged my PC. Blazing speeds, epic load times, zero stutter. If you care about speed, you need this in your build\u2014link in bio."
+  },
+  "step3_avatar": {
+    "status": "success",
+    "duration_s": 61.5,
+    "task_id": "0692b7cb915812b84e8e4448faa8565a",
+    "kie_url": "https://tempfile.aiquickdraw.com/images/1775747378886-p7gml07kaz.png",
+    "prompt": "A Nano Banana Pro image generation prompt for a neutral face portrait headshot. Realistic, expressive, magnetic person with natural warmth and personality radiating through their eyes. Plain white/neutral background, looking directly into camera, natural lighting. No props, no context \u2014 just the face."
+  },
+  "step4_frames": {
+    "status": "partial",
+    "duration_s": 1.4,
+    "task_ids": [
+      "371bdc24e042fe367d7f7482259fc824",
+      "d331160acb3f179f409e0a45f7d34970",
+      "1fcf9d8bc9cf1a4ca29b42ac7fa7543a"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/images/1775747495192-uhs0jl74qyq.png",
+      null,
+      "https://tempfile.aiquickdraw.com/images/1775747429488-ejlghhvmhrb.png"
+    ],
+    "errors": [
+      {
+        "index": 2,
+        "task_id": "d331160acb3f179f409e0a45f7d34970",
+        "error": "Task d331160acb3f179f409e0a45f7d34970 failed: {'taskId': 'd331160acb3f179f409e0a45f7d34970', 'model': 'nano-banana-pro', 'state': 'fail', 'param': '{\"input\":\"{\\\\\"image_input\\\\\":[\\\\\"https://tempfile.aiquickdraw.com/images/1775747378886-p7gml07kaz.png\\\\\",\\\\\"https://m.media-amazon.com/images/I/61ZL9Qpo1-L._AC_SL1320_.jpg\\\\\",\\\\\"https://m.media-amazon.com/images/I/61+9ZC7xuiL._AC_SL1200_.jpg\\\\\"],\\\\\"aspect_ratio\\\\\":\\\\\"9:16\\\\\",\\\\\"output_format\\\\\":\\\\\"png\\\\\",\\\\\"prompt\\\\\":\\\\\"9:16 vertical, chest-up, same lighting and setting. The person holds the SSD close to camera, gestures at a feature while eyebrows raise, mid-sentence energy, explaining speed and install ease.\\\\\",\\\\\"resolution\\\\\":\\\\\"1K\\\\\"}\",\"model\":\"nano-banana-pro\"}', 'resultJson': '', 'failCode': '400', 'failMsg': \"No images found in AI response. Unable to show the generated image. The image was filtered out because it violated Google's Generative AI Prohibited Use policy.\", 'costTime': 43, 'completeTime': 1775747433556, 'createTime': 1775747389863}"
+      }
+    ]
+  },
+  "step5_videos": {
+    "status": "success",
+    "duration_s": 1.4,
+    "task_ids": [
+      "3085787e373e08a0fab6cad6352637c7",
+      null,
+      "d78d9bd71afda8d610bafb43de948c35"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/r/3085787e373e08a0fab6cad6352637c7_1775747724_3g6b1wqj.mp4",
+      null,
+      "https://tempfile.aiquickdraw.com/r/d78d9bd71afda8d610bafb43de948c35_1775747710_mra5pcxx.mp4"
+    ],
+    "errors": []
+  },
+  "step7_merge": {
+    "status": "success",
+    "duration_s": 0.2,
+    "output": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/119eec57/final.mp4",
+    "clip_count": 2
+  },
+  "step8_tiktok": {
+    "status": "success",
+    "duration_s": 0.0,
+    "upload_id": "tt_upload_e5c0333f7a17",
+    "video_id": "tt_video_f0f5f6016d224f11",
+    "product_asin": "B0BHJJ9Y77",
+    "product_title": "SAMSUNG 990 PRO SSD NVMe M.2 PCIe Gen4, M.2 2280 Internal Solid State Hard Drive",
+    "video_path": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/119eec57/final.mp4",
+    "video_size_kb": 15505,
+    "timestamp": "2026-04-09T15:15:29.200423+00:00",
+    "mock": true
+  },
+  "status": "success",
+  "finished_at": "2026-04-09T15:15:29.200594+00:00"
+}

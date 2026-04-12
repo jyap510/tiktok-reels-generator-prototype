@@ -1,0 +1,84 @@
+{
+  "run_id": "8fd7ecfb",
+  "started_at": "2026-04-09T15:17:17.184972+00:00",
+  "input_file": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/data/B0F11KQQF4.json",
+  "output_dir": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/8fd7ecfb",
+  "step1_ingest": {
+    "status": "success",
+    "duration_s": 0.0,
+    "asin": "B0F11KQQF4"
+  },
+  "step2_prompts": {
+    "status": "success",
+    "duration_s": 57.0,
+    "persona_prompt": "A Nano Banana Pro image generation prompt for a neutral face portrait headshot. Realistic, expressive, magnetic person with natural warmth and personality radiating through their eyes. Plain white/neutral background, looking directly into camera, natural lighting. No props, no context \u2014 just the face.",
+    "scene_prompts": [
+      "9:16 vertical shot of a real creator in their gaming setup, chest-up, centered, warm-lit face. Hand holds MSI RTX 5070 Ti 16G card at chest level, product entering frame with a surprised smile. Background shows a gamer desk with dual monitors, RGB lighting, PC tower; depth blur, headroom for text, same energy as frames 2 and 3.",
+      "9:16 vertical shot, same creator in gaming setup, chest-up, centered. Product held close to camera, MSI RTX 5070 Ti 16G visible; gesturing at a key feature with eyebrows up, engaged expression. Background remains realistic with monitors and RGB, soft blur, cohesive lighting.",
+      "9:16 vertical shot, same creator, chest-up, direct gaze at camera with confident grin. Product visible, frame center, CTA vibe to say link in bio. Background consistent with frames 1 and 2, cozy gaming desk, RGB glow, depth blur, headroom for text overlay."
+    ],
+    "video_prompts": [
+      "Transform the first frame into a 5-second high-energy Hook clip: the creator leans in, eyes wide, mouth moving rapidly delivering the hook about MSI RTX 5070 Ti 16G. They gesture to the card, shout about extreme performance and DLSS 4. Background stays gaming desk with RGB glow, subtle camera sway, same outfit as frame 1, continuous speech.",
+      "Transform the second frame into a 5-second Demo clip: the creator holds the GPU close to camera, points at DLSS 4 and TRI Froz 4, explaining feature while nodding and talking fast. Background blurred monitors, RGB glow, same energy as frame 2; lip sync continuous; eyes up; micro-expressions.",
+      "Transform the third frame into a 5-second CTA clip: the creator looks into camera with a big grin, delivers the payoff line and urges viewers to click the link in bio, product visible, confident finish; slight handheld sway for life."
+    ],
+    "voiceover_script": "MSI RTX 5070 Ti 16G slaps hard. DLSS 4 and TRI Froz cooling push 4K vibes now. Link in bio, grab yours today."
+  },
+  "step3_avatar": {
+    "status": "success",
+    "duration_s": 31.2,
+    "task_id": "334591ae473700af0ba26623ccfb565c",
+    "kie_url": "https://tempfile.aiquickdraw.com/images/1775747921483-1noam6xpfc4.png",
+    "prompt": "A Nano Banana Pro image generation prompt for a neutral face portrait headshot. Realistic, expressive, magnetic person with natural warmth and personality radiating through their eyes. Plain white/neutral background, looking directly into camera, natural lighting. No props, no context \u2014 just the face."
+  },
+  "step4_frames": {
+    "status": "success",
+    "duration_s": 1.6,
+    "task_ids": [
+      "c6f5a7edd9b5f412289675d0f4095f67",
+      "41e79b8eff28aeab142b3f111919f239",
+      "124e66c0e9528d25f71543fa143c3842"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/images/1775747968525-8wq4bn5tmdc.png",
+      "https://tempfile.aiquickdraw.com/images/1775748012402-r7pky73f5kq.png",
+      "https://tempfile.aiquickdraw.com/images/1775747971475-r34o2u9fx5m.png"
+    ],
+    "errors": []
+  },
+  "step5_videos": {
+    "status": "success",
+    "duration_s": 2.1,
+    "task_ids": [
+      "2bdbda1d63db2751dad5f408fecfbe82",
+      "ac2534e36d724ae725a0d4558ecaaa04",
+      "f923aa0ad7edc03a59820db00f0cdcb9"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/r/2bdbda1d63db2751dad5f408fecfbe82_1775748243_9qmpb19t.mp4",
+      "https://tempfile.aiquickdraw.com/r/ac2534e36d724ae725a0d4558ecaaa04_1775748233_4xitwaok.mp4",
+      "https://tempfile.aiquickdraw.com/r/f923aa0ad7edc03a59820db00f0cdcb9_1775748213_df04ve1y.mp4"
+    ],
+    "errors": []
+  },
+  "step7_merge": {
+    "status": "success",
+    "duration_s": 0.3,
+    "output": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/8fd7ecfb/final.mp4",
+    "clip_count": 3
+  },
+  "step8_tiktok": {
+    "status": "success",
+    "duration_s": 0.0,
+    "upload_id": "tt_upload_0aa51367c69a",
+    "video_id": "tt_video_12fa893b5edd41cf",
+    "product_asin": "B0F11KQQF4",
+    "product_title": "MSI Gaming RTX 5070 Ti 16G Gaming Trio OC Graphics Card (16GB GDDR7, 256-bit, Ex",
+    "video_path": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/8fd7ecfb/final.mp4",
+    "video_size_kb": 23691,
+    "timestamp": "2026-04-09T15:24:32.105231+00:00",
+    "mock": true
+  },
+  "status": "success",
+  "finished_at": "2026-04-09T15:24:32.105399+00:00"
+}

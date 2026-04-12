@@ -1,0 +1,84 @@
+{
+  "run_id": "11cd701e",
+  "started_at": "2026-04-09T15:36:58.055842+00:00",
+  "input_file": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/data/B0869BPD69.json",
+  "output_dir": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/11cd701e",
+  "step1_ingest": {
+    "status": "success",
+    "duration_s": 0.0,
+    "asin": "B0869BPD69"
+  },
+  "step2_prompts": {
+    "status": "success",
+    "duration_s": 71.4,
+    "persona_prompt": "A Nano Banana Pro image generation prompt for a neutral face portrait headshot. Realistic, expressive, magnetic person with natural warmth and personality radiating through their eyes. Plain white/neutral background, looking directly into camera, natural lighting. No props, no context - just the face.",
+    "scene_prompts": [
+      "female creator. Hook frame: female creator in her element, 9:16 vertical, chest-up, centered, warm living room, blurred background. The necklace enters frame as she gasps with wide eyes, holds it up with one hand and points at it with the other. She is in casual wear, natural makeup, warm key light on her face. Text overlay space above. Real, relatable energy.",
+      "female creator. Demo frame: female creator holds the necklace close to camera, 9:16 vertical, focusing on pendant and chain. She gestures at the key feature, eyebrows up, engaged expression. Background is realistic\u2014desk, plants, soft blur. Product clearly visible, she nods as she explains 925 sterling silver with rhodium or rose gold plating. Lighting warm, depth in room, headroom for overlay.",
+      "female creator. CTA frame: female creator grins directly at camera, 9:16 vertical, product visible in frame. Relaxed, confident energy, she delivers the CTA with a final zoom and nods. Background remains realistic living room, text overlay space above, eyes locked on lens as she says link in bio."
+    ],
+    "video_prompts": [
+      "female creator. Hook clip: female creator leans in with wide eyes, rapid-fire talk about the Forever Love Heart Necklace, 925 sterling silver with rhodium or rose gold plating, gift-ready wow factor, says link in bio, non-stop mouth, big energy.",
+      "female creator. Demo clip: female creator holds the necklace close to camera, explains 925 sterling silver with rhodium or rose gold plating for lasting shine, points to pendant, eyebrows up, fast-talking, confident.",
+      "female creator. CTA clip: female creator looks straight into camera with a big grin, delivers payoff line, this is the perfect gift, grab yours now link in bio, necklace clearly visible, relaxed confident energy."
+    ],
+    "voiceover_script": "This Forever Love Heart Necklace is perfect. 925 sterling silver with rhodium or rose gold plating. Gift mom, wife, or girlfriend will love. Link in bio, grab yours."
+  },
+  "step3_avatar": {
+    "status": "success",
+    "duration_s": 61.7,
+    "task_id": "972a2b93461e4350ed23642e4fa9a124",
+    "kie_url": "https://tempfile.aiquickdraw.com/images/1775749124415-at1221rypc.png",
+    "prompt": "A Nano Banana Pro image generation prompt for a neutral face portrait headshot. Realistic, expressive, magnetic person with natural warmth and personality radiating through their eyes. Plain white/neutral background, looking directly into camera, natural lighting. No props, no context - just the face."
+  },
+  "step4_frames": {
+    "status": "success",
+    "duration_s": 1.4,
+    "task_ids": [
+      "0882d69bc814d31c68456784e7bcc640",
+      "c85d6027ac4d95b8a23027efd6c7dafb",
+      "3b1aaa5934cc316d0839288dbcb6cb52"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/images/1775749199431-zo37hl0kkk.png",
+      "https://tempfile.aiquickdraw.com/images/1775749199617-bicqiw4qcvd.png",
+      "https://tempfile.aiquickdraw.com/images/1775749196917-nog4uc65bgh.png"
+    ],
+    "errors": []
+  },
+  "step5_videos": {
+    "status": "success",
+    "duration_s": 2.2,
+    "task_ids": [
+      "3858202861bf282c0c8c9a72ff0e149d",
+      "d5bf89b948eb069cc730dca96a9ba9f8",
+      "1fb361df21f0f186b2de42984747e75a"
+    ],
+    "kie_urls": [
+      "https://tempfile.aiquickdraw.com/r/3858202861bf282c0c8c9a72ff0e149d_1775749355_zyipwg8v.mp4",
+      "https://tempfile.aiquickdraw.com/r/d5bf89b948eb069cc730dca96a9ba9f8_1775749350_awbdfuuf.mp4",
+      "https://tempfile.aiquickdraw.com/r/1fb361df21f0f186b2de42984747e75a_1775749351_rhunj6lq.mp4"
+    ],
+    "errors": []
+  },
+  "step7_merge": {
+    "status": "success",
+    "duration_s": 0.3,
+    "output": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/11cd701e/final.mp4",
+    "clip_count": 3
+  },
+  "step8_tiktok": {
+    "status": "success",
+    "duration_s": 0.0,
+    "upload_id": "tt_upload_2d8f76b6c23b",
+    "video_id": "tt_video_d257d407bbed4b87",
+    "product_asin": "B0869BPD69",
+    "product_title": "CDE Forever Love Heart Necklaces for Women, Wedding Anniversary, Birthday Mother",
+    "video_path": "/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/11cd701e/final.mp4",
+    "video_size_kb": 32179,
+    "timestamp": "2026-04-09T15:42:52.793333+00:00",
+    "mock": true
+  },
+  "status": "success",
+  "finished_at": "2026-04-09T15:42:52.793543+00:00"
+}
