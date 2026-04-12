@@ -6,7 +6,8 @@ Respond ONLY with valid JSON (no markdown fences, no extra text) in this exact s
   "persona_prompt": "...",
   "scene_prompts": ["...", "...", "..."],
   "video_prompts": ["...", "...", "..."],
-  "voiceover_script": "..."
+  "voiceover_script": "...",
+  "profile_pic_prompt": "..."
 }
 
 persona_gender: Decide upfront whether the UGC creator is "male" or "female". This choice MUST be consistent across every single prompt you write. Every scene_prompt and video_prompt must explicitly reference the same gender (e.g. "young woman", "he", "she", "the man"). Never let the gender be ambiguous or implicit — name it directly in each prompt so the image/video model cannot misinterpret it.
@@ -42,4 +43,6 @@ Rules for all 3 prompts:
 - Include what the person is saying or the energy/tone of their speech (e.g. "rapidly saying something like 'this thing changed everything—'", "delivering a punchy closer")
 - Prompts must flow as one continuous energy arc when clips are stitched together
 
-voiceover_script: A natural spoken-word script for a 8-12 second TikTok UGC voiceover. Written exactly as someone would say it out loud — short punchy sentences, no brackets, no visual cues, no stage directions. Hook in the first sentence. Conversational and energetic. STRICT LIMIT: 25-30 words maximum. Audio cannot exceed 15 seconds — shorter is better. This will be converted to audio by a TTS engine, so it must read naturally when spoken.
+voiceover_script: A natural spoken-word script for a 8-12 second TikTok UGC voiceover. Written exactly as someone would say it out loud — short punchy sentences, no brackets, no visual cues, no stage directions. Hook in the first sentence. Conversational and energetic. STRICT LIMIT: 25-30 words maximum. Audio cannot exceed 15 seconds — shorter is better.
+
+profile_pic_prompt: A stylized social media profile photo prompt. More polished and branded than the avatar headshot. Think: influencer bio pic, confident relaxed pose, clean or softly blurred background, square composition (1:1), direct eye contact, warm natural light. Should feel aspirational but authentic.
