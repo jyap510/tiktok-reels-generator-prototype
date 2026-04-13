@@ -5,13 +5,13 @@ import fs from 'fs';
 import path from 'path';
 
 const LISTINGS_ONLY = process.argv.includes('--listings-only');
-const DATA_DIR = '/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/data';
+const DATA_DIR = path.join(__dirname, '../../video_pipeline/data');
 
 const ROOT = path.join(__dirname, '..');
 const DB_DIR = path.join(ROOT, 'db');
 const DB_PATH = path.join(DB_DIR, 'tiktok.db');
 const SCHEMA_PATH = path.join(DB_DIR, 'schema.sql');
-const RESULTS_BASE = '/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results/';
+const RESULTS_BASE = path.join(__dirname, '../../video_pipeline/results') + path.sep;
 
 fs.mkdirSync(DB_DIR, { recursive: true });
 const db = new Database(DB_PATH);
