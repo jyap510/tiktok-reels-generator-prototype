@@ -1,14 +1,17 @@
 import Link from "next/link";
-import { runs } from "@/data/runs";
-import type { StepStatus } from "@/data/runs";
+import db from "@/lib/db";
+import type { Run, RunStatus } from "@/types";
 
-const statusStyle: Record<StepStatus, string> = {
+const statusStyle: Record<RunStatus, string> = {
   success: "bg-emerald-900/60 text-emerald-400",
   partial: "bg-yellow-900/60 text-yellow-400",
-  failed: "bg-red-900/60 text-red-400",
+  error: "bg-red-900/60 text-red-400",
+  pending: "bg-neutral-800 text-neutral-400",
+  running: "bg-blue-900/60 text-blue-400",
 };
 
-function formatRelative(iso: string) {
+function formatRelative(iso: string | null) {
+  if (!iso) return "—";
   const diff = Date.now() - new Date(iso).getTime();
   const mins = Math.floor(diff / 60000);
   if (mins < 60) return `${mins}m ago`;
@@ -17,20 +20,21 @@ function formatRelative(iso: string) {
   return `${Math.floor(hrs / 24)}d ago`;
 }
 
-const uniqueProducts = new Set(runs.map((r) => r.product.asin)).size;
-const successCount = runs.filter((r) => r.status === "success").length;
-
-const stats = [
-  { label: "Total Runs", value: String(runs.length) },
-  { label: "Products", value: String(uniqueProducts) },
-  { label: "Successful", value: String(successCount) },
-  { label: "Partial / Failed", value: String(runs.length - successCount) },
-];
-
 export default function DashboardPage() {
-  const recent = [...runs]
-    .sort((a, b) => new Date(b.started_at).getTime() - new Date(a.started_at).getTime())
-    .slice(0, 3);
+  const totalRuns = (db.prepare("SELECT COUNT(*) as count FROM runs").get() as { count: number }).count;
+  const uniqueProducts = (db.prepare("SELECT COUNT(DISTINCT product_asin) as count FROM runs").get() as { count: number }).count;
+  const successCount = (db.prepare("SELECT COUNT(*) as count FROM runs WHERE status = 'success'").get() as { count: number }).count;
+
+  const stats = [
+    { label: "Total Runs", value: String(totalRuns) },
+    { label: "Products", value: String(uniqueProducts) },
+    { label: "Successful", value: String(successCount) },
+    { label: "Partial / Failed", value: String(totalRuns - successCount) },
+  ];
+
+  const recentRows = db
+    .prepare("SELECT * FROM runs ORDER BY started_at DESC LIMIT 3")
+    .all() as Run[];
 
   return (
     <div className="p-8">
@@ -54,37 +58,41 @@ export default function DashboardPage() {
               <th className="text-left px-5 py-3 text-xs font-medium text-neutral-500 uppercase tracking-wider">Run ID</th>
               <th className="text-left px-5 py-3 text-xs font-medium text-neutral-500 uppercase tracking-wider">Product</th>
               <th className="text-left px-5 py-3 text-xs font-medium text-neutral-500 uppercase tracking-wider">Status</th>
-              <th className="text-left px-5 py-3 text-xs font-medium text-neutral-500 uppercase tracking-wider">Size</th>
               <th className="text-left px-5 py-3 text-xs font-medium text-neutral-500 uppercase tracking-wider">Started</th>
             </tr>
           </thead>
           <tbody>
-            {recent.map((run, i) => (
-              <tr key={run.run_id} className={i < recent.length - 1 ? "border-b border-neutral-800/60" : ""}>
-                <td className="px-5 py-3">
-                  <Link
-                    href={`/runs/${run.run_id}`}
-                    className="font-mono text-xs text-neutral-300 hover:text-white transition-colors"
-                  >
-                    {run.run_id.slice(0, 8)}
-                  </Link>
-                </td>
-                <td className="px-5 py-3 text-neutral-300">
-                  {run.product.title.length > 40
-                    ? run.product.title.slice(0, 40) + "…"
-                    : run.product.title}
-                </td>
-                <td className="px-5 py-3">
-                  <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusStyle[run.status]}`}>
-                    {run.status}
-                  </span>
-                </td>
-                <td className="px-5 py-3 text-neutral-500 font-mono text-xs">
-                  {(run.tiktok.video_size_kb / 1024).toFixed(1)} MB
-                </td>
-                <td className="px-5 py-3 text-neutral-500">{formatRelative(run.started_at)}</td>
+            {recentRows.length === 0 ? (
+              <tr>
+                <td colSpan={4} className="px-5 py-6 text-center text-neutral-500">No runs yet</td>
               </tr>
-            ))}
+            ) : (
+              recentRows.map((run, i) => (
+                <tr key={run.run_id} className={i < recentRows.length - 1 ? "border-b border-neutral-800/60" : ""}>
+                  <td className="px-5 py-3">
+                    <Link
+                      href={`/runs/${run.run_id}`}
+                      className="font-mono text-xs text-neutral-300 hover:text-white transition-colors"
+                    >
+                      {run.run_id.slice(0, 8)}
+                    </Link>
+                  </td>
+                  <td className="px-5 py-3 text-neutral-300">
+                    {run.product_title
+                      ? run.product_title.length > 40
+                        ? run.product_title.slice(0, 40) + "…"
+                        : run.product_title
+                      : <span className="text-neutral-500">—</span>}
+                  </td>
+                  <td className="px-5 py-3">
+                    <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusStyle[run.status]}`}>
+                      {run.status}
+                    </span>
+                  </td>
+                  <td className="px-5 py-3 text-neutral-500">{formatRelative(run.started_at)}</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

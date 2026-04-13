@@ -3,7 +3,7 @@ import path from 'path';
 import db from '@/lib/db';
 import { spawnPython } from '@/lib/spawn-python';
 
-const SCRIPTS_DIR = '/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/src/';
+const SCRIPTS_DIR = path.join(process.cwd(), '../video_pipeline/src/');
 
 export async function POST(request: NextRequest) {
   const body = await request.json();

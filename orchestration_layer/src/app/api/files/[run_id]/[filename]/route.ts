@@ -2,8 +2,7 @@ import { type NextRequest } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-const RESULTS_DIR =
-  '/home/jay/Desktop/EvoTech/e8-tiktok-video-post-automation/video_pipeline/results';
+const RESULTS_DIR = path.join(process.cwd(), '../video_pipeline/results');
 
 const RUN_ID_RE = /^[a-f0-9]{8}$/;
 const FILENAME_RE = /^[a-zA-Z0-9_-]+\.(png|jpg|jpeg|mp4)$/;
